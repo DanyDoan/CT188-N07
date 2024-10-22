@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../BootstrapThemeKit-main/BootstrapThemeKit-main/assets/css/style.css">
+    <link rel="stylesheet" href="../BootstrapThemeKit-main/BootstrapThemeKit-main/assets/css/style2.css">
+    <link rel="stylesheet" href="../BootstrapThemeKit-main/BootstrapThemeKit-main/assets/css/news.css">
+    <link rel="shortcut icon" href="../image/for-rent.png">
+    <title>Thông Báo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div></h1>
+        <div>
+            <a href="signin.html">Đăng Ký</a>
+            <a href="login.html">Đăng Nhập</a>
+        </div>       
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="main.html">Nhà Trọ Giá Rẻ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="main.html">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">Tin Tức</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                      <button onclick="search()">Tìm kiếm</button>
+                    <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                    <button class="btn btn-outline-success" onclick="search()">Search</button> -->
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+<main>
+    <h1>
+        Nhà Trọ Xin Tạm Dừng Hoạt Động Vì Trốn Nợ
+    </h1>
+</main>
+
+
+<footer>
+    <div class="footer-box">
+        <h3>Liên Hệ</h3>
+        <ul>
+            <li>Sdt:09xxxxxx</li>
+            <li>Sdt:09xxxxxx</li>
+            <li>Sdt:09xxxxxx</li>
+        </ul>
+    </div>
+    <div class="footer-box">
+        <h3>Liên Kết</h3>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">Zalo</a></li>
+    </div>
+    <div class="footer-box">
+        <h3>Tính Minh Bạch</h3>
+        <li><a href="#">Điều Khoản & Dịch Vụ</a></li>
+        <li><a href="#">Hỗ Trợ</a></li>
+    </div>
+</footer>
+
+
+
+<script>
+    let jsonString = `{
+        "PhongTro": [
+            { 
+            "ten": "CHO THUÊ PHÒNG TRỌ ĐẦY ĐỦ NỘI THẤT", 
+            "gia": "2,5 triệu/tháng", 
+            "dienTich": "20m2",
+            "vitri": "Quận Ninh Kiều",
+            "hinhAnh": "../image/hinh1.jpg" 
+            },
+            {
+            "ten": "CHO THUÊ PHÒNG TRỌ GIÁ SIÊU RẺ", 
+            "gia": "2 triệu/tháng", 
+            "dienTich": "25m2",
+            "vitri": "Quận Cái Răng", 
+            "hinhAnh": "../image/hinh2.jpg" 
+            },
+            {
+            "ten": "CHO THUÊ PHÒNG TRỌ CAO CẤP", 
+            "gia": "3,5 triệu/tháng", 
+            "dienTich": "30m2",
+            "vitri": "Quận Bình Thủy",
+            "hinhAnh": "../image/hinh3.jpg" 
+            },
+            { 
+            "ten": "CHO THUÊ PHÒNG TRỌ ĐẦY ĐỦ NỘI THẤT", 
+            "gia": "1 triệu/tháng", 
+            "dienTich": "20m2",
+            "vitri": "Quận Ninh Kiều",
+            "hinhAnh": "../image/hinh1.jpg" 
+            }
+        ]
+    }`;
+
+    // Chuyển chuỗi JSON thành đối tượng
+    let data = JSON.parse(jsonString);
+
+    // Hàm để tạo ra đối tượng mới
+    function createBox(name, gia, vitri, hinhAnh, dienTich) {
+        // Tạo phần tử <div> với class 'box'
+        const box = document.createElement('div');
+        box.classList.add('box');
+
+        // Tạo phần tử <img>
+        const img = document.createElement('img');
+        img.src = hinhAnh; // Đường dẫn hình ảnh
+        img.alt = 'Hình phòng trọ';
+        img.id = 'image-id';
+
+        // Tạo phần tử <div> chứa thông tin
+        const infoDiv = document.createElement('div');
+
+        // Tạo phần tử <h4> và thêm nội dung
+        const h4 = document.createElement('h4');
+        h4.id = 'name';
+        h4.textContent = name;
+
+        // Tạo phần tử <p> cho thông tin phòng
+        const pInfo = document.createElement('p');
+        pInfo.id = 'information';
+        pInfo.textContent = gia + " - " + dienTich;
+
+        // Tạo phần tử <p> cho vị trí và thông tin thêm
+        const pPosition = document.createElement('p');
+        pPosition.id = 'position';
+        pPosition.textContent = vitri;
+
+        // Thêm các phần tử vào <div class="box">
+        infoDiv.appendChild(h4);
+        infoDiv.appendChild(pInfo);
+        infoDiv.appendChild(pPosition);
+
+        // Thêm hình ảnh và thông tin vào 'box'
+        box.appendChild(img);
+        box.appendChild(infoDiv);
+
+        // Thêm 'box' mới vào danhSachTro trên trang
+        document.getElementById('danhSachTro').appendChild(box);
+    }
+    // Duyệt qua từng nhân viên và tạo box
+    for (let i = 0; i < data.PhongTro.length; i++) {
+        createBox(data.PhongTro[i].ten, data.PhongTro[i].gia, data.PhongTro[i].vitri, data.PhongTro[i].hinhAnh, data.PhongTro[i].dienTich);
+    }
+    // Hàm tìm kiếm
+    function search() {
+        // Lấy giá trị từ ô tìm kiếm
+        let searchInput = document.getElementById('searchInput').value.toLowerCase();
+
+        // Xóa danh sách hiện tại
+        document.getElementById('danhSachTro').innerHTML = '';
+
+        // Duyệt qua dữ liệu JSON và tìm các phòng trọ khớp với từ khóa
+        for (let i = 0; i < data.PhongTro.length; i++) {
+            let phongTro = data.PhongTro[i];
+
+            // Kiểm tra nếu từ khóa có trong tên, giá, diện tích hoặc vị trí
+            if (phongTro.ten.toLowerCase().includes(searchInput) ||
+                phongTro.gia.toLowerCase().includes(searchInput) ||
+                phongTro.dienTich.toLowerCase().includes(searchInput) ||
+                phongTro.vitri.toLowerCase().includes(searchInput)) {
+
+                // Nếu khớp, tạo box hiển thị phòng trọ
+                createBox(phongTro.ten, phongTro.gia, phongTro.vitri, phongTro.hinhAnh, phongTro.dienTich);
+            }
+        }
+    }
+     // Duyệt qua từng nhân viên và tạo box
+     for (let i = 0; i < data.PhongTro.length; i++) {
+        createBox(data.PhongTro[i].ten, data.PhongTro[i].gia, data.PhongTro[i].vitri, data.PhongTro[i].hinhAnh, data.PhongTro[i].dienTich);
+    }
+    function filterData() {
+        // Lấy dữ liệu từ các checkbox
+        let filterPrice1m = document.getElementById('filterPrice1m').checked;
+        let filterPrice2m = document.getElementById('filterPrice2m').checked;
+        let filterPrice3m = document.getElementById('filterPrice3m').checked;
+        let filterSize20m = document.getElementById('filterSize20m').checked;
+        let filterSize25m = document.getElementById('filterSize25m').checked;
+        let filterLocationNinhKieu = document.getElementById('filterLocationNinhKieu').checked;
+        let filterLocationCaiRang = document.getElementById('filterLocationCaiRang').checked;
+
+        // Xóa danh sách phòng trọ hiện tại
+        document.getElementById('danhSachTro').innerHTML = '';
+
+        // Duyệt qua dữ liệu phòng trọ và kiểm tra điều kiện lọc
+        for (let i = 0; i < data.PhongTro.length; i++) {
+            let phongTro = data.PhongTro[i];
+
+            // Điều kiện lọc
+            let matchPrice = (filterPrice1m && phongTro.gia.includes('1 triệu')) ||
+                (filterPrice2m && phongTro.gia.includes('2 triệu')) ||
+                (filterPrice3m && phongTro.gia.includes('3 triệu')) ||
+                (!filterPrice2m && !filterPrice3m && !filterPrice1m); // Nếu không chọn checkbox nào thì không lọc theo giá
+
+            let matchSize = (filterSize20m && phongTro.dienTich.includes('20m2')) ||
+                (filterSize25m && phongTro.dienTich.includes('25m2')) ||
+                (!filterSize20m && !filterSize25m); // Nếu không chọn checkbox nào thì không lọc theo diện tích
+
+            let matchLocation = (filterLocationNinhKieu && phongTro.vitri.includes('Quận Ninh Kiều')) ||
+                (filterLocationCaiRang && phongTro.vitri.includes('Quận Cái Răng')) ||
+                (!filterLocationNinhKieu && !filterLocationCaiRang); // Nếu không chọn checkbox nào thì không lọc theo vị trí
+
+            // Nếu tất cả điều kiện đều đúng thì hiển thị phòng trọ
+            if (matchPrice && matchSize && matchLocation) {
+                createBox(phongTro.ten, phongTro.gia, phongTro.vitri, phongTro.hinhAnh, phongTro.dienTich);
+            }
+        }
+
+    }
+    // Hàm bắt sự kiện nhấn phím Enter
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            search(); // Gọi hàm tìm kiếm nếu nhấn Enter
+        }
+    }
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+crossorigin="anonymous"></script>
+</body>
+
+</html>
