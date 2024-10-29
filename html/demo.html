@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Căn chỉnh và định dạng cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Bố cục hai cột */
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        /* Cột bên trái */
+        .left-column {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cột bên phải */
+        .right-column {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Định dạng cho phần thông tin người dùng */
+        #userInfoDisplay h4 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        #userInfoDisplay p {
+            margin: 8px 0;
+        }
+
+        /* Định dạng cho nút */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hộp quảng cáo */
+        .advertisement-box {
+            background-color: #ffefc2;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .advertisement-box h4 {
+            margin-top: 0;
+            color: #e68a00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Cột bên trái -->
+        <div class="left-column">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, repudiandae quia? A expedita itaque vitae quos
+                dolore repellat, voluptatum veniam cupiditate, eveniet, natus laudantium. Vel maxime nostrum omnis eius ullam!</p>
+            <button onclick="logout()">Đăng xuất</button>
+        </div>
+
+        <!-- Cột bên phải -->
+        <div class="right-column">
+            <!-- Div để hiển thị thông tin người dùng đã lưu -->
+            <div id="userInfoDisplay"></div>
+            <button onclick="dienThongTin()">Cập nhật thông tin</button>
+        </div>
+    </div>
+
+    <!-- Hộp quảng cáo -->
+    <div class="advertisement-box">
+        <h4>Quảng cáo nổi bật</h4>
+        <p>Khám phá các ưu đãi hấp dẫn chỉ có tại đây!</p>
+    </div>
+
+    <script>
+        if (localStorage.getItem("is-login")) {
+            document.body.style.display = "block";
+        } else {
+            document.body.style.display = "none";
+            alert("Truy cập không hợp lệ! Bạn không được phép vào trang này.");
+            window.location.href = "login.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("is-login");
+            localStorage.removeItem("user-information");
+            window.location.href = "login.html";
+        }
+
+        function displayUserInfo() {
+            const userInfoDisplay = document.getElementById("userInfoDisplay");
+            const keyInfo = localStorage.getItem("user-information");
+            const savedInfo = localStorage.getItem(keyInfo);
+
+            alert(savedInfo);
+
+            // Kiểm tra xem có dữ liệu trong localStorage không
+            if (savedInfo) {
+                const userInfo = JSON.parse(savedInfo);
+                userInfoDisplay.innerHTML = `
+                    <h4>Thông tin người dùng:</h4>
+                    <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
+                    <p><strong>Email:</strong> ${userInfo.email}</p>
+                    <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
+                    <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
+                    <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
+                `;
+            } else {
+                userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
+            }
+        }
+
+        function dienThongTin(){
+            window.location.href = "capnhat.html"
+        }
+
+        // Tải thông tin từ localStorage khi trang vừa tải
+        window.addEventListener("load", displayUserInfo);
+    </script>
+
+</body>
+
+</html>

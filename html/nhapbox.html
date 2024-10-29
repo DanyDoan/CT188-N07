@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Nhập Thông Tin Phòng Trọ</title>
+    <style>
+        /* CSS cơ bản */
+        body { 
+            display: flex; 
+            justify-content: center; 
+            padding-top: 50px; /* Thêm khoảng trống phía trên */
+            background-color: #f7f8fa; 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+        }
+        .container { 
+            max-width: 600px; 
+            width: 100%; 
+            padding: 20px; 
+            background-color: #fff; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+            border-radius: 8px; 
+        }
+        h2 { 
+            text-align: center; 
+            color: #333; 
+            margin-bottom: 20px; 
+        }
+        .form-group { 
+            margin-bottom: 15px; 
+        }
+        label { 
+            font-weight: bold; 
+            color: #333; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input[type="text"], input[type="file"], textarea { 
+            width: 100%; 
+            padding: 10px; 
+            margin-top: 5px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+        }
+        textarea { 
+            resize: vertical; 
+        }
+        button { 
+            width: 100%; 
+            padding: 12px; 
+            font-size: 16px; 
+            background-color: #007bff; 
+            color: #fff; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin-top: 20px; 
+        }
+        button:hover { 
+            background-color: #0056b3; 
+        }
+        #roomForm { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Nhập Thông Tin Phòng Trọ</h2>
+        <form id="roomForm">
+            <div class="form-group">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tieuDe">Tiêu Đề:</label>
+                <input type="text" id="tieuDe" name="tieuDe" value="CHO THUÊ PHÒNG TRỌ ĐẦY ĐỦ NỘI THẤT" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gia">Giá:</label>
+                <input type="text" id="gia" name="gia" value="2,5 triệu/tháng - 20m2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dienTich">Diện Tích:</label>
+                <input type="text" id="dienTich" name="dienTich" value="20m2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="vitri">Vị Trí:</label>
+                <input type="text" id="vitri" name="vitri" value="Quận Ninh Kiều - 7 ngày trước - tin ưu tiên" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hinhAnh">Hình Ảnh:</label>
+                <input type="file" id="hinhAnh" name="hinhAnh" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="giaDien">Giá Điện:</label>
+                <input type="text" id="giaDien" name="giaDien">
+            </div>
+
+            <div class="form-group">
+                <label for="giaNuoc">Giá Nước:</label>
+                <input type="text" id="giaNuoc" name="giaNuoc">
+            </div>
+
+            <div class="form-group">
+                <label for="cachTrungTam">Cách Trung Tâm:</label>
+                <input type="text" id="cachTrungTam" name="cachTrungTam">
+            </div>
+
+            <div class="form-group">
+                <label for="coGac">Có Gác:</label>
+                <input type="text" id="coGac" name="coGac">
+            </div>
+
+            <div class="form-group">
+                <label for="trangThai">Trạng Thái:</label>
+                <input type="text" id="trangThai" name="trangThai">
+            </div>
+
+            <div class="form-group">
+                <label for="chuTro">Chủ Trọ:</label>
+                <input type="text" id="chuTro" name="chuTro">
+            </div>
+
+            <div class="form-group">
+                <label for="lienHe">Liên Hệ:</label>
+                <input type="text" id="lienHe" name="lienHe">
+            </div>
+
+            <div class="form-group">
+                <label for="giaDacCoc">Giá Đặt Cọc:</label>
+                <input type="text" id="giaDacCoc" name="giaDacCoc">
+            </div>
+
+            <div class="form-group">
+                <label for="moTa">Mô Tả:</label>
+                <textarea id="moTa" name="moTa" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Lưu Thông Tin</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("roomForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const roomInfo = {};
+
+            formData.forEach((value, key) => {
+                roomInfo[key] = value;
+            });
+
+            localStorage.setItem("roomInfo", JSON.stringify(roomInfo));
+            alert("Thông tin phòng trọ đã được lưu!");
+        });
+    </script>
+</body>
+</html>

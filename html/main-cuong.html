@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap v5 Themekit</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/filter-css.css">
+    <link rel="stylesheet" href="css/phanTrang.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item">Đăng nhập</a></li>
+                            <li><a class="dropdown-item">Đăng ký</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" tabindex="-1" aria-disabled="true" onclick="dangnhap()">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" tabindex="-1" aria-disabled="true" onclick="dangky()">Đăng ký</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..."
+                        onkeydown="handleKeyPress(event)">
+                    <button class="btn btn-outline-success" onclick="search()">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container-xxl">
+        <div class="row mt-3">
+            <div class="col-lg-6 col-md-6">
+
+                <div id="danhSachTro">
+                    <!-- Các phòng trọ sẽ xuất hiện ở đây -->
+                </div>
+
+
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="filter-box">
+                    <h3>Lọc theo:</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="price" id="filterPriceUnder1m" value="Dưới 1 triệu/tháng">
+                            Dưới 1 triệu/tháng
+                        </label>
+                        <label>
+                            <input type="radio" name="price" id="filterPrice1to2m" value="Từ 1-2 triệu/tháng">
+                            Từ 1-2 triệu/tháng
+                        </label>
+                        <label>
+                            <input type="radio" name="price" id="filterPriceOver2m" value="Trên 2 triệu/tháng">
+                            Trên 2 triệu/tháng
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="size" id="filterSize20m" value="20m2">
+                            20m²
+                        </label>
+                        <label>
+                            <input type="radio" name="size" id="filterSize25m" value="25m2">
+                            25m²
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="location" id="filterLocationNinhKieu" value="Quận Ninh Kiều">
+                            Quận Ninh Kiều
+                        </label>
+                        <label>
+                            <input type="radio" name="location" id="filterLocationCaiRang" value="Quận Cái Răng">
+                            Quận Cái Răng
+                        </label>
+                    </div>
+
+                    <button onclick="filterData()" class="filter-btn">Lọc Phòng Trọ</button>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-4 col-md-6"></div> -->
+        </div>
+        <div id="pagination">
+            <!-- Các nút phân trang sẽ xuất hiện ở đây -->
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="assets/js/popper.min.js"></script> -->
+</body>
+
+</html>
