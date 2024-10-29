@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Điền Thông Tin Người Dùng</title>
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f7f8fa; margin: 0; font-family: Arial, sans-serif; }
+        .container { max-width: 500px; width: 100%; padding: 20px; background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { font-weight: bold; color: #333; }
+        input[type="text"], input[type="email"], input[type="tel"], select, input[type="date"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        input[type="radio"] { margin-right: 5px; }
+        button { width: 100%; padding: 12px; font-size: 16px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        #userInfoDisplay { margin-top: 20px; color: #333; }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Điền Thông Tin Người Dùng</h2>
+        <form id="userForm">
+            <div class="form-group">
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Số Điện Thoại:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label>Giới Tính:</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Nam</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Nữ</label>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate">Ngày Sinh:</label>
+                <input type="date" id="birthdate" name="birthdate" required>
+            </div>
+
+            <button type="submit" onclick="thongTinUser()">Gửi Thông Tin</button>
+        </form>
+
+        <div id="userInfoDisplay"></div>
+    </div>
+
+    <script>
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const gender = document.querySelector('input[name="gender"]:checked').value;
+            const birthdate = document.getElementById("birthdate").value;
+
+
+            const userKey = localStorage.getItem("user-information");
+            localStorage.setItem(userKey, JSON.stringify({ name, email, phone, gender, birthdate }));
+
+            alert("Thông tin đã được lưu vào localStorage!");
+
+            displayUserInfo();
+        });
+
+        function displayUserInfo() {
+            const userInfoDisplay = document.getElementById("userInfoDisplay");
+            const savedInfo = localStorage.getItem(userKey);
+
+            if (savedInfo) {
+                const userInfo = JSON.parse(savedInfo);
+                userInfoDisplay.innerHTML = `
+                    <h4>Thông tin người dùng:</h4>
+                    <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
+                    <p><strong>Email:</strong> ${userInfo.email}</p>
+                    <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
+                    <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
+                    <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
+                `;
+            } else {
+                userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
+            }
+        }
+        function thongTinUser(){
+            window.location.href = "login.html";
+        }
+
+        window.addEventListener("load", displayUserInfo);
+    </script>
+</body>
+</html>

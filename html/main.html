@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../BootstrapThemeKit-main/BootstrapThemeKit-main/assets/css/style.css">
-    <link rel="stylesheet" href="../BootstrapThemeKit-main/BootstrapThemeKit-main/assets/css/style2.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/default.css.map">
+    <link rel="stylesheet" href="../css/trungdan.css">
     <link rel="shortcut icon" href="../image/for-rent.png">
     <title>Trang Chủ</title>
 </head>
@@ -138,7 +139,7 @@
     </footer>
 
 
-
+    
     <script>
         let jsonString = `{
             "PhongTro": [
@@ -224,6 +225,7 @@
         }
         // Hàm tìm kiếm
         function search() {
+            alert('run');
             // Lấy giá trị từ ô tìm kiếm
             let searchInput = document.getElementById('searchInput').value.toLowerCase();
 
@@ -233,21 +235,21 @@
             // Duyệt qua dữ liệu JSON và tìm các phòng trọ khớp với từ khóa
             for (let i = 0; i < data.PhongTro.length; i++) {
                 let phongTro = data.PhongTro[i];
-
+                alert('ok');
                 // Kiểm tra nếu từ khóa có trong tên, giá, diện tích hoặc vị trí
-                if (phongTro.ten.toLowerCase().includes(searchInput) ||
+                if (phongTro.ten.toLowerCase().include ||
                     phongTro.gia.toLowerCase().includes(searchInput) ||
                     phongTro.dienTich.toLowerCase().includes(searchInput) ||
                     phongTro.vitri.toLowerCase().includes(searchInput)) {
-
+                    alert(phongTro.ten);
                     // Nếu khớp, tạo box hiển thị phòng trọ
                     createBox(phongTro.ten, phongTro.gia, phongTro.vitri, phongTro.hinhAnh, phongTro.dienTich);
                 }
             }
-        }
-         // Duyệt qua từng nhân viên và tạo box
-         for (let i = 0; i < data.PhongTro.length; i++) {
-            createBox(data.PhongTro[i].ten, data.PhongTro[i].gia, data.PhongTro[i].vitri, data.PhongTro[i].hinhAnh, data.PhongTro[i].dienTich);
+        //  // Duyệt qua từng nhân viên và tạo box
+        //     for (let i = 0; i < data.PhongTro.length; i++) {
+        //         createBox(data.PhongTro[i].ten, data.PhongTro[i].gia, data.PhongTro[i].vitri, data.PhongTro[i].hinhAnh, data.PhongTro[i].dienTich);
+        //     }
         }
         function filterData() {
             // Lấy dữ liệu từ các checkbox
@@ -301,6 +303,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
     integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
     crossorigin="anonymous"></script>
+    <script src="../js/td.js"> alert('meo')</script>
 </body>
 
 </html>
