@@ -586,7 +586,7 @@ let jsonString = `{
         }
         function ChiTiet(value) {
             localStorage.setItem("chi-tiet", value);
-            window.location.href = "chitiet.html";
+            window.location.href = "../html/chitiet.html";
         }
 
         function displayData(page) {
@@ -654,7 +654,16 @@ let jsonString = `{
             currentPage = 1;
             displayData(currentPage);
         }
-
+        function clearCheckBox(){
+            const filterPriceUnder1m = document.getElementById('filterPriceUnder1m').checked=false;
+            const filterPrice1to2m = document.getElementById('filterPrice1to2m').checked=false;
+            const filterPriceOver2m = document.getElementById('filterPriceOver2m').checked=false;
+            const filterSize20m = document.getElementById('filterSize20m').checked=false;
+            const filterSize25m = document.getElementById('filterSize25m').checked=false;
+            const filterLocationNinhKieu = document.getElementById('filterLocationNinhKieu').checked=false;
+            const filterLocationCaiRang = document.getElementById('filterLocationCaiRang').checked=false;
+            alert('Clear')
+        }
 
         function search() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
@@ -683,10 +692,10 @@ let jsonString = `{
         // PHẦN ĐĂNG NHÂP VÀ ĐĂNG KÝ
         function dangnhap() {
             // localStorage.setItem("page-login",true);
-            window.location.href = "login/login.html";
+            window.location.href = "../html/login.html";
         }
 
         function dangky() {
             localStorage.setItem("page-login", false);
-            window.location.href = "login/login.html";
+            window.location.href = "../html/login.html";
         }
