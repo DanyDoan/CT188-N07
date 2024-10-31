@@ -16,32 +16,44 @@ body{
 }
 header{
     grid-area: header;
-    background-color: rgb(194, 227, 243);
     display:flex;
+    background-image: url('https://img.freepik.com/premium-photo/red-house-white-houses-real-estate-property-industry_184421-2641.jpg?w=1060');
+    background-size: cover;
+    background-position-y: -80px ;
+    background-repeat: no-repeat;
+
 }
 nav{
     grid-area: nav;
 }
 main{
     grid-area: main;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(172, 172, 172, 0.549);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
  footer{
     grid-area: footer;
-    background-color: rgba(106, 97, 97, 0.462);
+    background-color: rgba(139, 139, 139, 0.562);
 }
 
 /* Header */
 header{
     justify-content: space-between;
-    padding:1em;
+    height: 12em;
 }
 header h1{
     font-size:3em;
     text-transform: uppercase;
     font-weight: bold;
-    color:rgb(252, 252, 252);
+    color:rgb(12, 12, 12);
     display:flex;
+    align-self: center;
+}
+header >div{
+    position: relative;
+    right:10px;
+    bottom: -10px;
 }
 header div a{
     color:rgb(0, 0, 0);
@@ -67,11 +79,12 @@ header div a{
     color:white;
 }
 nav{
-    background-color: rgb(89, 155, 213);
+    background-color: rgba(79, 81, 83, 0.514);
+    color:white
 }
 /* main */
 .trangchu{
-    margin-top:1em;
+    padding-top:1em;
     display:grid;
     grid-template-columns: 80% 20%;
     grid-template-rows: auto auto;
@@ -85,11 +98,11 @@ nav{
     grid-area: content;
     display: flex;
     justify-content: center;
+    opacity: 1;
 }
 .filter{
     grid-area: filter;
     width: 100%;
-    background-color: rgba(245, 218, 218, 0.197);
     display: flex;
     justify-content: start;
     align-items: start;
@@ -98,19 +111,24 @@ nav{
     margin-top: 10px;
     display:flex;
     padding:10px;
-    background-color: white;
+    width: 60em;
+    height: fit-content;
+    background-color: rgba(244, 244, 244, 0.5);
     border:1px solid white;
     border-radius: 5px;
     box-sizing: border-box;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.box:nth-child(1){
+    margin-top:0em;
 }
 h4{
     margin-top:1em;
     font-size:2em;
 }
 img{
-    width: 270px;
-    height: 200px;
+    width: 15em;
+    height: 15em;
     border:1px solid white;
     border-radius: 18px;
     margin:18px;
@@ -129,7 +147,7 @@ img{
 }
 .container{
     width: fit-content;
-    background-color: rgba(255, 193, 193, 0.967);
+    background-color: rgba(250, 234, 234, 0.356);
     border:2px solid rgb(2, 25, 17);
     border-radius: 0.2em;
     padding:0.5em;
@@ -137,11 +155,15 @@ img{
     top:1em;
     margin-bottom: 0.2em;
 }
-#filter-button{
+.filter-btn{
     color:white;
     background-color: rgb(3, 64, 16);
     border-radius: 0.2em;
     margin:1em;
+}
+.filter-btn:hover{
+    transition: 0.5s;
+    scale:1.1;
 }
 
 h4 {
@@ -167,7 +189,7 @@ p{
 
 #pagination{
     display: flex;
-    justify-content: end;
+    justify-content: center;
     margin:20px;
 }
 #pagination button{
@@ -187,7 +209,7 @@ footer{
     margin:1em;
     width: 15em;
     height: fit-content;
-    color:rgba(255, 255, 255, 0.744);
+    color:rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     line-height: 30px;
@@ -219,17 +241,21 @@ footer{
     *{
         font-size:10px;
     }
+    .box:nth-child(1){
+        margin-top: 10px;
+    }
     .box{
         flex-direction: column;
         align-items: center;
-        width: 500px;
-        margin: 0px;
+        width: 20em;
+        height: 30em;
+        padding: 5px 5px 5px 5px;
+        margin:10px;
     }
-    .content{
-        width: 100%;
-        flex-direction: row;
+    .rentBox{
+        display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
     }
 }
  /*End dùng chung */
