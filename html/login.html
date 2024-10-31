@@ -6,7 +6,7 @@
     <title>Document</title>
     <!-- <script src="dangky.js"></script>
     <script src="dangnhap.js"></script> -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <style>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
@@ -359,7 +359,7 @@ footer a {
         localStorage.setItem(email, JSON.stringify({ name, password}));
         // localStorage.setItem(name, JSON.stringify({ email, password}));
         localStorage.setItem("user-information",email+password);
-        window.location.href = '../dienthongtin.html';
+        window.location.href = 'dienthongtin.html';
         alert('Đăng ký thành công! Thông tin của bạn đã được lưu.');
     } else alert("Email hoặc name của bạn đã tồn tại");    
 });
@@ -388,7 +388,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
         alert('Đăng nhập thành công!');
         localStorage.setItem("is-login",true);
         localStorage.setItem("user-information",email+password);
-        window.location.href = '../demo.html';
+        window.location.href = 'demo.html';
     } else {
         alert('Email hoặc mật khẩu không đúng!');
     }

@@ -93,9 +93,8 @@
     <div class="container">
         <!-- Cột bên trái -->
         <div class="left-column">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, repudiandae quia? A expedita itaque vitae quos
-                dolore repellat, voluptatum veniam cupiditate, eveniet, natus laudantium. Vel maxime nostrum omnis eius ullam!</p>
-            <button onclick="logout()">Đăng xuất</button>
+            <h1>Quản lí trọ</h1>
+            <button>Thêm Trọ</button>
         </div>
 
         <!-- Cột bên phải -->
@@ -103,6 +102,7 @@
             <!-- Div để hiển thị thông tin người dùng đã lưu -->
             <div id="userInfoDisplay"></div>
             <button onclick="dienThongTin()">Cập nhật thông tin</button>
+            <button onclick="logout()">Đăng xuất</button>
         </div>
     </div>
 
@@ -132,7 +132,6 @@
             const keyInfo = localStorage.getItem("user-information");
             const savedInfo = localStorage.getItem(keyInfo);
 
-            alert(savedInfo);
 
             // Kiểm tra xem có dữ liệu trong localStorage không
             if (savedInfo) {
