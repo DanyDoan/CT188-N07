@@ -662,11 +662,10 @@ let jsonString = `{
             const filterSize25m = document.getElementById('filterSize25m').checked=false;
             const filterLocationNinhKieu = document.getElementById('filterLocationNinhKieu').checked=false;
             const filterLocationCaiRang = document.getElementById('filterLocationCaiRang').checked=false;
-            alert('Clear')
         }
 
         function search() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const searchInput =document.getElementById('searchInput').value.toLowerCase();
             filteredData = data.filter(phongTro =>
                 phongTro.tieuDe.toLowerCase().includes(searchInput) ||
                 phongTro.gia.toLowerCase().includes(searchInput) ||
@@ -676,8 +675,8 @@ let jsonString = `{
 
             currentPage = 1;
             displayData(currentPage);
-            alert("Hàm tìm kiếm");
-            alert(searchInput);
+            alert("Hàm tìm kiếmaaaa");
+            alert(filteredData);
         }
 
         function handleKeyPress(event) {
