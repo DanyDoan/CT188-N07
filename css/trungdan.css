@@ -96,8 +96,10 @@ nav{
 
 .content{
     grid-area: content;
+    width: 90%;
     display: flex;
     justify-content: center;
+    justify-self: center;
     opacity: 1;
 }
 .filter{
@@ -111,8 +113,7 @@ nav{
     margin-top: 10px;
     display:flex;
     padding:10px;
-    width: 60em;
-    height: fit-content;
+    height: 15em;
     background-color: rgba(244, 244, 244, 0.5);
     border:1px solid white;
     border-radius: 5px;
@@ -128,7 +129,7 @@ h4{
 }
 img{
     width: 15em;
-    height: 15em;
+    height: 12em;
     border:1px solid white;
     border-radius: 18px;
     margin:18px;
@@ -246,7 +247,6 @@ footer{
     }
     .box{
         flex-direction: column;
-        align-items: center;
         width: 20em;
         height: 30em;
         padding: 5px 5px 5px 5px;
