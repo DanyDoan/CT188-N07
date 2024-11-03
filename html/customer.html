@@ -5,88 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        /* Căn chỉnh và định dạng cơ bản */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
+    <link rel="stylesheet" href="../css/customer.css">
 
-        /* Bố cục hai cột */
-        .container {
-            display: flex;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-        }
-
-        /* Cột bên trái */
-        .left-column {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Cột bên phải */
-        .right-column {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Định dạng cho phần thông tin người dùng */
-        #userInfoDisplay h4 {
-            margin-top: 0;
-            color: #007bff;
-        }
-
-        #userInfoDisplay p {
-            margin: 8px 0;
-        }
-
-        /* Định dạng cho nút */
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Hộp quảng cáo */
-        .advertisement-box {
-            background-color: #ffefc2;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            margin-top: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .advertisement-box h4 {
-            margin-top: 0;
-            color: #e68a00;
-        }
-    </style>
 </head>
 
 <body>
@@ -94,7 +14,7 @@
         <!-- Cột bên trái -->
         <div class="left-column">
             <h1>Quản lí trọ</h1>
-            <button>Thêm Trọ</button>
+            <button id="addRent">Thêm Trọ</button>
         </div>
 
         <!-- Cột bên phải -->
@@ -114,7 +34,7 @@
 
     <script>
         if (localStorage.getItem("is-login")) {
-            document.body.style.display = "block";
+            document.body.style.display = "inLineBlock";
         } else {
             document.body.style.display = "none";
             alert("Truy cập không hợp lệ! Bạn không được phép vào trang này.");
