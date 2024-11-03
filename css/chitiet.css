@@ -5,7 +5,7 @@ body {
     flex-direction: column;
 }
 main{
-    background-image: url('https://img.freepik.com/free-vector/silhouette-skyline-illustration_53876-78786.jpg?t=st=1730630539~exp=1730634139~hmac=7b682bf2d64116b396ce57e7ccc1dea9fb2e2ee60cf91fdd9212982a46b05ff0&w=826');
+    background-image: url('../image/cosy.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     display:grid;
@@ -23,11 +23,11 @@ main{
     border: 1px;
     padding: 15px;
     box-sizing: border-box;
-    border-radius: 10px;
-    background: rgba(227, 227, 227, 0.925);
+    background: rgba(254, 254, 254, 0.363);
     display: flex;
     flex-direction: column;
     align-items: left;
+    font-weight: bold;
 }
 
 .leftSide{

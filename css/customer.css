@@ -13,11 +13,11 @@ main{
     flex-direction: column;
     align-items: center;
     align-content: space-around;
+    background-image: url('../image/home.jpg');
 }
 /* Container chứa 2 cột */
 .container{
     display:grid;
-    border:1px solid white;
     grid-template-columns: 20% 70%;
     grid-template-rows: auto;
     grid-template-areas:
@@ -31,7 +31,7 @@ main{
 /* Cột bên trái, phải */
 .left-column, .right-column {
     grid-area: left;
-    background-color: #efcfcf;
+    background-color: #ffffff98;
     padding: 20px;
     border-radius: 8px;
     display:flex;
@@ -81,7 +81,11 @@ main{
 /* Định dạng cho phần thông tin người dùng */
 #userInfoDisplay h4 {
     margin-top: 0;
-    color: #007bff;
+    color: #030303;
+    display: inline-block;
+    padding:10px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 #userInfoDisplay p {
