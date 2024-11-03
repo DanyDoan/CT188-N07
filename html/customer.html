@@ -4,37 +4,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/trungdan.css">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/customer.css">
+    <style>
+        /* Căn chỉnh và định dạng cơ bản */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
 
+        /* Căn chỉnh main */
+        main{
+            padding:100px;
+        }
+        /* Bố cục hai cột */
+        .container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        /* Cột bên trái */
+        .left-column {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cột bên phải */
+        .right-column {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Định dạng cho phần thông tin người dùng */
+        #userInfoDisplay h4 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        #userInfoDisplay p {
+            margin: 8px 0;
+        }
+
+        /* Định dạng cho nút */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Định dạng cho nút xóa trong mục phòng */
+        .delete-btn {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            background-color: #ff4d4d;
+            margin-top: 10px;
+            font-size: 14px;
+            padding: 5px 10px;
+        }
+
+        .delete-btn:hover {
+            background-color: #d43f3f;
+        }
+
+        /* Hộp quảng cáo */
+        .advertisement-box {
+            background-color: #ffefc2;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .advertisement-box h4 {
+            margin-top: 0;
+            color: #e68a00;
+        }
+
+        /* Định dạng cho toàn bộ phần container */
+        #listContainer {
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        /* Định dạng cho từng mục phòng trọ */
+        .room-item {
+            width: 240px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Hiệu ứng khi hover vào mục phòng trọ */
+        .room-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Định dạng cho tiêu đề và các thuộc tính phòng */
+        .room-item strong {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Định dạng cho nội dung bên trong các mục phòng */
+        .room-item {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Cột bên trái -->
-        <div class="left-column">
-            <h1>Quản lí trọ</h1>
-            <button id="addRent">Thêm Trọ</button>
+    <header>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div></h1>
+        <div>
+            <a href="login.html">Đăng Nhập</a>
+        </div>       
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Nhà Trọ Giá Rẻ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="main.html?#">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">Tin Tức</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                      <button onclick="search(event)">Tìm kiếm</button>
+                    <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                    <button class="btn btn-outline-success" onclick="search()">Search</button> -->
+                </form>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <!-- Cột bên trái -->
+            <div class="left-column">
+                <h1>Quản lí trọ</h1>
+                <button onclick="themPhongTro()">Đăng Tin</button>
+            </div>
+
+            <!-- Cột bên phải -->
+            <div class="right-column">
+                <!-- Div để hiển thị thông tin người dùng đã lưu -->
+                <div id="userInfoDisplay"></div>
+                <button onclick="dienThongTin()">Cập nhật thông tin</button>
+                <button onclick="logout()">Đăng xuất</button>
+            </div>
         </div>
 
-        <!-- Cột bên phải -->
-        <div class="right-column">
-            <!-- Div để hiển thị thông tin người dùng đã lưu -->
-            <div id="userInfoDisplay"></div>
-            <button onclick="dienThongTin()">Cập nhật thông tin</button>
-            <button onclick="logout()">Đăng xuất</button>
+        <!-- Hộp quảng cáo -->
+        <div class="advertisement-box">
+            <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
+            <div id="roomList">
+                <div id="listContainer"></div>
+            </div>
         </div>
-    </div>
-
-    <!-- Hộp quảng cáo -->
-    <div class="advertisement-box">
-        <h4>Quảng cáo nổi bật</h4>
-        <p>Khám phá các ưu đãi hấp dẫn chỉ có tại đây!</p>
-    </div>
-
+    </main>
+    <footer>
+        <div class="footerBox">
+            <h3>Liên Kết</h3>
+            <a href="#"><img src="../image/facebook.png">Facebook</a>
+            <a href="#"><img src="../image/zalo.png">Zalo</a>
+        </div>
+        <div class="footerBox">
+            <h3>Chính Sách</h3>
+            <a href="#">Chính Sách Thanh Toán</a>
+            <a href="#">Quyền Riêng Tư</a>
+            <a href="#">Thuế</a>
+        </div>
+        <div class="footerBox">
+            <h3>Địa Chỉ</h3>
+            <span>19/20 Đống Đa, Hà Nội</span>
+            <span>107C1 Quận 1, TPHCM</span>
+        </div>
+    </footer>
     <script>
+        console.log(localStorage.getItem("DSPhongTro"));
+        // Kiểm tra đăng nhập
         if (localStorage.getItem("is-login")) {
-            document.body.style.display = "inLineBlock";
+            document.body.style.display = "block";
         } else {
             document.body.style.display = "none";
             alert("Truy cập không hợp lệ! Bạn không được phép vào trang này.");
@@ -50,8 +250,7 @@
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
             const keyInfo = localStorage.getItem("user-information");
-            const savedInfo = localStorage.getItem(keyInfo);
-
+            const savedInfo = localStorage.getItem(keyInfo+"thongTinUser");
 
             // Kiểm tra xem có dữ liệu trong localStorage không
             if (savedInfo) {
@@ -69,14 +268,95 @@
             }
         }
 
-        function dienThongTin(){
-            window.location.href = "capnhat.html"
+        function dienThongTin() {
+            window.location.href = "capnhat.html";
+        }
+
+        function displayRooms() {
+            const listContainer = document.getElementById("listContainer");
+            listContainer.innerHTML = ""; // Xóa nội dung hiện tại
+
+            const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
+
+            arrID.forEach(idPT => {
+                arr.forEach(room => {
+                    if (idPT === room.id) {
+                        const roomDiv = document.createElement("div");
+                        roomDiv.classList.add("room-item");
+                        roomDiv.innerHTML = `
+                            <strong>ID:</strong> ${room.id}<br>
+                            <strong>Tiêu Đề:</strong> ${room.tieuDe}<br>
+                            <strong>Giá:</strong> ${room.gia}<br>
+                            <strong>Diện Tích:</strong> ${room.dienTich}<br>
+                            <strong>Vị Trí:</strong> ${room.vitri}<br>
+                            <strong>Hình Ảnh:</strong> ${room.hinhAnh}<br>
+                            <strong>Giá Điện:</strong> ${room.giaDien}<br>
+                            <strong>Giá Nước:</strong> ${room.giaNuoc}<br>
+                            <strong>Cách Trung Tâm:</strong> ${room.cachTrungTam}<br>
+                            <strong>Có Gác:</strong> ${room.coGac}<br>
+                            <strong>Trạng Thái:</strong> ${room.trangThai}<br>
+                            <strong>Chủ Trọ:</strong> ${room.chuTro}<br>
+                            <strong>Liên Hệ:</strong> ${room.lienHe}<br>
+                            <strong>Giá Đặt Cọc:</strong> ${room.giaDacCoc}<br>
+                            <strong>Mô Tả:</strong> ${room.moTa}
+                        `;
+
+                        // Thêm nút Xóa
+                        const deleteBtn = document.createElement("button");
+                        deleteBtn.textContent = "Xóa";
+                        deleteBtn.classList.add("delete-btn");
+                        deleteBtn.onclick = (e) => {
+                            e.stopPropagation(); // Ngăn click vào phòng
+                            xoaPhongTro(room.id);
+                        };
+
+                        roomDiv.appendChild(deleteBtn);
+                        roomDiv.id = room.id;
+                        roomDiv.onclick = () => {
+                            capNhatThongTinPTro(roomDiv.id);
+                        }
+                        listContainer.appendChild(roomDiv);
+                    }
+                });
+            });
+        }
+
+        function xoaPhongTro(id) {
+            // Xóa phòng trọ khỏi mảng và localStorage
+            let arr = JSON.parse(localStorage.getItem("ChiTietPhongTro")) || [];
+            arr = arr.filter(room => room.id !== id);
+            localStorage.setItem("ChiTietPhongTro", JSON.stringify(arr));
+
+            // Xóa ID phòng khỏi danh sách của người dùng
+            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
+            arrID = arrID.filter(roomID => roomID !== id);
+            localStorage.setItem(savedInfo + "arrayID", JSON.stringify(arrID));
+
+            // Xóa ID khỏi danh sách DSPhongTro
+            let DSPhongTro = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+            DSPhongTro = DSPhongTro.filter(room => room.id !== id);
+            localStorage.setItem("DSPhongTro", JSON.stringify(DSPhongTro));
+
+            // Cập nhật lại danh sách phòng trọ
+            displayRooms();
+        }
+
+        function themPhongTro() {
+            window.location.href = "../html/nhapbox.html";
+        }
+
+        function capNhatThongTinPTro(id) {
+            localStorage.setItem("id-cap-nhat-phong-tro", id);
+            window.location.href = "capnhatbox.html";
         }
 
         // Tải thông tin từ localStorage khi trang vừa tải
-        window.addEventListener("load", displayUserInfo);
+        window.addEventListener("load", displayUserInfo, displayRooms);
+        displayRooms();
     </script>
-
 </body>
 
 </html>
