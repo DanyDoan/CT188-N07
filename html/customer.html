@@ -5,150 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/trungdan.css">
-    <title>Document</title>
-    <style>
-        /* Căn chỉnh và định dạng cơ bản */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-
-        /* Căn chỉnh main */
-        main{
-            padding:100px;
-        }
-        /* Bố cục hai cột */
-        .container {
-            display: flex;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-        }
-
-        /* Cột bên trái */
-        .left-column {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Cột bên phải */
-        .right-column {
-            flex: 1;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Định dạng cho phần thông tin người dùng */
-        #userInfoDisplay h4 {
-            margin-top: 0;
-            color: #007bff;
-        }
-
-        #userInfoDisplay p {
-            margin: 8px 0;
-        }
-
-        /* Định dạng cho nút */
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Định dạng cho nút xóa trong mục phòng */
-        .delete-btn {
-            width: 100%;
-            margin: 0 auto;
-            display: block;
-            background-color: #ff4d4d;
-            margin-top: 10px;
-            font-size: 14px;
-            padding: 5px 10px;
-        }
-
-        .delete-btn:hover {
-            background-color: #d43f3f;
-        }
-
-        /* Hộp quảng cáo */
-        .advertisement-box {
-            background-color: #ffefc2;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            margin-top: 20px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .advertisement-box h4 {
-            margin-top: 0;
-            color: #e68a00;
-        }
-
-        /* Định dạng cho toàn bộ phần container */
-        #listContainer {
-            text-align: left;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-        }
-
-        /* Định dạng cho từng mục phòng trọ */
-        .room-item {
-            width: 240px;
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        /* Hiệu ứng khi hover vào mục phòng trọ */
-        .room-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Định dạng cho tiêu đề và các thuộc tính phòng */
-        .room-item strong {
-            color: #333;
-            font-weight: bold;
-        }
-
-        /* Định dạng cho nội dung bên trong các mục phòng */
-        .room-item {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #555;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/headerFooter.css">
+    <link rel="stylesheet" href="../css/customer.css">
+    <title>Thông Tin Khách Hàng</title>
 </head>
 
 <body>
@@ -178,12 +37,6 @@
                         <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
-                      <button onclick="search(event)">Tìm kiếm</button>
-                    <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
-                    <button class="btn btn-outline-success" onclick="search()">Search</button> -->
-                </form>
             </div>
         </div>
     </nav>
@@ -202,15 +55,15 @@
                 <button onclick="dienThongTin()">Cập nhật thông tin</button>
                 <button onclick="logout()">Đăng xuất</button>
             </div>
+            <div class="advertisement-box">
+                <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
+                <div id="roomList">
+                    <div id="listContainer"></div>
+                </div>
+            </div>
         </div>
 
         <!-- Hộp quảng cáo -->
-        <div class="advertisement-box">
-            <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
-            <div id="roomList">
-                <div id="listContainer"></div>
-            </div>
-        </div>
     </main>
     <footer>
         <div class="footerBox">

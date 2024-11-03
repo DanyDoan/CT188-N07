@@ -4,44 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/headerFooter.css">
+    <link rel="stylesheet" href="../css/chitiet.css">
     <title>Trang chi tiết</title>
-    <style>
-        body {
-            background: #f4f4f4;
-        }
-        .container {
-            width: 70%;
-            min-height: 100px;
-            border: 1px;
-            margin: 10px auto;
-            padding: 15px;
-            box-sizing: border-box;
-            border-radius: 10px;
-            background: white;
-        }
 
-        .container img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container" id="img-detail">
-    </div>
-    <div class="container" id="basic-information-detail">
-        <h2>Thông tin cơ bản</h2>
-    </div>
-    <div class="container" id="real-estate-information-detail">
-        <h2>Đặc điểm phòng</h2>
-    </div>
-    <div class="container" id="detailed-description">
-        <h2>Mô tả chi tiết</h2>
-    </div>
+    <!-- Header -->
+    <header>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
+        </h1>
+        <!-- Nút đăng nhập -->
+        <div>
+            <a href="login.html" id="dangNhap">Đăng Nhập</a>
+        </div>
+        <!-- Nếu đã đăng nhập -->
+        <a href="/html/customer.html">
+            <div id="userAvatar"></div>
+        </a>
+
+
+
+    </header>
+
+    <!-- Thanh Điều Hướng -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand nav-a" href="#">Nhà Trọ Giá Rẻ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active nav-a" aria-current="page" href="main.html?#">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-a" href="news.html">Tin Tức</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="leftSide">
+            <div class="container" id="img-detail">
+            </div>
+            <div class="container" id="detailed-description">
+                <h2>Mô tả chi tiết</h2>
+            </div> 
+        </div>
+        <div class="rightSide">
+            <div class="container" id="basic-information-detail">
+                <h2>Thông tin cơ bản</h2>
+            </div>
+            <div class="container" id="real-estate-information-detail">
+                <h2>Đặc điểm phòng</h2>
+            </div> 
+            <div class="container" id="rent">
+                <button>Liên Hệ Ngay</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footerBox">
+            <h3>Liên Kết</h3>
+            <a href="#"><img src="../image/facebook.png">Facebook</a>
+            <a href="#"><img src="../image/zalo.png">Zalo</a>
+        </div>
+        <div class="footerBox">
+            <h3>Chính Sách</h3>
+            <a href="#">Chính Sách Thanh Toán</a>
+            <a href="#">Quyền Riêng Tư</a>
+            <a href="#">Thuế</a>
+        </div>
+        <div class="footerBox">
+            <h3>Địa Chỉ</h3>
+            <span>19/20 Đống Đa, Hà Nội</span>
+            <span>107C1 Quận 1, TPHCM</span>
+        </div>
+    </footer>
+
+    <!-- Cơ sở dữ liệu quan trọng -->
     <script>
         let jsonString = `{
     "PhongTro": [
@@ -672,6 +741,17 @@
                 data[i].chuTro, data[i].lienHe);
         }
         localStorage.removeItem('chi-tiet');
+    </script>
+
+    <!-- Trạng thái đăng nhập -->
+    <script>
+        const login = localStorage.getItem("is-login");
+        if (login === "true") {
+            const dangNhap = document.querySelector("#dangNhap");
+            const showUser = document.querySelector("#userAvatar");
+            dangNhap.style.display = "none";
+            showUser.style.display = "block";
+        }
     </script>
 </body>
 

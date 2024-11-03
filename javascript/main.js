@@ -284,8 +284,8 @@ let jsonString = `{
             const NinhKieu = document.getElementById('NinhKieu').checked;
             const CaiRang = document.getElementById('CaiRang').checked;
             const BinhThuy = document.getElementById('BinhThuy').checked;
-            const PhongDien = document.getElementById('PhongDien').checked;
-            const OMon = document.getElementById('OMon').checked;
+            // const PhongDien = document.getElementById('PhongDien').checked;
+            // const OMon = document.getElementById('OMon').checked;
 
             filteredData = data.filter(phongTro => {
                 const price = parseFloat(phongTro.gia);
@@ -309,9 +309,9 @@ let jsonString = `{
                 const matchLocation = (NinhKieu && phongTro.vitri.includes('Quận Ninh Kiều')) ||
                     (CaiRang && phongTro.vitri.includes('Quận Cái Răng')) ||
                     (BinhThuy && phongTro.vitri.includes('Quận Bình Thủy')) ||
-                    (PhongDien && phongTro.vitri.includes('Huyện Phong Điền')) ||
-                    (OMon && phongTro.vitri.includes('Quận Ô Môn')) ||
-                    (!NinhKieu && !CaiRang && !BinhThuy && !PhongDien && !OMon);
+                    // (PhongDien && phongTro.vitri.includes('Huyện Phong Điền')) ||
+                    // (OMon && phongTro.vitri.includes('Quận Ô Môn')) ||
+                    (!NinhKieu && !CaiRang && !BinhThuy);
 
                 return matchPrice && matchSize && matchLocation;
             });
@@ -320,7 +320,7 @@ let jsonString = `{
             displayData(currentPage);
         }
         function clearCheckBox() {
-            const checkboxes = document.querySelectorAll('#price1, #price2, #price3, #area1, #area2, #NinhKieu, #CaiRang');
+            const checkboxes = document.querySelectorAll('#price1, #price2, #price3,#area0, #area1, #area2, #area3,#area4,#NinhKieu, #CaiRang, #BinhThuy');
             checkboxes.forEach(checkbox => checkbox.checked = false);
         }       
         function search(event) {

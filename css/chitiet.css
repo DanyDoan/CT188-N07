@@ -1,0 +1,72 @@
+
+body {
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+main{
+    background-image: url('https://img.freepik.com/free-vector/silhouette-skyline-illustration_53876-78786.jpg?t=st=1730630539~exp=1730634139~hmac=7b682bf2d64116b396ce57e7ccc1dea9fb2e2ee60cf91fdd9212982a46b05ff0&w=826');
+    background-repeat: no-repeat;
+    background-size:cover;
+    display:grid;
+    grid-template-columns: 60% 38%;
+    grid-template-rows: auto;
+    gap:1%;
+    grid-template-areas:
+        'leftSide rightSide'
+    ;
+    padding:10px 0px;
+}
+.container {
+    width: 100%;
+    height: fit-content;
+    border: 1px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: rgba(227, 227, 227, 0.925);
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.leftSide{
+    grid-area: leftSide;
+    display:flex;
+    flex-direction: column;
+}
+#detailed-description{
+    padding-left:15%;
+}
+.rightSide{
+    grid-area: rightSide;
+    display:flex;
+    flex-direction: column;
+}
+.container img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    align-self: center;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#rent button{
+    width: fit-content;
+    align-self: center;
+    border:1px solid rgb(0, 0, 0);
+    border-radius: 50px;
+    padding:10px;
+    background-color: rgb(210, 56, 56);
+    text-transform: uppercase;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#rent button:hover{
+    transition: 0.2s;
+    color:white;
+    transform: scale(1.2);
+}
