@@ -11,15 +11,26 @@
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div></h1>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
+        </h1>
+        <!-- Nút đăng nhập -->
         <div>
-            <a href="login.html">Đăng Nhập</a>
-        </div>       
+            <a href="login.html" id="dangNhap">Đăng Nhập</a>
+        </div>
+        <!-- Nếu đã đăng nhập -->
+        <div id="userAvatar"></div>
+
+
+
     </header>
+
+
+    <!-- Thanh Điều Hướng -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Nhà Trọ Giá Rẻ</a>
+            <a class="navbar-brand nav-a" href="#">Nhà Trọ Giá Rẻ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,18 +39,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="main.html?#">Trang Chủ</a>
+                        <a class="nav-link active nav-a" aria-current="page" href="main.html?#">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">Tin Tức</a>
+                        <a class="nav-link nav-a" href="news.html">Tin Tức</a>
                     </li>
+                    <!-- <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                        <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
     <main>
         <div class="container">
             <!-- Cột bên trái -->
@@ -209,6 +235,22 @@
         // Tải thông tin từ localStorage khi trang vừa tải
         window.addEventListener("load", displayUserInfo, displayRooms);
         displayRooms();
+    </script>
+
+    <!-- Trạng thái đăng nhập -->
+    <script>
+        const login = localStorage.getItem("is-login");
+        const dangNhap = document.querySelector("#dangNhap");
+        const showUser = document.querySelector("#userAvatar");
+        showUser.addEventListener('click',()=> document.location='customer.html')
+        if (login === "true") {
+            dangNhap.style.display = "none";
+            showUser.style.display = "block";
+        }
+        else{
+            dangNhap.style.display = "block";
+            showUser.style.display = "none";
+        }
     </script>
 </body>
 

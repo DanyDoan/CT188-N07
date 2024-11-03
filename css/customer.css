@@ -37,17 +37,29 @@ main{
     display:flex;
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: sticky;
     top:0;
 }
 .left-column{
-    position: sticky;
     top:0;
-    margin-bottom: 100px;
+    margin-bottom: 10px;
 }
 .right-column{
     grid-area: right;
     position: relative;
+}
+
+/* Custom lại button */
+.left-column button, .right-column button{
+    background-color:rgb(255, 255, 255);
+    color:black;
+    font-size:1em;
+    font-weight: bold;
+    width: fit-content;
+    align-self:center ;
+}
+.left-column button:hover, .right-column button:hover{
+    background-color:rgb(0, 0, 0);
+    color:white;
 }
 /* Hộp quảng cáo */
 .advertisement-box {
@@ -63,6 +75,7 @@ main{
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
 }
 
 /* Định dạng cho phần thông tin người dùng */

@@ -43,6 +43,20 @@ header{
     justify-content: space-between;
     height: 10em;
 }
+
+/* Avatar của người dùng */
+header >a{
+    position: absolute;
+    top:10px;
+    right:10px;
+    width: 3em;
+    height: 3em;
+    background-color: rgba(211, 242, 192, 0.454);
+    border:1px solid white;
+    border-radius: 50%;
+    display:none;
+    /* display: none; */
+}
 header h1{
     font-size:3em;
     text-transform: uppercase;

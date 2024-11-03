@@ -22,9 +22,7 @@
             <a href="login.html" id="dangNhap">Đăng Nhập</a>
         </div>
         <!-- Nếu đã đăng nhập -->
-        <a href="/html/customer.html">
-            <div id="userAvatar"></div>
-        </a>
+        <div id="userAvatar"></div>
 
 
 
@@ -166,11 +164,16 @@
     <!-- Trạng thái đăng nhập -->
     <script>
         const login = localStorage.getItem("is-login");
+        const dangNhap = document.querySelector("#dangNhap");
+        const showUser = document.querySelector("#userAvatar");
+        showUser.addEventListener('click',()=> document.location='customer.html')
         if (login === "true") {
-            const dangNhap = document.querySelector("#dangNhap");
-            const showUser = document.querySelector("#userAvatar");
             dangNhap.style.display = "none";
             showUser.style.display = "block";
+        }
+        else{
+            dangNhap.style.display = "block";
+            showUser.style.display = "none";
         }
     </script>
 </body>
