@@ -7,12 +7,13 @@
     <title>Form Điền Thông Tin Người Dùng</title>
     <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <style>
+        /* Tổng thể */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f7f8fa;
+            background-color: #e9f1f7;
             margin: 0;
             font-family: Arial, sans-serif;
         }
@@ -20,25 +21,30 @@
         .container {
             max-width: 500px;
             width: 100%;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
         }
 
         h2 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         label {
             font-weight: bold;
             color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 15px;
         }
 
         input[type="text"],
@@ -47,35 +53,63 @@
         select,
         input[type="date"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus {
+            border-color: #007bff;
+            outline: none;
         }
 
         input[type="radio"] {
             margin-right: 5px;
+            transform: scale(1.1);
         }
 
+        /* Nút gửi thông tin */
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             font-size: 16px;
             background-color: #007bff;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         button:hover {
             background-color: #0056b3;
+            box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
         }
 
+        /* Hiển thị thông tin người dùng */
         #userInfoDisplay {
             margin-top: 20px;
             color: #333;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Thiết kế thêm cho các phần nội dung */
+        .gender-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 15px;
+        }
+
+        .container p {
+            color: #666;
         }
     </style>
 </head>
@@ -99,8 +133,8 @@
                 <input type="tel" id="phone" name="phone" required>
             </div>
 
-            <div class="form-group">
-                <label>Giới Tính:</label><br>
+            <div class="form-group gender-group">
+                <label>Giới Tính:</label>
                 <input type="radio" id="male" name="gender" value="male" required>
                 <label for="male">Nam</label>
                 <input type="radio" id="female" name="gender" value="female" required>
@@ -128,7 +162,7 @@
             const gender = document.querySelector('input[name="gender"]:checked').value;
             const birthdate = document.getElementById("birthdate").value;
 
-            localStorage.setItem(localStorage.getItem("user-information"), JSON.stringify({ name, email, phone, gender, birthdate }));
+            localStorage.setItem(localStorage.getItem("user-information")+"thongTinUser", JSON.stringify({ name, email, phone, gender, birthdate }));
             alert("Thông tin đã được lưu vào localStorage!");
 
             displayUserInfo();
@@ -136,18 +170,10 @@
 
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            const savedInfo = localStorage.getItem(localStorage.getItem("user-information")+"thongTinUser");
 
             if (savedInfo) {
                 const userInfo = JSON.parse(savedInfo);
-                // userInfoDisplay.innerHTML = `
-                //     <h4>Thông tin người dùng:</h4>
-                //     <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
-                //     <p><strong>Email:</strong> ${userInfo.email}</p>
-                //     <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
-                //     <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
-                //     <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
-                // `;
 
                 // Điền thông tin vào các ô nhập liệu
                 document.getElementById("name").value = userInfo.name;
@@ -159,6 +185,7 @@
                 userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
             }
         }
+
         function thongTinUser() {
             window.location.href = "demo.html";
         }

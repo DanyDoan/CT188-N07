@@ -593,7 +593,11 @@
     ]
 }`;
 
-    let data = JSON.parse(jsonString);
+    let data = JSON.parse(localStorage.getItem("ChiTietPhongTro"));
+    
+
+
+    
     function createDetail(hinhAnh, tieuDe, gia, viTri, trangThai, tienCoc, dienTich, coGac, moTa, cachTrungTam, giaDien, giaNuoc,chuTro, lienHe){
         var img = document.getElementById("img-detail");
         var basic = document.getElementById("basic-information-detail");
@@ -658,14 +662,14 @@
         detail.innerHTML += `<p>Chủ trọ: ${chuTro}</p>`;
         detail.innerHTML += `<p>Liên hệ: ${lienHe}</p>`;        
     }
-        for (let i = 0; i < data.PhongTro.length; i++) {
-            if (data.PhongTro[i].id===localStorage.getItem('chi-tiet')) createDetail(data.PhongTro[i].hinhAnh, data.PhongTro[i].tieuDe,
-                data.PhongTro[i].gia, data.PhongTro[i].vitri,
-                data.PhongTro[i].trangThai, data.PhongTro[i].giaDacCoc,
-                data.PhongTro[i].dienTich, data.PhongTro[i].coGac,
-                data.PhongTro[i].moTa, data.PhongTro[i].cachTrungTam,
-                data.PhongTro[i].giaDien, data.PhongTro[i].giaNuoc,
-                data.PhongTro[i].chuTro, data.PhongTro[i].lienHe);
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].id===localStorage.getItem('chi-tiet')) createDetail(data[i].hinhAnh, data[i].tieuDe,
+                data[i].gia, data[i].vitri,
+                data[i].trangThai, data[i].giaDacCoc,
+                data[i].dienTich, data[i].coGac,
+                data[i].moTa, data[i].cachTrungTam,
+                data[i].giaDien, data[i].giaNuoc,
+                data[i].chuTro, data[i].lienHe);
         }
         localStorage.removeItem('chi-tiet');
     </script>

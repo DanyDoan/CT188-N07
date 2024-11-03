@@ -92,7 +92,6 @@
             border-radius: 5px;
         }
     </style>
-
 </head>
 
 <body>
@@ -101,7 +100,7 @@
         <form id="roomForm">
             <div class="form-group">
                 <label for="id">ID:</label>
-                <input type="text" id="id" name="id" required minlength="4" placeholder="ID có ít nhất 4 ký tự">
+                <input type="text" id="id" name="id" required disabled>
             </div>
 
             <div class="form-group">
@@ -111,12 +110,12 @@
 
             <div class="form-group">
                 <label for="gia">Giá:</label>
-                <input type="text" id="gia" name="gia" required placeholder="2.5 triệu">
+                <input type="text" id="gia" name="gia" required>
             </div>
 
             <div class="form-group">
                 <label for="dienTich">Diện Tích:</label>
-                <input type="text" id="dienTich" name="dienTich" required placeholder="30m2">
+                <input type="text" id="dienTich" name="dienTich" required>
             </div>
 
             <div class="form-group">
@@ -126,7 +125,7 @@
 
             <div class="form-group">
                 <label for="hinhAnh">Hình Ảnh:</label>
-                <input type="text" id="hinhAnh" name="hinhAnh" placeholder="Đường dẫn đến hình">
+                <input type="text" id="hinhAnh" name="hinhAnh">
             </div>
 
             <div class="form-group">
@@ -182,12 +181,8 @@
             <div id="listContainer"></div>
         </div>
     </div>
-
     <script>
-        const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
-        console.log(localStorage.getItem(savedInfo + "arrayID"));
-        // localStorage.removeItem(savedInfo+"arrayID");
-        // localStorage.removeItem("DSPhongTro");
+        const idCapNhat = localStorage.getItem("id-cap-nhat-phong-tro");
         document.getElementById("roomForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
@@ -207,10 +202,6 @@
             const giaDacCoc = document.getElementById("giaDacCoc").value;
             const moTa = document.getElementById("moTa").value;
 
-            // Lấy dữ liệu từ localStorage
-            let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-
-            // Tạo đối tượng chứa dữ liệu
             const formData = {
                 "id": id,
                 "tieuDe": tieuDe,
@@ -229,69 +220,50 @@
                 "moTa": moTa
             };
 
-            let isTrue = true;
-            const dsFull = JSON.parse(localStorage.getItem("ChiTietPhongTro")) || [];
-            dsFull.forEach(room => {
-                if (formData.id === room.id) {
-                    alert("ID đã tồn tại");
-                    isTrue = false;
+
+            let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+            arr = arr.map(element => {
+                if (element.id === idCapNhat) {
+                    return formData; // Cập nhật phần tử nếu id trùng
                 }
+                return element;
             });
-            if (isTrue) {
-                arr.push(formData);
-                localStorage.setItem("DSPhongTro", JSON.stringify(arr));
-                // displayRooms();
-                // Xóa nội dung của form
-                // document.getElementById("roomForm").reset();
-                qlPhongTro(formData.id);
-                console.log(arr);
-            }
+
+            localStorage.setItem("DSPhongTro", JSON.stringify(arr));
+
+            window.location.href = "demo.html";
+
         });
-
-        /* function displayRooms() {
-            const listContainer = document.getElementById("listContainer");
-            listContainer.innerHTML = ""; // Xóa nội dung hiện tại
-
-            const arr = JSON.parse(localStorage.getItem("ChiTietPhongTro")) || [];
-            arr.forEach(room => {
-                const roomDiv = document.createElement("div");
-                roomDiv.classList.add("room-item");
-                roomDiv.innerHTML = `
-                    <strong>ID:</strong> ${room.id}<br>
-                    <strong>Tiêu Đề:</strong> ${room.tieuDe}<br>
-                    <strong>Giá:</strong> ${room.gia}<br>
-                    <strong>Diện Tích:</strong> ${room.dienTich}<br>
-                    <strong>Vị Trí:</strong> ${room.vitri}<br>
-                    <strong>Hình Ảnh:</strong> ${room.hinhAnh} <br>
-                    <strong>Giá Điện:</strong> ${room.giaDien}<br>
-                    <strong>Giá Nước:</strong> ${room.giaNuoc}<br>
-                    <strong>Cách Trung Tâm:</strong> ${room.cachTrungTam}<br>
-                    <strong>Có Gác:</strong> ${room.coGac}<br>
-                    <strong>Trạng Thái:</strong> ${room.trangThai}<br>
-                    <strong>Chủ Trọ:</strong> ${room.chuTro}<br>
-                    <strong>Liên Hệ:</strong> ${room.lienHe}<br>
-                    <strong>Giá Đặt Cọc:</strong> ${room.giaDacCoc}<br>
-                    <strong>Mô Tả:</strong> ${room.moTa}
-                `;
-                listContainer.appendChild(roomDiv);
+        function displayInforID() {
+            let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+            let infID;
+            arr.forEach(element => {
+                if (element.id === idCapNhat) {
+                    infID = element;
+                }
+                id = document.getElementById("id").value = infID.id;
+                tieuDe = document.getElementById("tieuDe").value = infID.tieuDe;
+                gia = document.getElementById("gia").value = infID.gia;
+                dienTich = document.getElementById("dienTich").value = infID.dienTich;
+                vitri = document.getElementById("vitri").value = infID.vitri;
+                hinhAnh = document.getElementById("hinhAnh").value = infID.hinhAnh;
+                giaDien = document.getElementById("giaDien").value = infID.giaDien;
+                giaNuoc = document.getElementById("giaNuoc").value = infID.giaNuoc;
+                cachTrungTam = document.getElementById("cachTrungTam").value = infID.cachTrungTam;
+                coGac = document.getElementById("coGac").value = infID.coGac;
+                trangThai = document.getElementById("trangThai").value = infID.trangThai;
+                chuTro = document.getElementById("chuTro").value = infID.chuTro;
+                lienHe = document.getElementById("lienHe").value = infID.lienHe;
+                giaDacCoc = document.getElementById("giaDacCoc").value = infID.giaDacCoc;
+                moTa = document.getElementById("moTa").value = infID.moTa;
             });
-        } */
-        function qlPhongTro(ID) {
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
-            let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
-            arrID.push(ID);
-            localStorage.setItem(savedInfo + "arrayID", JSON.stringify(arrID));
-            console.log("Danh sách ID phòng trọ của người dùng hiện tại:", arrID);
-            alert("Thành công");
-            window.location.href = "demo.html"
         }
-        /* displayRooms(); */
+        window.addEventListener("load", displayInforID);
+        // localStorage.removeItem("id-cap-nhat-phong-tro");
     </script>
-
     <script src="../javascript/main.js">
-        window.location.reload();
+        // window.location.reload();
     </script>
-
 </body>
 
 </html>

@@ -53,7 +53,7 @@
                 </ul>
                 <form class="d-flex">
                     <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
-                      <button onclick="search()">Tìm kiếm</button>
+                      <button onclick="search(event)">Tìm kiếm</button>
                     <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
                     <button class="btn btn-outline-success" onclick="search()">Search</button> -->
                 </form>
@@ -75,45 +75,38 @@
                         <h3>Lọc theo:</h3>
                         <div class="filter-box">
                             <h3>Giá Thuê</h3>
-                            <label>
-                                <input type="radio" name="price" id="filterPriceUnder1m" value="Dưới 1 triệu/tháng">
-                                Dưới 1 triệu/tháng
-                            </label>
+                            <label><input type="radio" name="price" id="price1" value="Dưới 1 triệu/tháng">Dưới 1 triệu/tháng</label>
                             <br>
-                            <label>
-                                <input type="radio" name="price" id="filterPrice1to2m" value="Từ 1-2 triệu/tháng">
-                                Từ 1-2 triệu/tháng
-                            </label>
+                            <label><input type="radio" name="price" id="price2" >1-2 triệu/tháng</label>
                             <br>
-                            <label>
-                                <input type="radio" name="price" id="filterPriceOver2m" value="Trên 2 triệu/tháng">
-                                Trên 2 triệu/tháng
-                            </label>
+                            <label><input type="radio" name="price" id="price3">2-3 triệu/tháng</label>
                             <br>
+                            <label><input type="radio" name="price" id="price4">3-4 triệu/tháng</label>
+                            <br>
+                            <label><input type="radio" name="price" id="price5">4-5 triệu/tháng</label>
+                            <br>
+                            <label><input type="radio" name="price" id="price6">Trên 5 triệu/tháng</label>
                         </div>
                         <div class="filter-box">
                             <h3>Diện Tích</h3>
-
-                            <label>
-                                <input type="radio" name="size" id="filterSize20m" value="20m2">
-                                20m²
-                            </label>
+                            <label><input type="radio" name="size" id="area0">Dưới 20m²</label>
                             <br>
-                            <label>
-                                <input type="radio" name="size" id="filterSize25m" value="25m2">
-                                25m²
-                            </label>
+                            <label><input type="radio" name="size" id="area1">20m² - 30m²</label>
+                            <br>
+                            <label><input type="radio" name="size" id="area2">30m² - 40m²</label>
+                            <br>
+                            <label><input type="radio" name="size" id="area3">40m² - 50m²</label>
+                            <br>
+                            <label><input type="radio" name="size" id="area4">Trên 50m²</label>
+                            
                         </div>
                         <div class="filter-box">
                             <h3>Khu Vực</h3>
-                            <label>
-                                <input type="radio" name="location" id="filterLocationNinhKieu" value="Quận Ninh Kiều">
-                                Quận Ninh Kiều
-                            </label>
-                            <label>
-                                <input type="radio" name="location" id="filterLocationCaiRang" value="Quận Cái Răng">
-                                Quận Cái Răng
-                            </label>
+                            <label><input type="radio" name="location" id="NinhKieu" value="Quận Ninh Kiều">Quận Ninh Kiều</label><br>
+                            <label><input type="radio" name="location" id="CaiRang" value="Quận Cái Răng">Quận Cái Răng</label><br>
+                            <label><input type="radio" name="location" id="BinhThuy" value="Quận Bình Thủy">Bình Thủy</label><br>
+                            <label><input type="radio" name="location" id="PhongDien" value="Huyện Phong Điền">Phong Điền</label><br>
+                            <label><input type="radio" name="location" id="OMon" value="Quận Ô Môn">Ô Môn</label>
                         </div>
                         <button onclick="clearCheckBox()" type="reset" class="filter-btn">Xóa</button>
                         <button onclick="filterData()" class="filter-btn">Lọc Phòng Trọ</button>
