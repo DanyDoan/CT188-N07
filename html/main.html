@@ -4,13 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/default.css.map">
+
+    <!-- Header & Footer mặc định -->
     <link rel="stylesheet" href="../css/headerFooter.css">
-    <link rel="stylesheet" href="../css/trungdan.css">
-    <link rel="shortcut icon" href="../image/for-rent.png">
+
+    <!-- Xét trạng thái đăng nhập -->
     <link rel="stylesheet" href="../css/dislayLogin.css">
-    <script src="../javascript/displauLogin.js"></script>
+
+    <!-- CSS riêng của trang chủ -->
+    <link rel="stylesheet" href="../css/trungdan.css">
+    
+    <!--CSS của Cường -->
     <link rel="stylesheet" href="../css/searchBar.css">
     <title>Trang Chủ</title>
 </head>
@@ -21,18 +32,14 @@
     <header>
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
         </h1>
-        <!-- Nút đăng nhập -->
-        <!-- <div>
-            <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div> -->
-        <!-- Nếu đã đăng nhập -->
-        <!-- <div id="userAvatar"></div> -->
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <div class="inOut">
+                    <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                </div>
             </div>
         </div>
         
@@ -57,20 +64,6 @@
                     <li class="nav-item">
                         <a class="nav-link nav-a" href="news.html">Tin Tức</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
@@ -96,6 +89,9 @@
             </div>
 
         </div>
+    
+
+    <!-- Filter Box -->
         <div class="filter">
             <div class="container">
                 <!-- Checkbox lọc dữ liệu -->
@@ -174,21 +170,9 @@
         console.log(getParent.children)
     </script>
 
-    <!-- Trạng thái đăng nhập -->
-    <script>
-        const login = localStorage.getItem("is-login");
-        const dangNhap = document.querySelector("#dangNhap");
-        const showUser = document.querySelector("#userAvatar");
-        showUser.addEventListener('click',()=> document.location='customer.html')
-        if (login === "true") {
-            dangNhap.style.display = "none";
-            showUser.style.display = "block";
-        }
-        else{
-            dangNhap.style.display = "block";
-            showUser.style.display = "none";
-        }
-    </script>
+    <!-- Check trạng thái đăng nhập -->
+    <script src="../javascript/displayLogin.js"></script>
+
 </body>
 
 </html>

@@ -4,11 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/default.css.map">
+
+    <!-- Header & Footer mặc định -->
     <link rel="stylesheet" href="../css/headerFooter.css">
-    <link rel="stylesheet" href="../css/customer.css">
+
+    <!-- Xét trạng thái đăng nhập -->
     <link rel="stylesheet" href="../css/dislayLogin.css">
-    <script src="../javascript/displauLogin.js"></script>
+
+    <!-- CSS riêng của trang Thông tin khách hàng -->
+    <link rel="stylesheet" href="../css/customer.css">
+
     <title>Thông Tin Khách Hàng</title>
 </head>
 
@@ -248,20 +260,7 @@
     </script>
 
     <!-- Trạng thái đăng nhập -->
-    <script>
-        const login = localStorage.getItem("is-login");
-        const dangNhap = document.querySelector("#dangNhap");
-        const showUser = document.querySelector("#userAvatar");
-        showUser.addEventListener('click',()=> document.location='customer.html')
-        if (login === "true") {
-            dangNhap.style.display = "none";
-            showUser.style.display = "block";
-        }
-        else{
-            dangNhap.style.display = "block";
-            showUser.style.display = "none";
-        }
-    </script>
+    <script src="../javascript/displayLogin.js"></script>
 </body>
 
 </html>

@@ -193,7 +193,7 @@ let jsonString = `{
         let currentPage = 1;
         const itemsPerPage = 8; // Số phòng trọ trên mỗi trang
 
-        function createBox(name, gia, vitri, hinhAnh, dienTich, id) {
+        function createBox(name, gia, vitri, hinhAnh, dienTich, id, chuTro) {
             const box = document.createElement('div');
             box.classList.add('box');
             box.value = id;
@@ -216,12 +216,22 @@ let jsonString = `{
             const pPosition = document.createElement('p');
             pPosition.textContent = vitri;
 
+            // tạo hộp avt-tên    favourite
+            const owner =document.createElement('p');
+            owner.textContent= chuTro;
+
             infoDiv.appendChild(h4);
             infoDiv.appendChild(pInfo);
             infoDiv.appendChild(pPosition);
+            // ád
+            infoDiv.appendChild(owner);
 
             box.appendChild(img);
             box.appendChild(infoDiv);
+
+            // Thêm owner và favourite
+            box
+
 
             document.getElementById('danhSachTro').appendChild(box);
         }
@@ -239,7 +249,7 @@ let jsonString = `{
 
             paginatedData.forEach(phongTro => {
                 createBox(phongTro.tieuDe, phongTro.gia, phongTro.vitri,
-                    phongTro.hinhAnh, phongTro.dienTich, phongTro.id);
+                    phongTro.hinhAnh, phongTro.dienTich, phongTro.id, phongTro.chuTro);
             });
 
             setupPagination();

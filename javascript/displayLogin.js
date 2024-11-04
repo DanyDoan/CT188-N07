@@ -31,3 +31,8 @@ function logout() {
 function Dangtin() {
     alert("Bạn đã nhấn nút Đăng tin!");
 }
+
+const customerInfor=document.querySelector('#userAvatar');
+customerInfor.addEventListener("click", function(){
+    window.location.href="../html/customer.html";
+});

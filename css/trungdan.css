@@ -3,109 +3,6 @@
     font-size:18px;
 }
 
-body{
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(4,auto);
-    grid-template-areas:
-        'header'
-        'nav'
-        'main'
-        'footer'
-    ;
-}
-header{
-    grid-area: header;
-    display:flex;
-    background-image: url('https://img.freepik.com/premium-photo/red-house-white-houses-real-estate-property-industry_184421-2641.jpg?w=1060');
-    background-size: cover;
-    background-position-y: -80px ;
-    background-repeat: no-repeat;
-
-}
-nav{
-    grid-area: nav;
-    
-}
-main{
-    grid-area: main;
-    background-color: rgba(172, 172, 172, 0.549);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
- footer{
-    grid-area: footer;
-    background-color: rgba(139, 139, 139, 0.562);
-}
-
-/* Header */
-header{
-    justify-content: space-between;
-    height: 10em;
-}
-
-/* Avatar của người dùng */
-header >a{
-    position: absolute;
-    top:10px;
-    right:10px;
-    width: 3em;
-    height: 3em;
-    background-color: rgba(211, 242, 192, 0.454);
-    border:1px solid white;
-    border-radius: 50%;
-    display:none;
-    /* display: none; */
-}
-header h1{
-    font-size:3em;
-    text-transform: uppercase;
-    font-weight: bold;
-    color:rgb(12, 12, 12);
-    display:flex;
-    align-self: center;
-}
-header >div{
-    position: relative;
-    right:10px;
-    bottom: -10px;
-}
-header div a{
-    color:rgb(0, 0, 0);
-    margin:0.2em;
-    font-size:0.8em;
-    background-color: rgb(245, 245, 245);
-    padding:0.5em;
-    border:1px solid white;
-    border-radius: 0.5em;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-.logo{
-    height: 3em;
-    width: 5em;
-    margin-left:1em;
-    background-image: url('../../../../image/for-rent.png');
-    background-size: contain;
-    background-repeat: no-repeat; 
-}
-
-
-/* CSS Nếu đã đăng nhập */
-
-
-
-/* nav */
-.nav-link{
-    color:white;
-}
-nav{
-    background-color: rgba(79, 81, 83, 0);
-    color:white
-}
-.nav-a:hover{
-    color:blue !important;
-}
 /* main */
 .trangchu{
     padding-top:1em;
@@ -116,6 +13,7 @@ nav{
         'content filter'
         'pagination pagination'
     ;
+    background-color: rgb(255, 255, 255);
 }
 
 .content{
@@ -136,7 +34,7 @@ nav{
     display:flex;
     padding:10px;
     height: fit-content;
-    background-color: rgba(244, 244, 244, 1);
+    background-color: rgb(178, 198, 245);
     border:1px solid white;
     border-radius: 5px;
     box-sizing: border-box;
@@ -147,10 +45,10 @@ nav{
 }
 img{
     width: 15em;
-    height: 12em;
+    height: 14em;
     border:1px solid white;
     border-radius: 18px;
-    margin:18px;
+    margin:0.2em 0.5em;
 }
 .box:hover{
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
@@ -167,30 +65,44 @@ img{
 .filter-box h3{
     font-size:1.5em;
     margin-bottom: 0.2em;
+    color:rgb(101, 98, 99);
 }
 
-label input{
-    font-size:0.2em
+.filter input{
+    margin-right: 0.5em;
 }
+.filter-box label{
+    font-size:0.8em;
+    margin-left:0.25;
+}
+
 .container{
     width: fit-content;
-    background-color: rgba(200, 184, 184, 0.356);
-    border:2px solid rgb(2, 25, 17);
-    border-radius: 0.2em;
+    height: fit-content;
+    background-color: rgb(6, 6, 59);
+    border:5px solid rgb(63, 65, 58);
+    border-radius: 1em;
     padding:0.5em;
     position: sticky;
-    top:1em;
+    top:0.5em;
     margin-bottom: 0.2em;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    color:white;
 }
 .filter-btn{
-    color:white;
-    background-color: rgb(3, 64, 16);
+    color:rgb(0, 0, 0);
+    width: 8em;
+    align-self: center;
+    margin:0.3em 0em;
+    padding: 0.2em;
+    background-color: rgb(255, 255, 255);
     border-radius: 0.2em;
 }
 .filter-btn:hover{
+    color:rgb(1, 1, 1);
+    background-color: white;
     transition: 0.5s;
     scale:1.05;
 }
@@ -284,6 +196,9 @@ footer{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+    }
+    img{
+        align-self: center;
     }
 }
  /*End dùng chung */
