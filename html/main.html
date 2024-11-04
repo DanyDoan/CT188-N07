@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/headerFooter.css">
     <link rel="stylesheet" href="../css/trungdan.css">
     <link rel="shortcut icon" href="../image/for-rent.png">
+    <link rel="stylesheet" href="../css/dislayLogin.css">
+    <script src="../javascript/displauLogin.js"></script>
+    <link rel="stylesheet" href="../css/searchBar.css">
     <title>Trang Chủ</title>
 </head>
 
@@ -19,13 +22,21 @@
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
         </h1>
         <!-- Nút đăng nhập -->
-        <div>
+        <!-- <div>
             <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div>
+        </div> -->
         <!-- Nếu đã đăng nhập -->
-        <div id="userAvatar"></div>
-
-
+        <!-- <div id="userAvatar"></div> -->
+        <div class="auth-cuong">
+            <div class="user-section">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
+                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+            </div>
+        </div>
+        
+        
 
     </header>
 
@@ -65,9 +76,10 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..."
-                        onkeydown="handleKeyPress(event)">
-                    <button onclick="search(event)">Tìm kiếm</button>
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                        <button onclick="search(event)">Tìm kiếm</button>
+                    </div>
                     <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
                     <button class="btn btn-outline-success" onclick="search()">Search</button> -->
                 </form>

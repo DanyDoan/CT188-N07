@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/headerFooter.css">
     <link rel="stylesheet" href="../css/customer.css">
+    <link rel="stylesheet" href="../css/dislayLogin.css">
+    <script src="../javascript/displauLogin.js"></script>
     <title>Thông Tin Khách Hàng</title>
 </head>
 
@@ -16,12 +18,20 @@
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
         </h1>
         <!-- Nút đăng nhập -->
-        <div>
+        <!-- <div>
             <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div>
+        </div> -->
         <!-- Nếu đã đăng nhập -->
-        <div id="userAvatar"></div>
-
+        <!-- <div id="userAvatar"></div> -->
+        <div class="auth-cuong">
+            <div class="user-section">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
+                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+            </div>
+        </div>
+        
 
 
     </header>
