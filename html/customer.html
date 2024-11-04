@@ -24,49 +24,47 @@
     <title>Thông Tin Khách Hàng</title>
 </head>
 
-<body>
-    <!-- Header -->
-    <header>
-        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
-        </h1>
-        <!-- Nút đăng nhập -->
-        <!-- <div>
+<!-- Header -->
+<header>
+    <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
+    </h1>
+    <!-- Nút đăng nhập -->
+    <!-- <div>
             <a href="login.html" id="dangNhap">Đăng Nhập</a>
         </div> -->
-        <!-- Nếu đã đăng nhập -->
-        <!-- <div id="userAvatar"></div> -->
-        <div class="auth-cuong">
-            <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
-            </div>
+    <!-- Nếu đã đăng nhập -->
+    <!-- <div id="userAvatar"></div> -->
+    <div class="auth-cuong">
+        <div class="user-section">
+            <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
+            <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+            <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+            <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
         </div>
-        
+    </div>
 
 
-    </header>
+
+</header>
 
 
-    <!-- Thanh Điều Hướng -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand nav-a" href="#">Nhà Trọ Giá Rẻ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active nav-a" aria-current="page" href="main.html?#">Trang Chủ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-a" href="news.html">Tin Tức</a>
-                    </li>
-                    <!-- <li class="nav-item dropdown">
+<!-- Thanh Điều Hướng -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand nav-a" href="#">Nhà Trọ Giá Rẻ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active nav-a" aria-current="page" href="main.html?#">Trang Chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-a" href="news.html">Tin Tức</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
@@ -80,39 +78,65 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                </li>
+            </ul>
         </div>
-    </nav>
-    
-    <main>
-        <div class="container">
-            <!-- Cột bên trái -->
-            <div class="left-column">
-                <h2>Quản lí trọ</h2>
-                <button onclick="themPhongTro()">Đăng Tin</button>
-            </div>
+    </div>
+</nav>
 
-            <!-- Cột bên phải -->
-            <div class="right-column">
-                <!-- Div để hiển thị thông tin người dùng đã lưu -->
-                <div id="userInfoDisplay"></div>
-                <button onclick="dienThongTin()">Cập nhật thông tin</button>
-                <button onclick="logout()">Đăng xuất</button>
-            </div>
-            <div class="advertisement-box">
-                <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
-                <div id="roomList">
-                    <div id="listContainer"></div>
+<body>
+    <div class="container">
+        <!-- Cột bên trái -->
+        <div class="left-column">
+            <div class="profile-box">
+                <!-- Ảnh đại diện -->
+                <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar">
+                <!-- Thông tin quản lý -->
+                <div class="manager-info">
+                    <h2>Nguyễn Văn A</h2>
+                    <p>Quản lý phòng trọ</p>
+                    <p>Email: nguyen.vana@example.com</p>
+                    <p>Điện thoại: 0123 456 789</p>
                 </div>
             </div>
+            <button class="post-button" onclick="themPhongTro()">Đăng Tin</button>
         </div>
 
-        <!-- Hộp quảng cáo -->
-    </main>
+        <!-- Cột bên phải -->
+        <div class="right-column">
+            <!-- Div để hiển thị thông tin người dùng đã lưu -->
+            <div id="userInfoDisplay"></div>
+            <button onclick="dienThongTin()">Cập nhật thông tin</button>
+            <button onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+    <!-- Hộp quảng cáo -->
+    <div class="advertisement-box">
+        <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
+        <div id="roomList">
+            <div id="listContainer"></div>
+        </div>
+    </div>
+
+    <!-- Khung danh sách tin yêu thích -->
+    <div class="favorites-box">
+        <h4>DANH SÁCH TIN YÊU THÍCH</h4>
+        <div id="favoritesList">
+            <div class="favorite-item">
+                <strong>Phòng trọ A</strong>
+                <p>Diện tích: 20m² - Giá: 3 triệu/tháng</p>
+            </div>
+            <div class="favorite-item">
+                <strong>Phòng trọ B</strong>
+                <p>Diện tích: 25m² - Giá: 4 triệu/tháng</p>
+            </div>
+            <!-- Thêm các mục yêu thích khác ở đây -->
+        </div>
+    </div>
+
     <footer>
         <div class="footerBox">
             <h3>Liên Kết</h3>
@@ -151,7 +175,7 @@
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
             const keyInfo = localStorage.getItem("user-information");
-            const savedInfo = localStorage.getItem(keyInfo+"thongTinUser");
+            const savedInfo = localStorage.getItem(keyInfo + "thongTinUser");
 
             // Kiểm tra xem có dữ liệu trong localStorage không
             if (savedInfo) {

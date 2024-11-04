@@ -1,91 +1,95 @@
-
-/* Căn chỉnh và định dạng cơ bản */
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
     background-color: #f4f4f9;
     color: #333;
 }
 
-/* Căn chỉnh main */
-main{
-    padding:1%;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: space-around;
-    background-image: url('../image/home.jpg');
-}
-/* Container chứa 2 cột */
-.container{
-    display:grid;
-    grid-template-columns: 20% 70%;
-    grid-template-rows: auto;
-    grid-template-areas:
-        'left right'
-        'left myRent'
-    ;
-    gap:1% 5%;
-    position: relative;
-    padding:10px;
-}
-/* Cột bên trái, phải */
-.left-column, .right-column {
-    grid-area: left;
-    background-color: #ffffff98;
-    padding: 20px;
-    border-radius: 8px;
-    display:flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    top:0;
-}
-.left-column{
-    top:0;
-    margin-bottom: 10px;
-}
-.right-column{
-    grid-area: right;
-    position: relative;
+/* Bố cục hai cột */
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-/* Custom lại button */
-.left-column button, .right-column button{
-    background-color:rgb(255, 255, 255);
-    color:black;
-    font-size:1em;
-    font-weight: bold;
-    width: fit-content;
-    align-self:center ;
-}
-.left-column button:hover, .right-column button:hover{
-    background-color:rgb(0, 0, 0);
-    color:white;
-}
-/* Hộp quảng cáo */
-.advertisement-box {
-    grid-area: myRent;
-    width: 100%;
-    background-color: #ffefc2;
+/* Cột bên trái */
+.left-column {
+    flex: 1;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Phần chứa ảnh đại diện và thông tin quản lý */
+.profile-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Ảnh đại diện */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #007bff;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thông tin quản lý */
+.manager-info {
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin-top: 20px;
-    margin-bottom: 100px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+}
+
+.manager-info h2 {
+    color: #333;
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.manager-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 3px 0;
+}
+
+.post-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.post-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Cột bên phải */
+.right-column {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Định dạng cho phần thông tin người dùng */
 #userInfoDisplay h4 {
     margin-top: 0;
-    color: #030303;
-    display: inline-block;
-    padding:10px;
-    font-weight: bold;
-    text-transform: uppercase;
+    color: #007bff;
 }
 
 #userInfoDisplay p {
@@ -126,7 +130,6 @@ button:hover {
 
 /* Hộp quảng cáo */
 .advertisement-box {
-    grid-area: myRent;
     background-color: #ffefc2;
     padding: 20px;
     border-radius: 8px;
@@ -182,4 +185,40 @@ button:hover {
     font-size: 14px;
     line-height: 1.6;
     color: #555;
+}
+
+/* Khung danh sách tin yêu thích */
+.favorites-box {
+    background-color: #e2f0f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.favorites-box h4 {
+    margin-top: 0;
+    color: #0073e6;
+    text-align: center;
+}
+
+.favorite-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.favorite-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-item strong {
+    color: #007bff;
+    font-weight: bold;
 }
