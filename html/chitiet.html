@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/headerFooter.css">
     <link rel="stylesheet" href="../css/chitiet.css">
+    <link rel="stylesheet" href="../css/dislayLogin.css">
+    <script src="../javascript/displauLogin.js"></script>
     <title>Trang chi tiết</title>
 
 </head>
@@ -21,9 +23,18 @@
             <a href="login.html" id="dangNhap">Đăng Nhập</a>
         </div>
         <!-- Nếu đã đăng nhập -->
-        <a href="/html/customer.html">
+        <!-- <a href="/html/customer.html">
             <div id="userAvatar"></div>
-        </a>
+        </a> -->
+        <div class="auth-cuong">
+            <div class="user-section">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
+                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+            </div>
+        </div>
+        
 
 
 

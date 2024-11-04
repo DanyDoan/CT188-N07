@@ -8,14 +8,25 @@
         <link rel="stylesheet" href="../css/trungdan.css">
         <link rel="stylesheet" href="../css/discount.css">
         <link rel="shortcut icon" href="../image/for-rent.png">
+        <link rel="stylesheet" href="../css/dislayLogin.css">
+        <script src="../javascript/displauLogin.js"></script>
         <title>Ưu Đãi</title>
     </head>
 <body>
     <header>
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div></h1>
-        <div>
+        <!-- <div>
             <a href="login.html">Đăng Nhập</a>
-        </div>       
+        </div>        -->
+        <div class="auth-cuong">
+            <div class="user-section">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
+                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+            </div>
+        </div>
+        
     </header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
