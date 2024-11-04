@@ -217,14 +217,33 @@ let jsonString = `{
             pPosition.textContent = vitri;
 
             // tạo hộp avt-tên    favourite
+            const sideBox=document.createElement('div');
+
+            // // Thêm class vào sideBox cho dễ CSS
+            // sideBox.classList.addClass('sideBox');
+
+            // // Tạo ảnh
+            // const photo= document.createElement('img');
+            // photo.src="../image/proprammer.png";
+            // photo.classList.addClass('owner');
+
+            // Lấy tên chủ trọ
             const owner =document.createElement('p');
             owner.textContent= chuTro;
+
+            // // Tạo chức năng favourite
+            // const fav=document.createElement('img');
+            // img.src="../image/programmer.png";
+            // img.classList.addClass('favourite');
+
+            // sideBox.appendChild(photo);
+            sideBox.appendChild(owner);
+            // sideBox.appendChild(fav);
 
             infoDiv.appendChild(h4);
             infoDiv.appendChild(pInfo);
             infoDiv.appendChild(pPosition);
-            // ád
-            infoDiv.appendChild(owner);
+            infoDiv.appendChild(sideBox);
 
             box.appendChild(img);
             box.appendChild(infoDiv);

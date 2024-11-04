@@ -3,26 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <!-- Logo góc trên web -->
+        <link rel="shortcut icon" href="../image/for-rent.png">
+
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="../css/bootstrap.css">
         <link rel="stylesheet" href="../css/default.css.map">
-        <link rel="stylesheet" href="../css/trungdan.css">
-        <link rel="stylesheet" href="../css/news.css">
-        <link rel="shortcut icon" href="../image/for-rent.png">
+
+        <!-- Header & Footer mặc định -->
+        <link rel="stylesheet" href="../css/headerFooter.css">
+
+        <!-- CSS trạng thái đăng nhập -->
         <link rel="stylesheet" href="../css/dislayLogin.css">
-        <script src="../javascript/displauLogin.js"></script>
+        
+        <!--CSS của Cường -->
+        <link rel="stylesheet" href="../css/searchBar.css">
+        
+        <!-- Trang News
+        <link rel="stylesheet" href="../css/news.css"> -->
+
         <title>Tin Tức</title>
     </head>
 <body>
+    <!-- Header -->
     <header>
-        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div></h1>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
+        </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <div class="inOut">
+                    <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                </div>
             </div>
-        </div>               
+        </div>
+        
+        
+
     </header>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
@@ -40,30 +61,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="news.html">Tin Tức</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
-                      <button onclick="search()">Tìm kiếm</button>
-                    <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
-                    <button class="btn btn-outline-success" onclick="search()">Search</button> -->
-                </form>
             </div>
         </div>
     </nav>
@@ -71,25 +72,29 @@
 
 
     </main>
+
     <footer>
-        <div class="footer-box">
-            <h3>Liên Hệ</h3>
-            <ul>
-                <li>Sdt:09xxxxxx</li>
-                <li>Sdt:09xxxxxx</li>
-                <li>Sdt:09xxxxxx</li>
-            </ul>
+        <div class="footerBox">
+            <h3>Liên Kết</h3>
+            <a href="#"><img src="../image/facebook.png">Facebook</a>
+            <a href="#"><img src="../image/zalo.png">Zalo</a>
         </div>
-        <div class="footer-box">
-            <h3>Liên Kết</h3>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Zalo</a></li>
+        <div class="footerBox">
+            <h3>Chính Sách</h3>
+            <a href="#">Chính Sách Thanh Toán</a>
+            <a href="#">Quyền Riêng Tư</a>
+            <a href="#">Thuế</a>
         </div>
-        <div class="footer-box">
-            <h3>Tính Minh Bạch</h3>
-            <li><a href="#">Điều Khoản & Dịch Vụ</a></li>
-            <li><a href="#">Hỗ Trợ</a></li>
+        <div class="footerBox">
+            <h3>Địa Chỉ</h3>
+            <span>19/20 Đống Đa, Hà Nội</span>
+            <span>107C1 Quận 1, TPHCM</span>
         </div>
     </footer>
+
+    </script>
+
+    <!-- Check trạng thái đăng nhập -->
+    <script src="../javascript/displayLogin.js"></script>
 </body>
 </html>

@@ -134,7 +134,7 @@ p{
     margin:20px;
 }
 #pagination button{
-    background-color: white;
+    background-color: rgb(44, 12, 12);
     margin:5px;
     border-radius: 15%;
 }
