@@ -201,11 +201,12 @@ let jsonString = `{
                 ChiTiet(box.value); // Gọi hàm ChiTiet và truyền id
             };
 
-            const img = document.createElement('img');
-            img.src = hinhAnh;
-            img.alt = 'Hình phòng trọ';
+            const anhTro = document.createElement('img');
+            anhTro.src = hinhAnh;
+            anhTro.alt = 'Hình phòng trọ';
 
             const infoDiv = document.createElement('div');
+            infoDiv.classList.add('inforDiv')
 
             const h4 = document.createElement('h4');
             h4.textContent = name;
@@ -220,32 +221,33 @@ let jsonString = `{
             const sideBox=document.createElement('div');
 
             // // Thêm class vào sideBox cho dễ CSS
-            // sideBox.classList.addClass('sideBox');
+            sideBox.classList.add('sideBox');
+        
 
-            // // Tạo ảnh
-            // const photo= document.createElement('img');
-            // photo.src="../image/proprammer.png";
-            // photo.classList.addClass('owner');
+            // Tạo ảnh
+            const photo= document.createElement('img');
+            photo.src="../image/programmer.png";
+            photo.classList.add('ownerPhoto');
 
             // Lấy tên chủ trọ
             const owner =document.createElement('p');
             owner.textContent= chuTro;
 
-            // // Tạo chức năng favourite
-            // const fav=document.createElement('img');
-            // img.src="../image/programmer.png";
-            // img.classList.addClass('favourite');
+            // Tạo chức năng favourite
+            const fav=document.createElement('img');
+            fav.src="../image/zalo.png";
+            fav.classList.add('favourite');
 
-            // sideBox.appendChild(photo);
+            sideBox.appendChild(photo);
             sideBox.appendChild(owner);
-            // sideBox.appendChild(fav);
+            sideBox.appendChild(fav);
 
             infoDiv.appendChild(h4);
             infoDiv.appendChild(pInfo);
             infoDiv.appendChild(pPosition);
             infoDiv.appendChild(sideBox);
 
-            box.appendChild(img);
+            box.appendChild(anhTro);
             box.appendChild(infoDiv);
 
             // Thêm owner và favourite

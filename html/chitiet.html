@@ -4,11 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/default.css.map">
+
+    <!-- Header & Footer mặc định -->
     <link rel="stylesheet" href="../css/headerFooter.css">
-    <link rel="stylesheet" href="../css/chitiet.css">
+
+    <!-- CSS trạng thái đăng nhập -->
     <link rel="stylesheet" href="../css/dislayLogin.css">
-    <script src="../javascript/displauLogin.js"></script>
+
+    <!-- Trang chi tiết -->
+    <link rel="stylesheet" href="../css/chitiet.css">
+
+
     <title>Trang chi tiết</title>
 
 </head>
@@ -18,27 +31,18 @@
     <header>
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
         </h1>
-        <!-- Nút đăng nhập -->
-        <div>
-            <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div>
-        <!-- Nếu đã đăng nhập -->
-        <!-- <a href="/html/customer.html">
-            <div id="userAvatar"></div>
-        </a> -->
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-                <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <div class="inOut">
+                    <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                </div>
             </div>
         </div>
-        
-
-
-
     </header>
+
 
     <!-- Thanh Điều Hướng -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
@@ -205,15 +209,7 @@
     </script>
 
     <!-- Trạng thái đăng nhập -->
-    <script>
-        const login = localStorage.getItem("is-login");
-        if (login === "true") {
-            const dangNhap = document.querySelector("#dangNhap");
-            const showUser = document.querySelector("#userAvatar");
-            dangNhap.style.display = "none";
-            showUser.style.display = "block";
-        }
-    </script>
+    <script src="../javascript/displauLogin.js"></script>
 </body>
 
 </html>

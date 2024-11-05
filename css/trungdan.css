@@ -14,6 +14,8 @@
         'pagination pagination'
     ;
     background-color: rgb(255, 255, 255);
+    background-image: url('../image/city.jpg');
+    background-size: cover;
 }
 
 .content{
@@ -34,7 +36,7 @@
     display:flex;
     padding:10px;
     height: fit-content;
-    background-color: rgb(178, 198, 245);
+    background-color: rgb(249, 249, 249);
     border:1px solid white;
     border-radius: 5px;
     box-sizing: border-box;
@@ -43,7 +45,36 @@
 .box:nth-child(1){
     margin-top:0em;
 }
-img{
+
+.inforDiv{
+    display: flex;
+    flex-direction: column;
+}
+.sideBox{
+    background-color: rgba(0, 0, 0, 0);
+    width: 20em;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    border-radius: 10%;
+    justify-self: flex-end;
+}
+.ownerPhoto{
+    width: 2em;
+    height: 2em;
+    margin:0px 10px;
+}
+.favourite{
+    display:inline-block;
+    width: 1em;
+    height: 1em;
+    margin:10px;
+}
+.sideBox p{
+    margin:0px 2.5em;
+    font-size:1em;
+}
+.box >img{
     width: 15em;
     height: 14em;
     border:1px solid white;
@@ -79,7 +110,7 @@ img{
 .container{
     width: fit-content;
     height: fit-content;
-    background-color: rgb(6, 6, 59);
+    background-color: rgba(6, 6, 59, 0.288);
     border:5px solid rgb(63, 65, 58);
     border-radius: 1em;
     padding:0.5em;

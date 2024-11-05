@@ -1,7 +1,7 @@
 
-/* *{
+*{
     font-size:18px;
-} */
+}
 /* Chia địa bàn Header - Nav - Main - Footer */
 body{
     display: grid;
@@ -73,7 +73,7 @@ header div a{
     height: 3em;
     width: 5em;
     margin-left:1em;
-    background-image: url('../../../../image/for-rent.png');
+    background-image: url('../image/for-rent.png');
     background-size: contain;
     background-repeat: no-repeat; 
 }

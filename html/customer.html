@@ -12,11 +12,16 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/default.css.map">
 
-    <!-- Header & Footer mặc định -->
-    <link rel="stylesheet" href="../css/headerFooter.css">
-
-    <!-- Xét trạng thái đăng nhập -->
+    <!-- CSS trạng thái đăng nhập -->
     <link rel="stylesheet" href="../css/dislayLogin.css">
+
+    
+    <!-- CSS của Cường -->
+    <link rel="stylesheet" href="../css/searchBar.css">
+
+<!-- Header & Footer mặc định -->
+<link rel="stylesheet" href="../css/headerFooter.css">
+
 
     <!-- CSS riêng của trang Thông tin khách hàng -->
     <link rel="stylesheet" href="../css/customer.css">
@@ -24,28 +29,21 @@
     <title>Thông Tin Khách Hàng</title>
 </head>
 
-<!-- Header -->
-<header>
-    <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
-    </h1>
-    <!-- Nút đăng nhập -->
-    <!-- <div>
-            <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div> -->
-    <!-- Nếu đã đăng nhập -->
-    <!-- <div id="userAvatar"></div> -->
-    <div class="auth-cuong">
-        <div class="user-section">
-            <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-            <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-            <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-            <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+    <!-- Header -->
+    <header>
+        <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
+        </h1>
+        <div class="auth-cuong">
+            <div class="user-section">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <div class="inOut">
+                    <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                </div>
+            </div>
         </div>
-    </div>
-
-
-
-</header>
+    </header>
 
 
 <!-- Thanh Điều Hướng -->
