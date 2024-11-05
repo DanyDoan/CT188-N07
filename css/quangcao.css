@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.ad-container:hover {
+    transform: scale(1.02);
+}
+
+.real-estate-ad {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.real-estate-ad:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ad-image {
+    overflow: hidden;
+}
+
+.ad-image img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.ad-image:hover img {
+    transform: scale(1.1);
+}
+
+.ad-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ad-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ad-location, .ad-price, .ad-description {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.ad-location {
+    font-size: 14px;
+    color: #777;
+    margin: 0 0 10px;
+    animation-delay: 0.4s;
+}
+
+.ad-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 0 0 12px;
+    animation-delay: 0.5s;
+}
+
+.ad-description {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    animation-delay: 0.6s;
+}
+
+.ad-button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.ad-button:hover {
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    transform: translateY(-3px);
+}
+@keyframes smoothFadeInOut {
+    0%, 90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(5px); }
+}
+
+.ad-title, .ad-location, .ad-price, .ad-description {
+    opacity: 0;
+    animation: smoothFadeInOut 5s ease infinite;
+}
+
+.ad-title {
+    animation-delay: 0.3s;
+}
+
+.ad-location {
+    animation-delay: 0.6s;
+}
+
+.ad-price {
+    animation-delay: 0.9s;
+}
+
+.ad-description {
+    animation-delay: 1.2s;
+}
+
+/* Hiệu ứng phóng to/thu nhỏ nhẹ nhàng cho ảnh */
+@keyframes zoomInOut {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.ad-image img {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+    animation: zoomInOut 8s ease-in-out infinite;
+}
+
+.banner-container {
+    margin-top: 10px;;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    height: 200px;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.banner-container:hover {
+    transform: scale(1.02);
+}
+
+.image-section img {
+    width: 180px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-section:hover img {
+    transform: scale(1.05);
+}
+
+.content-section {
+    margin-left: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.location-text {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.price-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 5px 0;
+}
+
+.detail-button {
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.3s;
+    align-self: start;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.detail-button:hover {
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    transform: translateY(-2px);
+}
