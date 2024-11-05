@@ -20,10 +20,73 @@
 
     <!-- CSS riêng của trang Thông tin khách hàng -->
     <link rel="stylesheet" href="../css/customer.css">
+    <script src="../javascript/displayLogin.js"></script>
+    <link rel="stylesheet" href="../css/quangcao.css">
 
     <title>Thông Tin Khách Hàng</title>
 </head>
+<style>
+    .container {
+    display: flex;
+    gap: 20px;
+}
 
+.left-column, .right-column {
+    flex: 1;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.stats-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+    background: linear-gradient(135deg, #ff7a7a, #ffb58d);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.stat-title {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: #ffffff;
+    opacity: 0.85;
+}
+
+.stat-number {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+</style>
 <!-- Header -->
 <header>
     <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
@@ -95,21 +158,68 @@
                 <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar">
                 <!-- Thông tin quản lý -->
                 <div class="manager-info">
-                    <h2>Nguyễn Văn A</h2>
-                    <p>Quản lý phòng trọ</p>
-                    <p>Email: nguyen.vana@example.com</p>
-                    <p>Điện thoại: 0123 456 789</p>
+                    <h2 id="name-profile">Nguyễn Văn A</h2>
+                    <p id="email-profile">Quản lý phòng trọ</p>
+                    <p id="birdthday">Email: nguyen.vana@example.com</p>
+                    <p id="phone-profile">Điện thoại: 0123 456 789</p>
                 </div>
             </div>
+            <button class="post-button" onclick="dienThongTin()">Cập nhật thông tin cá nhân</button>
             <button class="post-button" onclick="themPhongTro()">Đăng Tin</button>
+            <div class="banner-container">
+                <div class="image-section">
+                    <img src="https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Apartment Image">
+                </div>
+                <div class="content-section">
+                    <h2 class="title-text">Căn hộ cao cấp trung tâm thành phố</h2>
+                    <p class="location-text">Địa chỉ: Quận 1, TP. HCM</p>
+                    <p class="price-text">Giá: 3 tỷ VNĐ</p>
+                    <button class="detail-button">Xem Chi Tiết</button>
+                </div>
+            </div>
         </div>
 
         <!-- Cột bên phải -->
         <div class="right-column">
             <!-- Div để hiển thị thông tin người dùng đã lưu -->
             <div id="userInfoDisplay"></div>
-            <button onclick="dienThongTin()">Cập nhật thông tin</button>
-            <button onclick="logout()">Đăng xuất</button>
+            <!-- <button onclick="dienThongTin()">Cập nhật thông tin</button>
+            <button onclick="logout()">Đăng xuất</button> -->
+            <!-- Hộp thống kê -->
+            <div class="stats-box">
+                <div class="stat-item">
+                    <span class="stat-title">Lượt thích</span>
+                    <span class="stat-number">1200</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">Lượt theo dõi</span>
+                    <span class="stat-number">450</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">Số bài đăng</span>
+                    <span class="stat-number">300</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">Bài đã theo dõi</span>
+                    <span class="stat-number">50</span>
+                </div>
+            </div>
+
+            <div class="ad-container">
+                <div class="real-estate-ad">
+                    <div class="ad-image">
+                        <img src="https://nhadepktv.vn/wp-content/uploads/2022/01/Mau-thiet-ke-nha-pho-lien-ke-768x432.jpg" alt="House Image">
+                    </div>
+                    <div class="ad-content">
+                        <h2 class="ad-title">Nhà ở cao cấp trung tâm thành phố</h2>
+                        <p class="ad-location">Địa chỉ: Quận 1, TP. HCM</p>
+                        <p class="ad-price">Giá: 2 tỷ VNĐ</p>
+                        <p class="ad-description">Nhà mới, thiết kế hiện đại, tiện nghi đầy đủ. Khu vực an ninh, giao thông thuận tiện. Sổ đỏ chính chủ.</p>
+                        <button class="ad-button">Xem Chi Tiết</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -180,14 +290,23 @@
             // Kiểm tra xem có dữ liệu trong localStorage không
             if (savedInfo) {
                 const userInfo = JSON.parse(savedInfo);
-                userInfoDisplay.innerHTML = `
-                    <h4>Thông tin người dùng:</h4>
-                    <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
-                    <p><strong>Email:</strong> ${userInfo.email}</p>
-                    <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
-                    <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
-                    <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
-                `;
+                // userInfoDisplay.innerHTML = `
+                //     <h4>Thông tin người dùng:</h4>
+                //     <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
+                //     <p><strong>Email:</strong> ${userInfo.email}</p>
+                //     <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
+                //     <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
+                //     <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
+                // `;
+                let nameProfile = document.getElementById("name-profile");
+                let emailProfile = document.getElementById("email-profile");
+                let phoneProfile = document.getElementById("phone-profile");
+                let birdthday = document.getElementById("birdthday");
+                nameProfile.textContent = userInfo.name;
+                emailProfile.textContent = userInfo.email;
+                phoneProfile.textContent = userInfo.phone;
+                birdthday.textContent =userInfo.birthdate;
+
             } else {
                 userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
             }
@@ -284,7 +403,6 @@
     </script>
 
     <!-- Trạng thái đăng nhập -->
-    <script src="../javascript/displayLogin.js"></script>
 </body>
 
 </html>
