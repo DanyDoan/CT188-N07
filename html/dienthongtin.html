@@ -1,68 +1,163 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Điền Thông Tin Người Dùng</title>
-    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <title>Điền Thông Tin Người Dùng</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/headerFooter.css">
+      <!-- Logo góc trên web -->
+      <link rel="shortcut icon" href="../image/for-rent.png">
     <style>
-        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f7f8fa; margin: 0; font-family: Arial, sans-serif; 
-            background-image: url('https://img.freepik.com/free-vector/dark-minimal-hexagons-background_79603-1455.jpg?t=st=1730630182~exp=1730633782~hmac=7bfc9139e6eb2c50893c16be33621dd1e81cb49b0d028a256f11721fed423115&w=996');
-            background-repeat: no-repeat;
-            background-size:cover;
+        /* Tổng thể */
+        body{
+            background-image: url('../image/city.jpg');
+            background-attachment: fixed;
+            background-size: cover;
         }
-        .container { max-width: 500px; width: 100%; padding: 20px; background-color: #fff; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-radius: 8px; }
-        h2 { text-align: center; color: #333; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        label { font-weight: bold; color: #333; }
-        input[type="text"], input[type="email"], input[type="tel"], select, input[type="date"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
-        input[type="radio"] { margin-right: 5px; }
-        button { width: 100%; padding: 12px; font-size: 16px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #0056b3; }
-        #userInfoDisplay { margin-top: 20px; color: #333; }
+        main{
+            margin:8px auto;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            height: 100%;
+            padding: 30px;
+            background-color: #ffffffb1;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+            transform: scale(1.1);
+        }
+
+        /* Nút gửi thông tin */
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 12px rgba(0, 91, 187, 0.3);
+        }
+
+        /* Hiển thị thông tin người dùng */
+        #userInfoDisplay {
+            margin-top: 20px;
+            color: #333;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Thiết kế thêm cho các phần nội dung */
+        .gender-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 15px;
+        }
+
+        .container p {
+            color: #666;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h2>Điền Thông Tin Người Dùng</h2>
-        <form id="userForm">
-            <div class="form-group">
-                <label for="name">Họ và Tên:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+    <main>
+        <div class="container">
+            <h2>Điền Thông Tin Người Dùng</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="name">Họ và Tên:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <div class="form-group">
-                <label for="phone">Số Điện Thoại:</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
+                <div class="form-group">
+                    <label for="phone">Số Điện Thoại:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
 
-            <div class="form-group">
-                <label>Giới Tính:</label><br>
-                <input type="radio" id="male" name="gender" value="male" required>
-                <label for="male">Nam</label>
-                <input type="radio" id="female" name="gender" value="female" required>
-                <label for="female">Nữ</label>
-            </div>
+                <div class="form-group gender-group">
+                    <label>Giới Tính:</label>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                    <label for="male">Nam</label>
+                    <input type="radio" id="female" name="gender" value="female" required>
+                    <label for="female">Nữ</label>
+                </div>
 
-            <div class="form-group">
-                <label for="birthdate">Ngày Sinh:</label>
-                <input type="date" id="birthdate" name="birthdate" required>
-            </div>
+                <div class="form-group">
+                    <label for="birthdate">Ngày Sinh:</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
 
-            <button type="submit" onclick="thongTinUser()">Gửi Thông Tin</button>
-        </form>
+                <button type="submit" onclick="thongTinUser()">Gửi Thông Tin</button>
+            </form>
 
-        <div id="userInfoDisplay"></div>
-    </div>
-
+            <div id="userInfoDisplay"></div>
+        </div>
+    </main>
+    <!-- javaScript cập nhật thông tin người dùng -->
     <script>
-        document.getElementById("userForm").addEventListener("submit", function(event) {
+        document.getElementById("userForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
             const name = document.getElementById("name").value;
@@ -71,10 +166,7 @@
             const gender = document.querySelector('input[name="gender"]:checked').value;
             const birthdate = document.getElementById("birthdate").value;
 
-
-            const userKey = localStorage.getItem("user-information");
-            localStorage.setItem(userKey+"thongTinUser", JSON.stringify({ name, email, phone, gender, birthdate }));
-
+            localStorage.setItem(localStorage.getItem("user-information")+"thongTinUser", JSON.stringify({ name, email, phone, gender, birthdate }));
             alert("Thông tin đã được lưu vào localStorage!");
 
             displayUserInfo();
@@ -82,27 +174,29 @@
 
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
-            const savedInfo = localStorage.getItem(userKey);
+            const savedInfo = localStorage.getItem(localStorage.getItem("user-information")+"thongTinUser");
 
             if (savedInfo) {
                 const userInfo = JSON.parse(savedInfo);
-                userInfoDisplay.innerHTML = `
-                    <h4>Thông tin người dùng:</h4>
-                    <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
-                    <p><strong>Email:</strong> ${userInfo.email}</p>
-                    <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
-                    <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
-                    <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
-                `;
+
+                // Điền thông tin vào các ô nhập liệu
+                document.getElementById("name").value = userInfo.name;
+                document.getElementById("email").value = userInfo.email;
+                document.getElementById("phone").value = userInfo.phone;
+                document.querySelector(`input[name="gender"][value="${userInfo.gender}"]`).checked = true;
+                document.getElementById("birthdate").value = userInfo.birthdate;
             } else {
                 userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
             }
         }
-        function thongTinUser(){
-            window.location.href = "login.html";
+
+        function thongTinUser() {
+            window.location.href ="login.html";
         }
 
         window.addEventListener("load", displayUserInfo);
     </script>
+
 </body>
+
 </html>

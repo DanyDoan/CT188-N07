@@ -296,10 +296,13 @@
                         roomDiv.onclick = () => {
                             capNhatThongTinPTro(roomDiv.id);
                         }
+                        roomDiv.style.marginLeft='20px';
                         listContainer.appendChild(roomDiv);
                     }
                 });
             });
+            listContainer.style.display='flex';
+            listContainer.style.flexDirection='row';
         }
 
         function xoaPhongTro(id) {

@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Đăng nhập</title>
     <!-- <script src="dangky.js"></script>
     <script src="dangnhap.js"></script> -->
     <link rel="stylesheet" href="../css/login.css">
 </head>
-
+<style>
+    #wrongPassword{
+        color: red;
+        font-size: 12px;
+    }
+</style>
 <body onload="initializePage()">
     <div id="backgroundImage"></div>
     <h2>Đăng nhập/Đăng ký</h2>
@@ -39,6 +44,7 @@
                 <span>sử dụng tài khoản của bạn</span>
                 <input type="email" placeholder="Email" required/>
                 <input type="password" placeholder="Password" required minlength="8"/>
+                <div id="wrongPassword"></div>
                 <a href="#">Bạn quên mật khẩu?</a>
                 <button>Đăng nhập</button>
             </form>
@@ -60,26 +66,19 @@
     </div>
 </body>
 <script>
-    localStorage.removeItem("ct188");
+
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
 
-    function initializePage() {
-            // Kiểm tra nếu localStorage có "page-login" là true
-            if (localStorage.getItem("page-login")) {
-                container.classList.add('right-panel-active');
-                localStorage.removeItem("page-login");
-            }
+    signUpButton.addEventListener('click', () => {
+        container.classList.add('right-panel-active');
+    });
 
-            else{
-                container.classList.add('right-panel-active');
-                localStorage.removeItem("page-login");
-            }
+    signInButton.addEventListener('click', () => {
+        container.classList.remove('right-panel-active');
+    });
 
-            // Sau khi xử lý, hiển thị nội dung trang
-            container.classList.add("visible");
-        }
 
     // if (localStorage.getItem("page-login")) {
     //     // Nếu page-login là true, hiển thị phần đăng nhập
@@ -88,7 +87,7 @@
     // }
 
     signUpButton.addEventListener('click', () => {
-        container.classList.add('right-panel-active');
+        container.classList.add('right-panel-active overlay');
     });
 
     signInButton.addEventListener('click', () => {
@@ -129,7 +128,9 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
         return false;
     }
         if (localStorage.getItem(email)===null) {
-            alert('Email hoặc mật khẩu không đúng!');
+            // alert('Email hoặc mật khẩu không đúng!');
+            let wrongPassword = document.getElementById("wrongPassword");
+            wrongPassword.textContent = "Mật khẩu hoặc Email không đúng";
             return false;
         }
         const savedInfo = localStorage.getItem(email);
@@ -154,5 +155,6 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
 //     alert("Xóa tài khoản thành công!");
 // }
 // deleteUser("ct188", "ct188");
+//sai mat khau hoặc tên
 </script>
 </html>

@@ -53,18 +53,6 @@ main{
     border-radius: 10px;
 }
 
-#rent button{
-    width: fit-content;
-    align-self: center;
-    border:1px solid rgb(0, 0, 0);
-    border-radius: 50px;
-    padding:10px;
-    background-color: rgb(210, 56, 56);
-    text-transform: uppercase;
-    font-size:15px;
-    font-weight: bold;
-    color:white
-}
 
 #rent button:hover{
     transition: 0.2s;
@@ -84,12 +72,74 @@ main{
     margin-top:1em;
     display: flex;
 }
-.coin{
+/* .coin{
     background-image: url('../image/coin.png');
 }
 .area{
     background-image: url('../image/area.png');
 }
 .location{
-    background-image: url('../image/location.png');
+    background-image: url('../image/.png');
+} */
+ #location-img, #price-img, #area-img{
+    border: none;
+    width: 2em;
+    margin: 0em 1em 1em 1em;
+    background-size: contain;
+ }
+
+ #trangThai, #tienCoc, #dienTich, #coGac{
+    margin: 0px;
+ }
+ #statusBox{
+    margin-top:1em;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:7em;
+ }
+
+ #leftBox, #rightBox{
+    display: flex;
+    flex-direction: column;
+    padding:0px;
+    gap:2em;
+ }
+/* Contact Btn */
+
+#contactBtn{
+    width: fit-content;
+    align-self: center;
+    border:1px solid rgb(0, 0, 0);
+    border-radius: 50px;
+    padding:10px;
+    background-color: rgb(210, 56, 56);
+    text-transform: uppercase;
+    font-size:15px;
+    font-weight: bold;
+    color:white;
 }
+
+ /* Contact Box */
+ #contactBox{
+    display: none;
+    width: 50em;
+    height: 20em;
+    background-color: rgba(255, 0, 0, 0.516);
+    position: absolute;
+    right:30%;
+    bottom:30%;
+ }
+
+
+#contactBtn:hover #contactBox{
+    display:block;
+    width: 50em;
+    height: 20em;
+    background-color: rgba(255, 254, 254, 0.363);
+    position: absolute;
+    right:30%;
+    bottom:100%;
+}
+

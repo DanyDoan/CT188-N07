@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -102,11 +103,17 @@
                 <h2>Đặc điểm phòng</h2>
             </div> 
             <div class="container" id="rent">
-                <button>Liên Hệ Ngay</button>
+                <button id="contactBtn">Liên Hệ Ngay
+                    <div id="contactBox">
+                    
+                    </div>
+                </button>
+                
             </div>
         </div>
 
     </main>
+    <img src="" alt="">
 
     <!-- Footer -->
     <footer>
@@ -143,17 +150,19 @@
         var fragment = document.createDocumentFragment();
 
 
-        // Tạo icon
-        const price=document.createElement('div');
-        const location=document.createElement('div');
-        const area=document.createElement('div');
-        const desbribe=document.createElement('div');
+        // // Tạo icon
+        // const price=document.createElement('div');
+        // const location=document.createElement('div');
+        // const area=document.createElement('div');
+        // const desbribe=document.createElement('div');
+        // const thei = document.createElement("img")
 
-        // Add link icon
-        price.src='../image/coin.png';
-        location.src='../image/location.png';
-        area.src='../image/area.png';
-        desbribe.src='../image/scroll.png';
+        // // Add link icon
+        // price.src='../image/coin.png';
+        // // location.innerHTML = '<i class="fas fa-map-marker-alt"></i>'
+        // location.src="../location.png";
+        // area.src='../image/area.png';
+        // desbribe.src='../image/scroll.png';
         
         const createImg = document.createElement("img");
         createImg.src = hinhAnh;
@@ -168,41 +177,59 @@
 
         const createGia = document.createElement("div");
         createGia.id = 'gia';
-        createGia.innerHTML = `<div class="icon coin"></div> ${gia}`;
+        createGia.innerHTML = `<img src="../image/price.png" alt="" id="price-img"> ${gia}`;
         fragment.appendChild(createGia);
 
         const createdienTich = document.createElement("p");
         createdienTich.id="dienTich";
-        createdienTich.innerHTML =`<div class="icon area"></div> ${dienTich}`;
+        createdienTich.innerHTML =`<img src="../image/area.png" alt="" id="area-img"> ${dienTich}`;
         fragment.appendChild(createdienTich);
+        // Icon
 
         const createViTri = document.createElement("p");
         createViTri.id = 'viTri';
-        createViTri.innerHTML = `<div class="icon location"></div> ${viTri}`;
+        createViTri.innerHTML = `<img src="../image/location.png" alt="" id="location-img"> ${viTri}`;
         fragment.appendChild(createViTri);
 
         basic.appendChild(fragment);
         var fragment = document.createDocumentFragment();
+        const statusBox=document.createElement('div');
+        statusBox.id='statusBox';
+        const leftBox=document.createElement('div');
+        leftBox.id='leftBox';
+        const rightBox=document.createElement('div');
+        rightBox.id='rightBox';
+
+
 
         const createTrangThai = document.createElement("p");
         createTrangThai.id = 'trangThai';
-        createTrangThai.textContent = "Trạng thái:" + trangThai;
-        fragment.appendChild(createTrangThai);
+        createTrangThai.innerHTML = "Trạng thái: " + trangThai;
+        // fragment.appendChild(createTrangThai);
+        leftBox.appendChild(createTrangThai);
 
         const createTienCoc = document.createElement("p");
         createTienCoc.id = 'tienCoc';
-        createTienCoc.textContent = "Đặt cọc: " + tienCoc;
-        fragment.appendChild(createTienCoc);
+        createTienCoc.innerHTML = "Đặt cọc: " + tienCoc;
+        // fragment.appendChild(createTienCoc);
+        rightBox.appendChild(createTienCoc);
 
         const createDienTich = document.createElement("p");
         createDienTich.id = 'dienTich';
-        createDienTich.textContent = dienTich;
-        fragment.appendChild(createDienTich);
+        createDienTich.innerHTML = "Diện tích: "+dienTich;
+        // fragment.appendChild(createDienTich);
+        rightBox.appendChild(createDienTich);
 
         const createCoGac = document.createElement("p");
         createCoGac.id = 'coGac';
-        createCoGac.textContent = "Gác: " +coGac;
-        fragment.appendChild(createCoGac);
+        createCoGac.innerHTML = "Gác: " +coGac;
+        // fragment.appendChild(createCoGac);
+        leftBox.appendChild(createCoGac);
+
+
+        statusBox.appendChild(leftBox);
+        statusBox.appendChild(rightBox);
+        fragment.appendChild(statusBox);
 
         realEstate.appendChild(fragment);
         detail.innerHTML += `${moTa}`;
