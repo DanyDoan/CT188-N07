@@ -1,6 +1,6 @@
 
 *{
-    font-size:18px;
+    font-size:15px;
 }
 /* Chia địa bàn Header - Nav - Main - Footer */
 body{
@@ -19,17 +19,17 @@ body{
 header{
     grid-area: header;
     display:flex;
-    background:linear-gradient(to top,rgb(219, 125, 125), rgba(227, 218, 45, 0.457));
+    background:linear-gradient(to top,rgb(1, 17, 56), rgba(128, 132, 202, 0.441));
     background-size: cover;
     background-repeat: no-repeat;
-
+    overflow: hidden;
 }
 nav{
     grid-area: nav;
 }
 main{
     grid-area: main;
-    background-color: rgba(172, 172, 172, 0.549);
+    background-color: rgb(255, 255, 255);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -45,11 +45,15 @@ header{
     /* border:10px solid #ffffff; */
 }
 header h1{
+    z-index: 1;
+    text-decoration:overline underline;
+    font-style: italic;
     padding:1em;
-    font-size:3em;
+    font-size:4em;
     text-transform: uppercase;
     font-weight: bold;
-    color:rgb(1, 7, 63);
+    color:rgb(255, 255, 255);
+    -webkit-text-stroke: 2px rgb(17, 1, 69);
     display:flex;
     align-self: center;
 }
@@ -72,15 +76,89 @@ header div a{
 .logo{
     height: 3em;
     width: 5em;
-    margin-left:1em;
+    margin-left:0.5em;
     background-image: url('../image/for-rent.png');
     background-size: contain;
     background-repeat: no-repeat; 
 }
 
+.headerCol1, .headerCol2{
+    margin-right:10em;
+    z-index: 1;
+    position: relative;
+    bottom:500px;
+    right: 50px;
+    width: 8em;
+    height: 100em;
+    background-color: rgba(166, 203, 251, 0.989);
+    transform: rotate(45deg) ;
+}
+.headerCol1{
+    left:10px
+}
+.headerCol2{
+    margin-right: 10em;
+    z-index: 0;
+}
+.headerRow1{
+    z-index: 0;
+    position: absolute;
+    top:1.8em;
+    width: 100%;
+    height: 5em;
+    background-color: rgb(233, 236, 187);
+    margin: 0em;
+    padding: 0em;
+    right:0px
+}
+/* Container tổng thể của thanh tìm kiếm */
+.search-bar {
+    width: fit-content;
+    border-bottom: 2px solid #ddd;
+    padding: 10px 0;
+}
 
+/* Ô nhập liệu */
+#searchInput {
+    border: none;
+    outline: none;
+    padding: 0.5em 0.6em;
+    font-size: 0.9em;
+    background-color: transparent;
+    transition: 0.6s;
+    border-radius: 1em;
+}
 
+#searchInput::placeholder {
+    color: #90bfdc;
+    font-style: italic;
+}
 
+/* Hiệu ứng khi ô input được focus */
+#searchInput:focus {
+    border-bottom: 2px solid #4CAF50;
+    background-color: #4f4a4a28;
+    border:1px dashed black;
+    border-radius: 2em;
+}
+
+/* Nút tìm kiếm */
+button {
+    background-color: transparent;
+    border: none;
+    color: #4672f7;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px;
+}
+
+button:hover {
+    color: #388E3C;
+}
+
+button:focus {
+    outline: none;
+}
 
 /* Navigation */
 .nav-link{
@@ -149,5 +227,16 @@ footer{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+    }
+    .real-estate-a{
+        flex-direction: column;
+    }
+    .container{
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        grid-area: 
+            'left'
+            'right'
+        ;
     }
 }

@@ -1,7 +1,4 @@
 /* Dùng chung */
-*{
-    font-size:18px;
-}
 
 /* main */
 .trangchu{
@@ -16,6 +13,7 @@
     background-color: rgb(255, 255, 255);
     background-image: url('../image/city.jpg');
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .content{
@@ -49,6 +47,7 @@
 .inforDiv{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
 }
 .sideBox{
     background-color: rgba(0, 0, 0, 0);
@@ -59,16 +58,27 @@
     border-radius: 10%;
     justify-self: flex-end;
 }
+
+.ownerName{
+    width: 10em;
+}
 .ownerPhoto{
     width: 2em;
     height: 2em;
     margin:0px 10px;
+    opacity: 0.3;
 }
-.favourite{
+.favorite{
     display:inline-block;
-    width: 1em;
-    height: 1em;
+    /* position: relative;
+    right:-40%; */
+    width: 2em;
+    height: 2em;
     margin:10px;
+}
+
+.favorite:hover{
+    transform: scale(1.2);
 }
 .sideBox p{
     margin:0px 2.5em;
@@ -94,25 +104,31 @@
     position:relative;
 } 
 .filter-box h3{
-    font-size:1.5em;
+    /* -webkit-text-stroke: 0.5px rgb(253, 251, 251); */
+    font-size:1.8em;
     margin-bottom: 0.2em;
-    color:rgb(101, 98, 99);
+    color:rgb(2, 37, 57);
 }
 
 .filter input{
     margin-right: 0.5em;
 }
 .filter-box label{
-    font-size:0.8em;
+    -webkit-text-stroke: 0.3px rgb(2, 2, 2);
+    font-size:1.2em;
     margin-left:0.25;
+    font-weight: bold;
+    color:rgba(250, 250, 251, 0.986)
 }
 
 .container{
-    width: fit-content;
+    width: 100%;
     height: fit-content;
-    background-color: rgba(6, 6, 59, 0.288);
-    border:5px solid rgb(63, 65, 58);
-    border-radius: 1em;
+    background-color: rgba(190, 190, 245, 0.288);
+    border:5px solid rgb(24, 2, 59);
+    border-radius: 1em 0em 0em 1em;
+    border-right:none;
+
     padding:0.5em;
     position: sticky;
     top:0.5em;
@@ -172,70 +188,9 @@ p{
 #pagination button:hover{
     background-color: pink;
 }
-/* footer */
-footer{
-    display:flex;
-    justify-content: space-around;
-}
-.footerBox{
-    margin:1em;
-    width: 15em;
-    height: fit-content;
-    color:rgb(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    line-height: 30px;
-    align-items: start;
-}
-.footerBox h3{
-    font-size: 2em;
-}
-.footerBox a{
-    font-size:0.8em;
-    color:rgb(102, 99, 99);
-    text-decoration: none;
-    text-transform: uppercase;
-}
-.footerBox a:hover{
-    color:rgb(64, 45, 231);
-}
-
-.footerBox a img{
-    width: 20px;
-    height: 20px;
-    padding:0px;
-    margin:5px;
-}
 
 
 
-@media (max-width:1200px){
-    *{
-        font-size:10px;
-    }
-    .box:nth-child(1){
-        margin-top: 10px;
-    }
-    .box{
-        flex-direction: column;
-        width: 20em;
-        height: 35em;
-        padding: 5px 5px 5px 5px;
-        margin:10px;
-    }
-    .rentBox{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-    img{
-        align-self: center;
-    }
-}
- /*End dùng chung */
-
- /* Nguyên */
 
 
- /* End Nguyên */
 

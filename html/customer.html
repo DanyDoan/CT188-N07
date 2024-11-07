@@ -5,126 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Logo góc trên web -->
-    <link rel="shortcut icon" href="../image/for-rent.png">
+     <!-- Logo góc trên web -->
+     <link rel="shortcut icon" href="../image/for-rent.png">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/default.css.map">
-
-    <!-- CSS trạng thái đăng nhập -->
-    <link rel="stylesheet" href="../css/dislayLogin.css">
-
-    
-    <!-- CSS của Cường -->
-    <link rel="stylesheet" href="../css/searchBar.css">
-
-<!-- Header & Footer mặc định -->
-<link rel="stylesheet" href="../css/headerFooter.css">
+     <!-- Bootstrap -->
+     <link rel="stylesheet" href="../css/bootstrap.css">
+     <link rel="stylesheet" href="../css/default.css.map">
+ 
+     <!-- Header & Footer mặc định -->
+     <link rel="stylesheet" href="../css/headerFooter.css">
+ 
+     <!-- CSS trạng thái đăng nhập -->
+     <link rel="stylesheet" href="../css/dislayLogin.css">
+     
+     <!-- Check trạng thái đăng nhập -->
+     <script src="../javascript/displayLogin.js"></script>
 
 
     <!-- CSS riêng của trang Thông tin khách hàng -->
     <link rel="stylesheet" href="../css/customer.css">
-    <script src="../javascript/displayLogin.js"></script>
     <link rel="stylesheet" href="../css/quangcao.css">
 
     <title>Thông Tin Khách Hàng</title>
 </head>
-<style>
-    .container {
-    display: flex;
-    gap: 20px;
-}
 
-<<<<<<< HEAD
+<body>
     <!-- Header -->
     <header>
         <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
                     <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
                     <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
                 </div>
             </div>
-=======
-.left-column, .right-column {
-    flex: 1;
-}
-
-.right-column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.stats-box {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 20px;
-    width: 100%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.stat-item {
-    background: linear-gradient(135deg, #ff7a7a, #ffb58d);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-.stat-title {
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 8px;
-    color: #ffffff;
-    opacity: 0.85;
-}
-
-.stat-number {
-    font-size: 26px;
-    font-weight: 600;
-}
-
-</style>
-<!-- Header -->
-<header>
-    <h1>Nhà Trọ Giá Rẻ<div class="logo"></div>
-    </h1>
-    <!-- Nút đăng nhập -->
-    <!-- <div>
-            <a href="login.html" id="dangNhap">Đăng Nhập</a>
-        </div> -->
-    <!-- Nếu đã đăng nhập -->
-    <!-- <div id="userAvatar"></div> -->
-    <div class="auth-cuong">
-        <div class="user-section">
-            <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong">
-            <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-            <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-            <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
->>>>>>> f0015801c050be3cda25e42ffcb7b0f938e321a8
         </div>
+        <div class="headerCol1"></div>
+        <div class="headerCol2"></div>
+        <div class="headerRow1"></div>
     </header>
 
 
@@ -165,8 +87,7 @@
         </div>
     </div>
 </nav>
-
-<body>
+<main>
     <div class="container">
         <!-- Cột bên trái -->
         <div class="left-column">
@@ -240,7 +161,7 @@
         </div>
     </div>
 
-    <!-- Hộp quảng cáo -->
+       <!-- Hộp quảng cáo -->
     <div class="advertisement-box">
         <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
         <div id="roomList">
@@ -248,22 +169,16 @@
         </div>
     </div>
 
+
     <!-- Khung danh sách tin yêu thích -->
     <div class="favorites-box">
         <h4>DANH SÁCH TIN YÊU THÍCH</h4>
         <div id="favoritesList">
-            <div class="favorite-item">
-                <strong>Phòng trọ A</strong>
-                <p>Diện tích: 20m² - Giá: 3 triệu/tháng</p>
-            </div>
-            <div class="favorite-item">
-                <strong>Phòng trọ B</strong>
-                <p>Diện tích: 25m² - Giá: 4 triệu/tháng</p>
-            </div>
             <!-- Thêm các mục yêu thích khác ở đây -->
         </div>
     </div>
 
+</main>
     <footer>
         <div class="footerBox">
             <h3>Liên Kết</h3>
@@ -282,6 +197,9 @@
             <span>107C1 Quận 1, TPHCM</span>
         </div>
     </footer>
+
+
+    <!-- Trạng thái đăng nhập -->
     <script>
         console.log(localStorage.getItem("DSPhongTro"));
         // Kiểm tra đăng nhập
@@ -419,7 +337,68 @@
         displayRooms();
     </script>
 
-    <!-- Trạng thái đăng nhập -->
+    <!-- Show favorite rent -->
+    <script>
+
+        // localStorage.removeItem('array');
+        // alert('đã xóa')
+
+
+        var myArray=JSON.parse(localStorage.getItem('array')) || [];
+
+
+        function updateFavoriteList(){
+        myArray.forEach(rent => {
+            const favoritesList=document.querySelector('#favoritesList');
+            // Create box
+            const box=document.createElement('div');
+            box.classList.add('favorite-item');
+
+            // Khởi tạo 
+            const name=document.createElement('h5');
+            const price=document.createElement('p');
+            const address=document.createElement('p');
+
+            // Đẩy thông tin vào
+            name.innerText=rent.name;
+            price.innerText=rent.price;
+            address.innerText=rent.address;
+
+            // Tạo nút xóa trọ yêu thích
+            const deleteBtn=document.createElement('button');
+            deleteBtn.innerText="Xóa"
+            deleteBtn.classList.add('deleteFav');
+            deleteBtn.addEventListener('click',()=>{
+                for(let i=0 ;i<myArray.length; i++){
+                    if(myArray[i].address===rent.address){
+                        myArray.splice(i,1);  
+                        break;
+                    }
+                    else;
+                }
+                if(myArray[0]===null)
+                    myArray=[];
+                else;
+                localStorage.setItem('array',JSON.stringify(myArray));
+                location.reload();
+            })            
+
+            box.appendChild(name);
+            box.appendChild(price);
+            box.appendChild(address);
+            box.appendChild(deleteBtn);
+
+            favoritesList.appendChild(box);
+        })
+        }
+        
+        updateFavoriteList();
+    </script>
+
+    <!-- update trạng thái -->
+    <script src="../javascript/addfav.js"></script>
 </body>
+
+
 
 </html>

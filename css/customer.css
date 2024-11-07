@@ -139,15 +139,6 @@ button:hover {
 }
 
 /* Định dạng cho toàn bộ phần container */
-#listContainer {
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-}
 
 /* Định dạng cho từng mục phòng trọ */
 .room-item {
@@ -159,7 +150,9 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
 }
-
+.room-item strong {
+    font-size: 15px;
+}
 /* Hiệu ứng khi hover vào mục phòng trọ */
 .room-item:hover {
     transform: translateY(-5px);
@@ -174,6 +167,7 @@ button:hover {
 
 /* Định dạng cho nội dung bên trong các mục phòng */
 .room-item {
+    text-align: left;
     font-size: 14px;
     line-height: 1.6;
     color: #555;
@@ -196,13 +190,14 @@ button:hover {
 }
 
 .favorite-item {
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
     margin: 10px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s, box-shadow 0.2s;
+    color:rgb(0, 11, 53);
 }
 
 .favorite-item:hover {
@@ -213,4 +208,9 @@ button:hover {
 .favorite-item strong {
     color: #007bff;
     font-weight: bold;
+}
+
+.deleteFav{
+    width: fit-content;
+    height: fit-content;
 }

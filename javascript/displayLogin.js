@@ -29,10 +29,5 @@ function logout() {
 }
 
 function Dangtin() {
-    alert("Bạn đã nhấn nút Đăng tin!");
+    window.location.href = "../html/nhapbox.html";
 }
-
-const customerInfor=document.querySelector('#userAvatar');
-customerInfor.addEventListener("click", function(){
-    window.location.href="../html/customer.html";
-});

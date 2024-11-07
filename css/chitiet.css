@@ -5,7 +5,7 @@ body {
     flex-direction: column;
 }
 main{
-    background-image: url('../image/cosy.jpg');
+    background-image: url('../image/city.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     display:grid;
@@ -63,10 +63,33 @@ main{
     text-transform: uppercase;
     font-size:15px;
     font-weight: bold;
+    color:white
 }
 
 #rent button:hover{
     transition: 0.2s;
     color:white;
-    transform: scale(1.2);
+    transform: scale(0.95);
+}
+
+.icon{
+    width: 2em;
+    height: 4em;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+
+#gia, #dienTich, #viTri{
+    margin-top:1em;
+    display: flex;
+}
+.coin{
+    background-image: url('../image/coin.png');
+}
+.area{
+    background-image: url('../image/area.png');
+}
+.location{
+    background-image: url('../image/location.png');
 }

@@ -33,7 +33,7 @@
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
                     <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
@@ -41,6 +41,9 @@
                 </div>
             </div>
         </div>
+        <div class="headerCol1"></div>
+        <div class="headerCol2"></div>
+        <div class="headerRow1"></div>
     </header>
 
 
@@ -139,6 +142,19 @@
         var detail = document.getElementById("detailed-description");
         var fragment = document.createDocumentFragment();
 
+
+        // Tạo icon
+        const price=document.createElement('div');
+        const location=document.createElement('div');
+        const area=document.createElement('div');
+        const desbribe=document.createElement('div');
+
+        // Add link icon
+        price.src='../image/coin.png';
+        location.src='../image/location.png';
+        area.src='../image/area.png';
+        desbribe.src='../image/scroll.png';
+        
         const createImg = document.createElement("img");
         createImg.src = hinhAnh;
         createImg.alt = 'Hình phòng trọ';
@@ -152,17 +168,17 @@
 
         const createGia = document.createElement("div");
         createGia.id = 'gia';
-        createGia.textContent = gia;
+        createGia.innerHTML = `<div class="icon coin"></div> ${gia}`;
         fragment.appendChild(createGia);
 
         const createdienTich = document.createElement("p");
         createdienTich.id="dienTich";
-        createdienTich.textContent = dienTich;
+        createdienTich.innerHTML =`<div class="icon area"></div> ${dienTich}`;
         fragment.appendChild(createdienTich);
 
         const createViTri = document.createElement("p");
         createViTri.id = 'viTri';
-        createViTri.textContent = viTri;
+        createViTri.innerHTML = `<div class="icon location"></div> ${viTri}`;
         fragment.appendChild(createViTri);
 
         basic.appendChild(fragment);
@@ -189,7 +205,7 @@
         fragment.appendChild(createCoGac);
 
         realEstate.appendChild(fragment);
-        detail.innerHTML += moTa;
+        detail.innerHTML += `${moTa}`;
         detail.innerHTML += `<p>Cách trung tâm thành phố Cần Thơ: ${cachTrungTam}</p>`;
         detail.innerHTML += `<p>Giá điện: ${giaDien}</p>`;
         detail.innerHTML += `<p>Giá nước: ${giaNuoc}</p>`;

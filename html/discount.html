@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Logo góc trên web -->
-        <link rel="shortcut icon" href="../image/for-rent.png">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="../css/bootstrap.css">
-        <link rel="stylesheet" href="../css/default.css.map">
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
 
-        <!-- Header & Footer mặc định -->
-        <link rel="stylesheet" href="../css/headerFooter.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/default.css.map">
 
-        <!-- Xét trạng thái đăng nhập -->
-        <link rel="stylesheet" href="../css/dislayLogin.css">
+    <!-- Header & Footer mặc định -->
+    <link rel="stylesheet" href="../css/headerFooter.css">
 
-        <!--CSS của Cường -->
-        <link rel="stylesheet" href="../css/searchBar.css">
+    <!-- CSS trạng thái đăng nhập -->
+    <link rel="stylesheet" href="../css/dislayLogin.css">
+    
+    <!-- Check trạng thái đăng nhập -->
+    <script src="../javascript/displayLogin.js"></script>
 
-        <link rel="stylesheet" href="../css/discount.css">
-        <title>Ưu Đãi</title>
-    </head>
+    <!-- CSS riêng của trang Ưu đãi -->
+    <link rel="stylesheet" href="../css/uudai.css">
+
+    <title>Ưu đãi</title>
+
+</head>
+
 <body>
     <!-- Header -->
     <header>
@@ -30,7 +35,7 @@
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar">
+                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
                     <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
@@ -38,13 +43,15 @@
                 </div>
             </div>
         </div>
-        
-        
-
+        <div class="headerCol1"></div>
+        <div class="headerCol2"></div>
+        <div class="headerRow1"></div>
     </header>
+
+    <!-- Thanh Điều Hướng -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Nhà Trọ Giá Rẻ</a>
+            <a class="navbar-brand nav-a" href="#">Nhà Trọ Giá Rẻ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -53,22 +60,81 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="main.html">Trang Chủ</a>
+                        <a class="nav-link active nav-a" aria-current="page" href="main.html?#">Trang Chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">Tin Tức</a>
+                        <a class="nav-link nav-a" href="news.html">Tin Tức</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
+                        <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <main>
-
-
+        <div class="banner">
+            <img class="anhdau" src="../image/uudaine1.png" alt="Ưu đãi">
+            <h1 class="title">ƯU ĐÃI</h1>
+        </div>
+        <article>
+            <div class="content">
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>Thuê trọ theo nhóm không chỉ giúp bạn có thêm bạn bè mà còn giúp bạn tiết kiệm được một khoản chi phí đáng kể. 
+                    Nhiều chủ nhà trọ thường có các chương trình ưu đãi đặc biệt cho nhóm khách hàng thuê nhiều phòng, như giảm giá tiền thuê, miễn phí một số dịch vụ tiện ích hoặc hỗ trợ các thủ tục đăng ký.
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>Để chào đón các tân sinh viên, nhiều chủ nhà trọ đã đưa ra các ưu đãi hấp dẫn như giảm giá thuê nhà trong những tháng đầu, miễn phí các dịch vụ tiện ích hoặc hỗ trợ các thủ tục đăng ký. 
+                    Những ưu đãi này không chỉ giúp sinh viên tiết kiệm chi phí mà còn tạo điều kiện thuận lợi cho các bạn bắt đầu cuộc sống mới tại thành phố.
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>Để tạo động lực cho khách hàng thuê nhà dài hạn, nhiều chủ nhà trọ đã đưa ra các ưu đãi hấp dẫn như giảm giá thuê nhà, miễn phí các dịch vụ tiện ích hoặc hỗ trợ các thủ tục gia hạn hợp đồng. 
+                    Khi thuê trọ trên 6 tháng, bạn sẽ không chỉ được hưởng mức giá ưu đãi mà còn có cơ hội xây dựng một không gian sống ổn định và thoải mái.
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>"Giới thiệu bạn bè đến ở trọ, cùng nhau nhận quà khủng! Khi giới thiệu bạn bè đến ở trọ, cả bạn và bạn của mình đều được nhận những phần quà hấp dẫn. 
+                    Càng giới thiệu nhiều, quà càng lớn! Còn chần chừ gì nữa, hãy chia sẻ ngay cơ hội tuyệt vời này với bạn bè nhé!"
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>"Giảm bớt gánh nặng khi bắt đầu một công việc mới! Với các ưu đãi đặc biệt dành riêng cho người tìm việc, chúng tôi giúp bạn tiết kiệm chi phí và tập trung vào việc tìm kiếm cơ hội nghề nghiệp."
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>"Khác biệt với những nơi khác, chúng tôi còn hỗ trợ bạn chuyển trọ miễn phí! 
+                    Dù bạn có nhiều đồ đạc hay ở tầng cao, chúng tôi đều sẵn sàng giúp đỡ. 
+                    Hãy để chúng tôi lo phần còn lại để bạn có thể tập trung vào việc ổn định cuộc sống mới."
+                    Ưu đãi hỗ trợ chuyển trọ khi thuê trọ.
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+            <div class="item">
+                <img class="anh" src="../image/Frame-35.png" alt="">
+                <p>"Đặt phòng trực tuyến ngay và nhận ngay ưu đãi hấp dẫn! Chỉ cần vài cú click, bạn đã có thể sở hữu một căn phòng ưng ý với giá ưu đãi đặc biệt. 
+                    Đặt phòng trực tuyến tại "Nhà trọ giá rẻ" để tiết kiệm thời gian và tận hưởng nhiều tiện ích hấp dẫn."
+                    <button>Xem chi tiết</button>
+                </p>
+            </div>
+        </div>
+        </article>
     </main>
+
+
+    <!-- Footer -->
     <footer>
         <div class="footerBox">
             <h3>Liên Kết</h3>
@@ -87,9 +153,6 @@
             <span>107C1 Quận 1, TPHCM</span>
         </div>
     </footer>
-</script>
-
-<!-- Check trạng thái đăng nhập -->
-<script src="../javascript/displayLogin.js"></script>
 </body>
+
 </html>
