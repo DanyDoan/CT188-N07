@@ -140,7 +140,7 @@
                 <div class="manager-info">
                     <h2 id="name-profile">Nguyễn Văn A</h2>
                     <p id="email-profile">Quản lý phòng trọ</p>
-                    <p id="birdthday">Email: nguyen.vana@example.com</p>
+                    <p id="birdthday">Email: nguyenvana@example.com</p>
                     <p id="phone-profile">Điện thoại: 0123 456 789</p>
                 </div>
             </div>
@@ -265,7 +265,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
     });
     if (localStorage.getItem("user-information")){
         let anhdaidien = document.getElementById("anhdaidien");
-    anhdaidien.src = "../image/avata/"+localStorage.getItem(localStorage.getItem("user-information")+"AVT-image-user")+".png";
+        anhdaidien.src = "../image/avata/"+localStorage.getItem(localStorage.getItem("user-information")+"AVT-image-user")+".png";
     };
 
 
@@ -415,7 +415,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
         // alert('đã xóa')
 
 
-        var myArray=JSON.parse(localStorage.getItem('array')) || [];
+        var myArray=JSON.parse(localStorage.getItem(localStorage.getItem("user-information")+"array")) || [];
 
 
         function updateFavoriteList(){
@@ -450,7 +450,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
                 if(myArray[0]===null)
                     myArray=[];
                 else;
-                localStorage.setItem('array',JSON.stringify(myArray));
+                localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(myArray));
                 location.reload();
             })            
 

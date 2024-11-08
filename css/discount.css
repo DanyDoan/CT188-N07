@@ -1,0 +1,94 @@
+main{
+    background-color: rgba(237, 234, 190, 0.847);
+}
+.banner {
+    width:100%;
+    height:17em;
+    padding:0px;
+    background-image: url('../image/uudaine1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: -1.5em ;
+}
+
+.anhdau {
+    width: 100%; /* Hoặc kích thước mong muốn */
+    height: 10em;
+    display: block;
+}
+
+.title{
+    padding: 0.5em;
+    color: rgb(252, 252, 252); /* Màu chữ để dễ đọc */
+    font-size: 3rem; /* Kích thước chữ */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bóng chữ */
+    z-index: 10; /* Đảm bảo chữ nằm trên hình */
+    pointer-events: none; /* Đảm bảo chữ không chặn các tương tác của hình ảnh */
+}
+
+.item button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Đặt các thuộc tính cơ bản cho phần .content */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    gap: 20px; 
+}
+
+.item img.anh {
+    width: 250px;
+    height: auto;
+    flex-shrink: 0; 
+}
+
+.item p {
+    flex: 1; 
+    font-size: 1.3em; 
+    line-height: 1.5; 
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Kích thước và phong cách của nút */
+.item button {
+    margin-top: 10px;
+    padding: 0.5em 1em;
+    background-color: #0e4885;
+    color: white; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 0.6em;
+}
+
+.item button:hover {
+    background-color: #78899b; 
+}
+
+/* Điều chỉnh kích thước cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .item {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .item img.anh {
+        width: 100%; 
+    }
+}

@@ -149,21 +149,6 @@
         var realEstate = document.getElementById("real-estate-information-detail");
         var detail = document.getElementById("detailed-description");
         var fragment = document.createDocumentFragment();
-
-
-        // // Tạo icon
-        // const price=document.createElement('div');
-        // const location=document.createElement('div');
-        // const area=document.createElement('div');
-        // const desbribe=document.createElement('div');
-        // const thei = document.createElement("img")
-
-        // // Add link icon
-        // price.src='../image/coin.png';
-        // // location.innerHTML = '<i class="fas fa-map-marker-alt"></i>'
-        // location.src="../location.png";
-        // area.src='../image/area.png';
-        // desbribe.src='../image/scroll.png';
         
         const createImg = document.createElement("img");
         createImg.src = hinhAnh;
@@ -238,7 +223,38 @@
         detail.innerHTML += `<p>Giá điện: ${giaDien}</p>`;
         detail.innerHTML += `<p>Giá nước: ${giaNuoc}</p>`;
         detail.innerHTML += `<p>Chủ trọ: ${chuTro}</p>`;
-        detail.innerHTML += `<p>Liên hệ: ${lienHe}</p>`;        
+        // detail.innerHTML += `<p>Liên hệ: ${lienHe}</p>`;  
+        
+        
+        // Tạo hộp liên hệ ăn ké hihi
+        const contactBox=document.querySelector('#contactBox');
+       
+        // Số điện thoại
+        const contactNumber=document.createElement('span');
+        contactNumber.classList.add('phoneNumber');
+        contactNumber.innerHTML="Số điện thoại: "+lienHe;
+
+        // // Box chung chứa icon
+        // const contactContainer=document.createElement('div');
+        // contactContainer.id='iconContainer'
+        // // Icon facebook
+        // const contactFacebook=document.createElement('div');
+        // contactFacebook.classList.add('contactIcon')
+        // // Icon zalo
+        // const contactZalo=document.createElement('div');
+        // contactZalo.classList.add('contactIcon')
+
+        // contactFacebook.innerHTML=`<img src="../image/facebook.png" id="facebook-icon">`;
+        // contactZalo.innerHTML=`<img src="../image/zalo.png" id="zalo-icon">`;
+        
+
+
+        // contactContainer.appendChild(contactFacebook);
+        // contactContainer.appendChild(contactZalo);
+        contactBox.appendChild(contactNumber);
+        // contactBox.appendChild(contactContainer)
+
+        // end
     }
         for (let i = 0; i < data.length; i++) {
             if (data[i].id===localStorage.getItem('chi-tiet')) createDetail(data[i].hinhAnh, data[i].tieuDe,
@@ -250,6 +266,11 @@
                 data[i].chuTro, data[i].lienHe);
         }
         localStorage.removeItem('chi-tiet');
+
+
+
+
+
     </script>
 
     <!-- Trạng thái đăng nhập -->

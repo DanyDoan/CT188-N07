@@ -552,6 +552,8 @@ let jsonString = `{
 
 
        // localStorage.removeItem("DSPhongTro");
+
+       
         let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
         
         

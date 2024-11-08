@@ -27,6 +27,24 @@
     <!-- CSS riêng của trang chủ -->
     <link rel="stylesheet" href="../css/trungdan.css">
     <title>Trang Chủ</title>
+
+
+    <style>
+        .heart{
+            position: absolute;
+            background-image: url('../image/heart1.png');
+            width: 2em;
+            height: 2em;
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: moveUp 5s linear forwards;
+        }
+        @keyframes moveUp{
+            to{
+                transform: translateY(-500px)
+            }
+        }
+    </style>
 </head>
 
 <body>

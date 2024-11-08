@@ -54,33 +54,19 @@ main{
 }
 
 
-#rent button:hover{
+/* #rent button:hover{
     transition: 0.2s;
     color:white;
     transform: scale(0.95);
-}
+} */
 
-.icon{
-    width: 2em;
-    height: 4em;
-    background-size:contain;
-    background-repeat: no-repeat;
-}
 
 
 #gia, #dienTich, #viTri{
     margin-top:1em;
     display: flex;
 }
-/* .coin{
-    background-image: url('../image/coin.png');
-}
-.area{
-    background-image: url('../image/area.png');
-}
-.location{
-    background-image: url('../image/.png');
-} */
+
  #location-img, #price-img, #area-img{
     border: none;
     width: 2em;
@@ -112,34 +98,66 @@ main{
     width: fit-content;
     align-self: center;
     border:1px solid rgb(0, 0, 0);
-    border-radius: 50px;
+    border-radius: 4em;
     padding:10px;
     background-color: rgb(210, 56, 56);
     text-transform: uppercase;
-    font-size:15px;
+    font-size:1em;
     font-weight: bold;
     color:white;
 }
 
+#contactBtn:hover{
+    transform: scale(0.95);
+}
  /* Contact Box */
- #contactBox{
-    display: none;
-    width: 50em;
-    height: 20em;
-    background-color: rgba(255, 0, 0, 0.516);
-    position: absolute;
-    right:30%;
-    bottom:30%;
- }
 
+#contactBtn:hover .leftSide{
+    opacity: 0.1;
+}
+
+#contactBox{
+    width: 10em;
+    height: fit-content;
+    background-color: rgba(240, 248, 255, 0.776);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0em;
+    opacity: 1;
+    border-radius:10em;
+    display: none;
+}
 
 #contactBtn:hover #contactBox{
-    display:block;
-    width: 50em;
-    height: 20em;
-    background-color: rgba(255, 254, 254, 0.363);
     position: absolute;
-    right:30%;
-    bottom:100%;
+    left: -10%;
+    top:150%;
+    display: flex;
 }
+.phoneNumber{
+    color:red;
+    background-color: rgb(249, 244, 145);
+    padding:0.5em;
+    border-radius: 2em;
+    /* display:block; */
+    /* align-items: center; */
+}
+
+/* #iconContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contactIcon{
+    width: fit-content;
+    height: fit-content;
+}
+
+#facebook-icon, #zalo-icon{
+    width: 3em;
+    border: none;
+} */
 

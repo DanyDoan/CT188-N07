@@ -51,7 +51,7 @@
 }
 .sideBox{
     background-color: rgba(0, 0, 0, 0);
-    width: 20em;
+    width: 100%;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -60,7 +60,9 @@
 }
 
 .ownerName{
-    width: 10em;
+    width: 12em;
+    margin: 0px;
+    padding: 0px;
 }
 .ownerPhoto{
     width: 2em;
@@ -71,7 +73,7 @@
 .favorite{
     display:inline-block;
     position: relative;
-    right:-15em;
+    right:-12em;
     width: 2em;
     height: 2em;
     margin:10px;
@@ -114,7 +116,7 @@
     margin-right: 0.5em;
 }
 .filter-box label{
-    -webkit-text-stroke: 0.3px rgb(2, 2, 2);
+    -webkit-text-stroke: 0.2px rgba(2, 2, 2, 0.888);
     font-size:1.2em;
     margin-left:0.25;
     font-weight: bold;

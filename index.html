@@ -3,48 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overflow Example</title>
+    <title>Heart Animation</title>
     <style>
-        .hidden-overflow {
-            width: 200px;
-            height: 200px;
-            overflow: hidden; /* Hide overflow content */
-            border: 1px solid black;
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: moveUp 5s linear forwards;
         }
-        .scrollable-overflow {
-            width: 200px;
-            height: 200px;
-            overflow: auto; /* Scrollbars appear when needed */
-            border: 1px solid black;
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 25px;
+        }
+
+        @keyframes moveUp {
+            to {
+                transform: translateY(-500px) rotate(-45deg);
+            }
         }
     </style>
 </head>
 <body>
-    <div class="hidden-overflow">
-        This is some text that will overflow and be hidden. This is some text that will overflow and be hidden. This is some text that will overflow and be hidden.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt adipisci temporibus neque dolorum sunt eaque repudiandae in necessitatibus saepe! Non maxime dolorem architecto voluptatem. Natus molestias dolore facere obcaecati quaerat?
-        Accusantium ut repudiandae pariatur quod nostrum nisi rerum alias vitae, voluptas suscipit velit fuga aspernatur voluptate harum aliquam? Commodi non quis nulla corrupti earum, dolorem eveniet fugiat cupiditate ratione velit?
-        Sequi aliquam accusamus distinctio ullam, nulla aliquid in, soluta ex labore dolorum, quisquam saepe similique! Nisi facilis doloribus, fugiat tempore sequi, consequatur quidem veniam sed iste ratione molestias, suscipit beatae.
-        Facilis provident maxime eum ea dolor exercitationem accusantium molestiae nostrum repellat obcaecati. Quia, architecto vel. Rem quam, vitae porro earum aliquam laudantium tempora non! A, neque odit. Unde, odit voluptates.
-        Nam repellendus totam velit, molestias assumenda provident architecto aliquam eius tenetur ut modi molestiae dolore eligendi adipisci nesciunt nisi dolores? Sunt quia rerum laborum unde officiis placeat veritatis dolores laboriosam.
-        Eaque modi autem fugiat labore atque hic quos, dolorum nesciunt nisi voluptas sequi corporis accusamus provident velit voluptates quisquam blanditiis vel debitis rerum exercitationem ab. Assumenda, quo beatae! Cupiditate, corrupti.
-        Velit impedit neque dolorum aliquid debitis accusamus, accusantium atque ducimus necessitatibus unde ad placeat nobis vero sed odio fugiat voluptas consequuntur harum, repellendus minima. Veniam ex et odio! Earum, voluptatem!
-        Officiis, rem nemo accusantium a incidunt, impedit veritatis excepturi sequi inventore ex consequatur adipisci. Voluptate impedit eos sit optio voluptatum ipsam corporis labore et doloremque, veniam placeat dolores aliquid quae?
-        Expedita libero accusamus porro ab perferendis possimus dolore impedit repudiandae dignissimos. Reiciendis, dolor assumenda repellendus, ea voluptate labore, voluptatibus tenetur dolorum cum iste nulla veniam nihil sint culpa. Debitis, porro.
-        Eligendi ducimus ipsam fuga. Amet esse magni assumenda ullam magnam quisquam dolorem quidem enim. Beatae ipsa facere, asperiores dolorem necessitatibus dicta ipsam vero veritatis nesciunt quod ullam vel voluptatem fugit.
-    </div>
-    <div class="scrollable-overflow">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora, quisquam! Consequuntur, sequi ducimus doloribus deleniti pariatur suscipit error natus placeat ea? Illo quae ut earum quibusdam sed dolor ipsa mollitia.
-        Expedita libero velit sit est minus quisquam explicabo officiis vitae dicta, ut ipsam maiores, deleniti at, quis iusto tenetur temporibus voluptatum. Temporibus nemo dolore itaque magnam rerum alias, dicta fugit.
-        Obcaecati aspernatur, quisquam laborum magnam ipsa veritatis provident nobis rerum eveniet facilis! Cumque vel perspiciatis ullam quaerat est aliquam eveniet doloremque incidunt magni facere, mollitia eligendi praesentium tempore fugit laudantium.
-        Dolorum laboriosam perferendis corporis ad molestias iure illo ipsum pariatur, quaerat nam qui incidunt, exercitationem cumque praesentium eaque laudantium est excepturi quidem? Necessitatibus a assumenda repellendus quod animi eveniet iure!
-        Fugiat, ullam iste rerum nulla tenetur id dicta optio porro neque aspernatur aliquid veniam dolorem velit ipsa, cum eveniet perspiciatis. Nobis nam molestias sed at animi voluptatibus, facilis dolor inventore.
-        Excepturi, id voluptates repellat possimus nulla officia impedit ut molestias voluptas maxime doloribus blanditiis suscipit aspernatur quia ratione voluptatum numquam earum amet. Sapiente eum, velit ea nihil unde vitae nisi?
-        Blanditiis sunt, ea rerum tenetur pariatur esse earum sequi aspernatur iste doloribus corporis debitis officiis, distinctio mollitia unde eligendi repudiandae illum iusto itaque ab possimus! Voluptates officiis ut doloremque blanditiis.
-        Repudiandae voluptatem fugiat tenetur rerum debitis, sed ullam dicta maxime deleniti inventore facilis ex officiis magnam error placeat ducimus possimus atque quos vitae a ab. Repudiandae neque temporibus aliquam iste.
-        Facere sint doloremque quisquam repudiandae suscipit explicabo tenetur similique ducimus a maiores vitae quasi aliquid ut non, nemo vel. Eligendi impedit nulla doloremque ut sit accusamus repudiandae sed et aspernatur.
-        Voluptates repellat quisquam repellendus earum velit numquam incidunt cumque fuga reprehenderit maxime fugiat ex dicta quia id iste illum rem quas corporis, hic qui in asperiores nostrum dolore dolores! Fuga.
-        This is some text that will overflow and become scrollable. This is some text that will overflow and become scrollable. This is some text that will overflow and become scrollable.
-    </div>
+    <button onclick="createHeart()">Show Heart</button>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

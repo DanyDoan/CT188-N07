@@ -24,10 +24,10 @@ searching.addEventListener('click',()=>
 // Hàm like/unlike lưu trạng thái like
 function allInOne(){
 // Create an array to store rent information
-if(window.localStorage.getItem('array')===null)
+if(window.localStorage.getItem(localStorage.getItem("user-information")+"array")===null)
     var array=[];
 else
-    var array=JSON.parse(localStorage.getItem('array'));
+    var array=JSON.parse(localStorage.getItem(localStorage.getItem("user-information")+"array"));
 
 
 // Lấy icon trái tim
@@ -91,7 +91,35 @@ function addFav(fav){
         }
         // Đẩy object vào mảng
         array.push(temp);
-        window.localStorage.setItem('array',JSON.stringify(array));
+        window.localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(array));
+
+
+
+
+        // Hiệu ứng thêm =)))
+        function createHeart(){
+            const heart=document.createElement('div');
+            heart.classList.add('heart');
+            return heart;
+        }
+
+        function floatingHeart(){
+            const heart=createHeart();
+
+            const positionX=Math.floor(Math.random()*50);
+            const positionY=Math.floor(Math.random()*100);
+            heart.style.left=positionX+'%';
+            heart.style.top=positionY+'%';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+            heart.remove()}, 10000);
+        }
+        for(let i=0; i<10; i++){
+            setTimeout(() => {
+                
+            floatingHeart()}, 1000);
+        }
 }
 
 // Hàm gỡ yêu thích
@@ -112,7 +140,7 @@ function removeLiked(fav){
         }
         else;
     }
-    window.localStorage.setItem('array',JSON.stringify(array));
+    window.localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(array));
     window.location.reload();
 }
 

@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
-    <!-- <script src="dangky.js"></script>
-    <script src="dangnhap.js"></script> -->
+    <title>Đăng nhập/ Đăng ký</title>
+
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
+    
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <style>
@@ -94,6 +96,8 @@
         container.classList.remove('right-panel-active');
     });
 
+// Đăng ký----------------------------------------------------------------------------
+
     document.querySelector('.sign-up-container form').addEventListener('submit', function(event) {
     event.preventDefault(); // Ngăn chặn form submit để không reload trang
 
@@ -107,12 +111,17 @@
     // Lưu các giá trị vào localStorage
     if (localStorage.getItem(email)===null && localStorage.getItem(name)===null){
         localStorage.setItem(email, JSON.stringify({ name, password}));
+        // alert(localStorage.getItem(email));
         // localStorage.setItem(name, JSON.stringify({ email, password}));
         localStorage.setItem("user-information",email+password);
+        // alert(localStorage.getItem("user-information"))
         window.location.href = 'dienthongtin.html';
         alert('Đăng ký thành công! Thông tin của bạn đã được lưu.');
     } else alert("Email hoặc name của bạn đã tồn tại");    
 });
+
+
+// Đăng nhập-----------------------------------------------------------------------------
 
 document.querySelector('.sign-in-container form').addEventListener('submit', function(event) {
     event.preventDefault(); // Ngăn chặn form submit để không reload trang
@@ -122,7 +131,15 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
     const email = document.querySelector('.sign-in-container input[placeholder="Email"]').value;
     const password = document.querySelector('.sign-in-container input[placeholder="Password"]').value;
 
-    
+
+    // localStorage.setItem('email',"@gmail.com")
+
+    // const btn=document.querySelector('#button')
+    // btn.value='@.com';
+    // const email = btn.value;
+
+    // const getEmail=localStorage.getItem('email');
+
 
     if (email.length===0 || password.length===0){
         return false;
@@ -130,7 +147,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
         if (localStorage.getItem(email)===null) {
             // alert('Email hoặc mật khẩu không đúng!');
             let wrongPassword = document.getElementById("wrongPassword");
-            wrongPassword.textContent = "Mật khẩu hoặc Email không đúng";
+            wrongPassword.textContent = "Tài khoản chưa được đăng ký!";
             return false;
         }
         const savedInfo = localStorage.getItem(email);
