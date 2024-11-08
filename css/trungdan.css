@@ -70,8 +70,8 @@
 }
 .favorite{
     display:inline-block;
-    /* position: relative;
-    right:-40%; */
+    position: relative;
+    right:-15em;
     width: 2em;
     height: 2em;
     margin:10px;
@@ -181,16 +181,51 @@ p{
     margin:20px;
 }
 #pagination button{
-    background-color: rgb(44, 12, 12);
+    background-color: rgb(0, 0, 0);
     margin:5px;
     border-radius: 15%;
+    color:white
 }
 #pagination button:hover{
-    background-color: pink;
+    background-color: rgb(255, 254, 254);
+    color:black;
 }
 
 
 
 
-
+@media (max-width:1200px){
+    *{
+        font-size:10px;
+    }
+    .box:nth-child(1){
+        margin-top: 10px;
+    }
+    .box{
+        flex-direction: column;
+        width: 20em;
+        height: 35em;
+        padding: 5px 5px 5px 5px;
+        margin:10px;
+    }
+    .rentBox{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .real-estate-a{
+        flex-direction: column;
+    }
+    .container{
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        grid-area: 
+            'left'
+            'right'
+        ;
+    }
+    .favorite{
+        right:2em;
+    }
+}
 

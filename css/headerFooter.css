@@ -26,6 +26,7 @@ header{
 }
 nav{
     grid-area: nav;
+    height: 70px;
 }
 main{
     grid-area: main;
@@ -92,6 +93,7 @@ header div a{
     height: 100em;
     background-color: rgba(166, 203, 251, 0.989);
     transform: rotate(45deg) ;
+    background: linear-gradient(rgba(9, 71, 152, 0.989),white);
 }
 .headerCol1{
     left:10px
