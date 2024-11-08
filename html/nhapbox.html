@@ -191,7 +191,7 @@
         </form>
     </div>
     <script>
-        const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+        const savedInfo = localStorage.getItem("user-information");
         console.log(localStorage.getItem(savedInfo + "arrayID"));
         // localStorage.removeItem(savedInfo+"arrayID");
         // localStorage.removeItem("DSPhongTro");
@@ -284,7 +284,7 @@
             });
         } */
         function qlPhongTro(ID) {
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            const savedInfo = localStorage.getItem("user-information");
             let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
             arrID.push(ID);
             localStorage.setItem(savedInfo + "arrayID", JSON.stringify(arrID));

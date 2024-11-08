@@ -151,7 +151,7 @@ button:hover {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .room-item strong {
-    font-size: 15px;
+    font-size: 14px;
 }
 /* Hiệu ứng khi hover vào mục phòng trọ */
 .room-item:hover {
