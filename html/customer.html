@@ -25,10 +25,28 @@
     <!-- CSS riêng của trang Thông tin khách hàng -->
     <link rel="stylesheet" href="../css/customer.css">
     <link rel="stylesheet" href="../css/quangcao.css">
-
+    <link rel="stylesheet" href="../css/selectAVT.css">
+    <script src="../javascript/selectAVT.js"></script>
     <title>Thông Tin Khách Hàng</title>
 </head>
+<style>
+    #selectAVT {
+        position: relative;
+        display: inline-block;
+    }
 
+    #avata-box-cuong {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 10;
+    }
+
+    #selectAVT:hover #avata-box-cuong {
+        display: block;
+    }
+</style>
 <body>
     <!-- Header -->
     <header>
@@ -44,6 +62,7 @@
                 </div>
             </div>
         </div>
+        <script src="../javascript/dislayAVT.js"></script>
         <div class="headerCol1"></div>
         <div class="headerCol2"></div>
         <div class="headerRow1"></div>
@@ -93,7 +112,30 @@
         <div class="left-column">
             <div class="profile-box">
                 <!-- Ảnh đại diện -->
-                <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar">
+                <div id="selectAVT">
+                    <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar" id="anhdaidien">
+                    <div id="avata-box-cuong"!important>
+                        <div class="avatar-picker-cuong"!important>
+                            <h2>Chọn ảnh đại diện</h2>
+                            <div class="avatar-grid-cuong"!important>
+                                <!-- Các ảnh đại diện có thể chọn -->
+                                <img src="../image/avata/boy1.png" alt="boy1" class="avatar-option-cuong">
+                                <img src="../image/avata/boy2.png" alt="boy2" class="avatar-option-cuong">
+                                <img src="../image/avata/boy3.png" alt="boy3" class="avatar-option-cuong">
+                                <img src="../image/avata/boy4.png" alt="boy4" class="avatar-option-cuong">
+                                <img src="../image/avata/boy5.png" alt="boy5" class="avatar-option-cuong">
+                                <img src="../image/avata/boy6.png" alt="boy6" class="avatar-option-cuong">
+                                <img src="../image/avata/woman1.png" alt="woman1" class="avatar-option-cuong">
+                                <img src="../image/avata/woman2.png" alt="woman2" class="avatar-option-cuong">
+                                <img src="../image/avata/woman3.png" alt="woman3" class="avatar-option-cuong">
+                                <img src="../image/avata/woman4.png" alt="woman4" class="avatar-option-cuong">
+                                <img src="../image/avata/woman5.png" alt="woman5" class="avatar-option-cuong">
+                                <img src="../image/avata/woman6.png" alt="woman6" class="avatar-option-cuong">
+                            </div>
+                            <button class="confirm-btn-cuong">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
                 <!-- Thông tin quản lý -->
                 <div class="manager-info">
                     <h2 id="name-profile">Nguyễn Văn A</h2>
@@ -163,7 +205,7 @@
 
        <!-- Hộp quảng cáo -->
     <div class="advertisement-box">
-        <h4>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
+        <h4 style="margin-bottom: 20px;"!important>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
         <div id="roomList">
             <div id="listContainer"></div>
         </div>
@@ -201,6 +243,32 @@
 
     <!-- Trạng thái đăng nhập -->
     <script>
+
+document.querySelectorAll('.avatar-option-cuong').forEach(img => {
+        img.addEventListener('click', function() {
+            document.querySelectorAll('.avatar-option-cuong').forEach(el => el.classList.remove('selected-cuong'));
+            this.classList.add('selected-cuong');
+        });
+    });
+
+    document.querySelector('.confirm-btn-cuong').addEventListener('click', function() {
+        const selectedAvatar = document.querySelector('.avatar-option-cuong.selected-cuong');
+        if (selectedAvatar) {
+            // alert(`Bạn đã chọn ảnh đại diện: ${selectedAvatar.alt}`);
+            let avataImage = localStorage.getItem("user-information");
+            localStorage.setItem(avataImage+"AVT-image-user",selectedAvatar.alt);
+            window.location.reload();
+            // Thêm mã xử lý khi người dùng chọn xong ảnh đại diện, ví dụ như lưu vào server
+        } else {
+            alert('Vui lòng chọn một ảnh đại diện!');
+        }
+    });
+    if (localStorage.getItem("user-information")){
+        let anhdaidien = document.getElementById("anhdaidien");
+    anhdaidien.src = "../image/avata/"+localStorage.getItem(localStorage.getItem("user-information")+"AVT-image-user")+".png";
+    };
+
+
         console.log(localStorage.getItem("DSPhongTro"));
         // Kiểm tra đăng nhập
         if (localStorage.getItem("is-login")) {
@@ -243,7 +311,7 @@
                 birdthday.textContent =userInfo.birthdate;
 
             } else {
-                userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
+                // userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
             }
         }
 
@@ -256,7 +324,7 @@
             listContainer.innerHTML = ""; // Xóa nội dung hiện tại
 
             const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            const savedInfo = localStorage.getItem("user-information");
             let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
 
             arrID.forEach(idPT => {
@@ -312,7 +380,7 @@
             localStorage.setItem("ChiTietPhongTro", JSON.stringify(arr));
 
             // Xóa ID phòng khỏi danh sách của người dùng
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information"));
+            const savedInfo = localStorage.getItem("user-information");
             let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
             arrID = arrID.filter(roomID => roomID !== id);
             localStorage.setItem(savedInfo + "arrayID", JSON.stringify(arrID));
