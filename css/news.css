@@ -84,6 +84,7 @@ hr{
 .header-container {
     display: flex;
     align-items: center;
+    background-color: rgb(222, 144, 115);
 }
 
 .anhdau {
