@@ -34,7 +34,7 @@ else
 const getFav= document.querySelectorAll('.favorite');
 
 // Lưu giữ yêu thích
-likeStatus();
+favStatus();
 
 
 // Bắt sự kiện click vào biểu tượng trái tim (yêu thích)
@@ -106,20 +106,17 @@ function addFav(fav){
         function floatingHeart(){
             const heart=createHeart();
 
-            const positionX=Math.floor(Math.random()*50);
+            const positionX=Math.floor(Math.random()*100);
             const positionY=Math.floor(Math.random()*100);
             heart.style.left=positionX+'%';
             heart.style.top=positionY+'%';
             document.body.appendChild(heart);
 
             setTimeout(() => {
-            heart.remove()}, 10000);
+            heart.remove()}, 2000);
         }
-        for(let i=0; i<10; i++){
-            setTimeout(() => {
-                
-            floatingHeart()}, 1000);
-        }
+        for(let i=0; i<3; i++)      
+            floatingHeart()
 }
 
 // Hàm gỡ yêu thích
@@ -141,11 +138,11 @@ function removeLiked(fav){
         else;
     }
     window.localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(array));
-    window.location.reload();
+    // window.location.reload();
 }
 
 // Lưu trạng thái thích/ không thích
-function likeStatus(){
+function favStatus(){
 
     for(let doubleCheck of getFav){
         // Lấy địa chỉ

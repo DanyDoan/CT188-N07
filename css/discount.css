@@ -53,7 +53,7 @@ main{
 }
 
 .item img.anh {
-    width: 250px;
+    width: 15em;
     height: auto;
     flex-shrink: 0; 
 }
@@ -86,9 +86,5 @@ main{
     .item {
         flex-direction: column; 
         align-items: center; 
-    }
-
-    .item img.anh {
-        width: 100%; 
     }
 }

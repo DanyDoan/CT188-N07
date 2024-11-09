@@ -70,25 +70,19 @@ hr{
 }
 #newspaper-icon {
     font-size: 1em;
-    color: #3b5bb2;
+    color: #ffffff;
     position: relative;
     top: 1px;              
     margin-right: 8px;
   }
-  .content-text {
+.content-text {
     display: flex;
     flex-direction: column; 
     max-width: 40em; 
 }
 
-.header-container {
-    display: flex;
-    align-items: center;
-    background-color: rgb(222, 144, 115);
-}
 
 .anhdau {
-    height: 50px;
     width: auto;
     background: transparent; 
     border: none; 
@@ -100,6 +94,7 @@ hr{
     display: flex;
     align-items: center; 
     width: 100%;
+    height: fit-content;
 }
 
 .header-container {
@@ -110,13 +105,12 @@ hr{
 
 .anhdau, .anhdau1 {
     position: absolute; 
-    max-height: 70px; 
+    max-height: 3em; 
     animation: move 3s forwards; 
 }
 
 .anhdau {
     animation-name: move1; 
-    animation-delay: 1s;
 }
 
 .anhdau1 {
@@ -125,10 +119,10 @@ hr{
 
 @keyframes move1 {
     from {
-        left: -200px; 
+        right: -200px; 
     }
     to {
-        left: 70%; 
+        right: 20%; 
     }
 }
 

@@ -106,7 +106,6 @@
             <div class="container" id="rent">
                 <button id="contactBtn">Liên Hệ Ngay
                     <div id="contactBox">
-                    
                     </div>
                 </button>
                 
@@ -163,18 +162,18 @@
 
         const createGia = document.createElement("div");
         createGia.id = 'gia';
-        createGia.innerHTML = `<img src="../image/price.png" alt="" id="price-img"> ${gia}`;
+        createGia.innerHTML = `<img src="../image/price.png" alt="" class="iconIlustrate"> ${gia}`;
         fragment.appendChild(createGia);
 
         const createdienTich = document.createElement("p");
         createdienTich.id="dienTich";
-        createdienTich.innerHTML =`<img src="../image/area.png" alt="" id="area-img"> ${dienTich}`;
+        createdienTich.innerHTML =`<img src="../image/area.png" alt="" class="iconIlustrate" ${dienTich}`;
         fragment.appendChild(createdienTich);
         // Icon
 
         const createViTri = document.createElement("p");
         createViTri.id = 'viTri';
-        createViTri.innerHTML = `<img src="../image/location.png" alt="" id="location-img"> ${viTri}`;
+        createViTri.innerHTML = `<img src="../image/location.png" alt="" class="iconIlustrate"> ${viTri}`;
         fragment.appendChild(createViTri);
 
         basic.appendChild(fragment);
@@ -190,7 +189,16 @@
 
         const createTrangThai = document.createElement("p");
         createTrangThai.id = 'trangThai';
-        createTrangThai.innerHTML = "Trạng thái: " + trangThai;
+
+        const trangThaiThucTe =document.createElement('span');
+        trangThaiThucTe.innerText=trangThai;
+
+        if(trangThai.toLowerCase().includes("trống"))
+            trangThaiThucTe.style.color="green";
+        else
+            trangThaiThucTe.style.color="red";
+        createTrangThai.innerHTML = "Trạng thái:&nbsp";
+        createTrangThai.appendChild(trangThaiThucTe);
         // fragment.appendChild(createTrangThai);
         leftBox.appendChild(createTrangThai);
 
@@ -219,42 +227,26 @@
 
         realEstate.appendChild(fragment);
         detail.innerHTML += `${moTa}`;
-        detail.innerHTML += `<p>Cách trung tâm thành phố Cần Thơ: ${cachTrungTam}</p>`;
-        detail.innerHTML += `<p>Giá điện: ${giaDien}</p>`;
-        detail.innerHTML += `<p>Giá nước: ${giaNuoc}</p>`;
-        detail.innerHTML += `<p>Chủ trọ: ${chuTro}</p>`;
+        detail.innerHTML += `<p> Cách trung tâm thành phố Cần Thơ: ${cachTrungTam}</p>`;
+        detail.innerHTML += `<p> <img src="../image/electric.png" class="iconIlustrate"> Giá điện: ${giaDien}</p>`;
+        detail.innerHTML += `<p> <img src="../image/water.png" class="iconIlustrate">Giá nước: ${giaNuoc}</p>`;
+        detail.innerHTML += `<p> <img src="../image/owner.png" class="iconIlustrate">Chủ trọ: ${chuTro}</p>`;
         // detail.innerHTML += `<p>Liên hệ: ${lienHe}</p>`;  
         
         
+
         // Tạo hộp liên hệ ăn ké hihi
         const contactBox=document.querySelector('#contactBox');
-       
+
         // Số điện thoại
         const contactNumber=document.createElement('span');
         contactNumber.classList.add('phoneNumber');
         contactNumber.innerHTML="Số điện thoại: "+lienHe;
 
-        // // Box chung chứa icon
-        // const contactContainer=document.createElement('div');
-        // contactContainer.id='iconContainer'
-        // // Icon facebook
-        // const contactFacebook=document.createElement('div');
-        // contactFacebook.classList.add('contactIcon')
-        // // Icon zalo
-        // const contactZalo=document.createElement('div');
-        // contactZalo.classList.add('contactIcon')
 
-        // contactFacebook.innerHTML=`<img src="../image/facebook.png" id="facebook-icon">`;
-        // contactZalo.innerHTML=`<img src="../image/zalo.png" id="zalo-icon">`;
+        contactBox.appendChild(contactNumber);
         
 
-
-        // contactContainer.appendChild(contactFacebook);
-        // contactContainer.appendChild(contactZalo);
-        contactBox.appendChild(contactNumber);
-        // contactBox.appendChild(contactContainer)
-
-        // end
     }
         for (let i = 0; i < data.length; i++) {
             if (data[i].id===localStorage.getItem('chi-tiet')) createDetail(data[i].hinhAnh, data[i].tieuDe,
@@ -272,9 +264,9 @@
 
 
     </script>
-
+    <script src="../javascript/addfav.js"></script>
     <!-- Trạng thái đăng nhập -->
-    <script src="../javascript/displauLogin.js"></script>
+    <script src="../javascript/displayLogin.js"></script>
 </body>
 
 </html>

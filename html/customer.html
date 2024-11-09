@@ -203,7 +203,7 @@
         </div>
     </div>
 
-       <!-- Hộp quảng cáo -->
+       <!-- Hộp trọ đã đăng -->
     <div class="advertisement-box">
         <h4 style="margin-bottom: 20px;"!important>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
         <div id="roomList">
@@ -338,7 +338,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
                             <strong>Giá:</strong> ${room.gia}<br>
                             <strong>Diện Tích:</strong> ${room.dienTich}<br>
                             <strong>Vị Trí:</strong> ${room.vitri}<br>
-                            <strong>Hình Ảnh:</strong> ${room.hinhAnh}<br>
+
                             <strong>Giá Điện:</strong> ${room.giaDien}<br>
                             <strong>Giá Nước:</strong> ${room.giaNuoc}<br>
                             <strong>Cách Trung Tâm:</strong> ${room.cachTrungTam}<br>
@@ -364,13 +364,10 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
                         roomDiv.onclick = () => {
                             capNhatThongTinPTro(roomDiv.id);
                         }
-                        roomDiv.style.marginLeft='20px';
                         listContainer.appendChild(roomDiv);
                     }
                 });
             });
-            listContainer.style.display='flex';
-            listContainer.style.flexDirection='row';
         }
 
         function xoaPhongTro(id) {
@@ -411,13 +408,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
     <!-- Show favorite rent -->
     <script>
 
-        // localStorage.removeItem('array');
-        // alert('đã xóa')
-
-
         var myArray=JSON.parse(localStorage.getItem(localStorage.getItem("user-information")+"array")) || [];
-
-
         function updateFavoriteList(){
         myArray.forEach(rent => {
             const favoritesList=document.querySelector('#favoritesList');
@@ -437,7 +428,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
 
             // Tạo nút xóa trọ yêu thích
             const deleteBtn=document.createElement('button');
-            deleteBtn.innerText="Xóa"
+            deleteBtn.innerText="Xóa";
             deleteBtn.classList.add('deleteFav');
             deleteBtn.addEventListener('click',()=>{
                 for(let i=0 ;i<myArray.length; i++){
@@ -452,7 +443,8 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
                 else;
                 localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(myArray));
                 location.reload();
-            })            
+            }) 
+            
 
             box.appendChild(name);
             box.appendChild(price);
@@ -462,7 +454,19 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
             favoritesList.appendChild(box);
         })
         }
+
+        // Tạo nút xóa hết
+        const deleteAll=document.createElement('button');
+        deleteAll.innerText="Xóa tất cả";
+        deleteAll.classList.add('deleteAll');
+        deleteAll.addEventListener('click',()=>{
+        localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify([]));
+        window.location.reload()
+        })
         
+        const favoritesBox=document.querySelector('.favorites-box');
+        favoritesBox.appendChild(deleteAll);
+
         updateFavoriteList();
     </script>
 

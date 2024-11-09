@@ -31,17 +31,19 @@
 
     <style>
         .heart{
-            position: absolute;
+            position: fixed;
             background-image: url('../image/heart1.png');
-            width: 2em;
-            height: 2em;
+            width: 10em;
+            height: 10em;
             background-size: contain;
             background-repeat: no-repeat;
-            animation: moveUp 5s linear forwards;
+            animation: moveUp 2s linear forwards;
+            opacity: 0.8;
+            z-index: 0;
         }
         @keyframes moveUp{
             to{
-                transform: translateY(-500px)
+                transform:translateY(-1000px)
             }
         }
     </style>

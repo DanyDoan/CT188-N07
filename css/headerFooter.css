@@ -23,10 +23,12 @@ header{
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    z-index: 10;
 }
 nav{
     grid-area: nav;
     height: 70px;
+    z-index: 10;
 }
 main{
     grid-area: main;
@@ -36,7 +38,8 @@ main{
 }
  footer{
     grid-area: footer;
-    background-color: rgba(139, 139, 139, 0.562);
+    background-color: rgba(160, 155, 155, 0.432);
+    z-index: 10;
 }
 
 /* Header */
@@ -113,6 +116,10 @@ header div a{
     padding: 0em;
     right:0px
 }
+
+/* nav */
+
+
 /* Container tổng thể của thanh tìm kiếm */
 .search-bar {
     width: fit-content;
@@ -167,8 +174,9 @@ button:focus {
     color:white;
 }
 nav{
-    background-color: rgba(79, 81, 83, 0);
-    color:white
+    background-color: rgba(255, 255, 255, 0);
+    color:white;
+    
 }
 .nav-a:hover{
     color:blue !important;
