@@ -731,7 +731,7 @@ let jsonString = `{
             displayData(currentPage);
         }
         function clearCheckBox() {
-            const checkboxes = document.querySelectorAll('#price1, #price2, #price3,#area0, #area1, #area2, #area3,#area4,#NinhKieu, #CaiRang, #BinhThuy, #OMon, #PhongDien');
+            const checkboxes = document.querySelectorAll('#price1, #price2, #price3,#price4,#price5,#price6,#area0, #area1, #area2, #area3,#area4,#NinhKieu, #CaiRang, #BinhThuy, #OMon, #PhongDien');
             checkboxes.forEach(checkbox => checkbox.checked = false);
         }       
         function search(event) {

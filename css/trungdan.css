@@ -171,23 +171,37 @@
     scale:1.05;
 }
 
-/* Mục trang */
-#pagination{
+
+/* Phân trang */
+#pagination {
     display: flex;
     justify-content: center;
-    margin:1em;
-}
-#pagination button{
-    background-color: rgb(0, 0, 0);
-    margin:1em;
-    border-radius: 10%;
-    color:white
-}
-#pagination button:hover{
-    background-color: rgb(255, 254, 254);
-    color:black;
+    align-items: center;
+    margin:1em 1em;
+    gap: 8px;
 }
 
+#pagination button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+#pagination button:hover {
+    background-color: #a6c4e4;
+    transform: scale(1.1);
+}
+
+#pagination button.active {
+    background-color: #ffffff;
+    color:black;
+    font-weight: bold;
+}
 
 
 @media (max-width:1200px){

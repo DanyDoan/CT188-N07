@@ -185,21 +185,22 @@
         const rightBox=document.createElement('div');
         rightBox.id='rightBox';
 
-
-
+        // Tạo hiệu ứng màu trạng thái
         const createTrangThai = document.createElement("p");
         createTrangThai.id = 'trangThai';
 
         const trangThaiThucTe =document.createElement('span');
         trangThaiThucTe.innerText=trangThai;
 
+        // Nếu trống thì hiển thị xanh
         if(trangThai.toLowerCase().includes("trống"))
             trangThaiThucTe.style.color="green";
+
+        // Ngược lại thì đỏ
         else
             trangThaiThucTe.style.color="red";
         createTrangThai.innerHTML = "Trạng thái:&nbsp";
         createTrangThai.appendChild(trangThaiThucTe);
-        // fragment.appendChild(createTrangThai);
         leftBox.appendChild(createTrangThai);
 
         const createTienCoc = document.createElement("p");
@@ -264,8 +265,8 @@
 
 
     </script>
-    <script src="../javascript/addfav.js"></script>
-    <!-- Trạng thái đăng nhập -->
+
+    <!-- Set trạng thái đăng nhập -->
     <script src="../javascript/displayLogin.js"></script>
 </body>
 
