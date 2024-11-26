@@ -24,7 +24,7 @@ function login() {
 }
 
 function logout() {
-    localStorage.setItem("is-login", "false");
+    localStorage.removeItem("is-login");
     localStorage.removeItem("user-information");
     window.location.reload();
     updateLoginButtons();

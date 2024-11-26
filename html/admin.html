@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Trị Phòng Trọ</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin-login.css">
+</head>
+
+<body>
+    <div id="login--id">
+        <div class="login-container">
+            <div class="login-box">
+                <h2 style="margin-bottom: 30px;">Đăng Nhập</h2>
+                <form id="login-form">
+                    <div class="textbox">
+                        <label for="username">Tên Đăng Nhập</label>
+                        <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+                    </div>
+                    <div class="textbox">
+                        <label for="password">Mật Khẩu</label>
+                        <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <button type="submit" class="btn-login">Đăng Nhập</button>
+                    <div class="error-message" id="error-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="content-admin">
+        <div class="container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h2>Quản Trị Phòng Trọ</h2>
+                <ul>
+                    <li><a href="../html/main.html">Trang Chủ</a></li>
+                    <li><a href="#">Quản lý Phòng Trọ</a></li>
+                    <li><a href="#">Quản lý Người Thuê</a></li>
+                    <li><a href="#">Thanh Toán</a></li>
+                    <li><a href="#">Cài Đặt</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <header>
+                    <h1>Quản lí tài khoản người dùng</h1>
+                    <button id="logout">Đăng Xuất</button>
+                </header>
+
+                <section>
+                    <h2>Danh Sách Người Dùng</h2>
+                    <table>
+                        <thead>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Giới tính</th>
+                            <th>Ngày sinh</th>
+                            <th>Email</th>
+                            <th>SĐT</th>
+                            <th>Thao tác</th>
+                        </thead>
+                        <tbody id="user-list"></tbody>
+                    </table>
+                    <!-- <button class="add-room">Thêm Phòng</button> -->
+                </section>
+            </div>
+        </div>
+
+    </div>
+    <script src="../javascript/admin.js"></script>
+
+
+</body>
+
+</html>
