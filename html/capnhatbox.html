@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Logo góc trên web -->
-      <link rel="shortcut icon" href="../image/for-rent.png">
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
     <title>Cập nhật thông tin đăng trọ</title>
 </head>
 <style>
@@ -241,27 +241,29 @@
         });
         function displayInforID() {
             let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+
             let infID;
+
             arr.forEach(element => {
                 if (element.id === idCapNhat) {
                     infID = element;
                 }
-                id = document.getElementById("id").value = infID.id;
-                tieuDe = document.getElementById("tieuDe").value = infID.tieuDe;
-                gia = document.getElementById("gia").value = infID.gia;
-                dienTich = document.getElementById("dienTich").value = infID.dienTich;
-                vitri = document.getElementById("vitri").value = infID.vitri;
-                hinhAnh = document.getElementById("hinhAnh").value = infID.hinhAnh;
-                giaDien = document.getElementById("giaDien").value = infID.giaDien;
-                giaNuoc = document.getElementById("giaNuoc").value = infID.giaNuoc;
-                cachTrungTam = document.getElementById("cachTrungTam").value = infID.cachTrungTam;
-                coGac = document.getElementById("coGac").value = infID.coGac;
-                trangThai = document.getElementById("trangThai").value = infID.trangThai;
-                chuTro = document.getElementById("chuTro").value = infID.chuTro;
-                lienHe = document.getElementById("lienHe").value = infID.lienHe;
-                giaDacCoc = document.getElementById("giaDacCoc").value = infID.giaDacCoc;
-                moTa = document.getElementById("moTa").value = infID.moTa;
             });
+            id = document.getElementById("id").value = infID.id;
+            tieuDe = document.getElementById("tieuDe").value = infID.tieuDe;
+            gia = document.getElementById("gia").value = infID.gia;
+            dienTich = document.getElementById("dienTich").value = infID.dienTich;
+            vitri = document.getElementById("vitri").value = infID.vitri;
+            hinhAnh = document.getElementById("hinhAnh").value = infID.hinhAnh;
+            giaDien = document.getElementById("giaDien").value = infID.giaDien;
+            giaNuoc = document.getElementById("giaNuoc").value = infID.giaNuoc;
+            cachTrungTam = document.getElementById("cachTrungTam").value = infID.cachTrungTam;
+            coGac = document.getElementById("coGac").value = infID.coGac;
+            trangThai = document.getElementById("trangThai").value = infID.trangThai;
+            chuTro = document.getElementById("chuTro").value = infID.chuTro;
+            lienHe = document.getElementById("lienHe").value = infID.lienHe;
+            giaDacCoc = document.getElementById("giaDacCoc").value = infID.giaDacCoc;
+            moTa = document.getElementById("moTa").value = infID.moTa;
         }
         window.addEventListener("load", displayInforID);
         // localStorage.removeItem("id-cap-nhat-phong-tro");
