@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Người Thuê</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<style>
+    /* Thêm các phần CSS cho giao diện quản lý người thuê */
+    .main-content table th,
+    .main-content table td {
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    .main-content table th {
+        background-color: #f8f8f8;
+    }
+
+    button.edit,
+    button.delete {
+        padding: 5px 10px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    button.edit {
+        background-color: #FFC107;
+    }
+
+    button.delete {
+        background-color: #DC3545;
+        color: white;
+    }
+
+    button.add-tenant {
+        background-color: #28A745;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    button.add-tenant:hover {
+        background-color: #218838;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Quản Trị Phòng Trọ</h2>
+            <ul>
+                <li><a href="main.html">Trang Chủ</a></li>
+                <li><a href="admin.html">Quản lý Người Dùng</a></li>
+                <li><a href="quanlynguoithue.html">Quản lý Người Thuê</a></li>
+                <li><a href="#">Thanh Toán</a></li>
+                <li><a href="#">Cài Đặt</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1>Quản lí tài khoản người dùng</h1>
+                <button id="logout">Đăng Xuất</button>
+            </header>
+
+            <section>
+                <h2>Danh Sách Phòng Trọ</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Chủ trọ</th>
+                            <th>Diện tích</th>
+                            <th>Vị trí</th>
+                            <th>Giá</th>
+                            <th>Trạng Thái</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ql-ds-Room">
+
+                    </tbody>
+                </table>
+                <!-- <button class="add-tenant">Thêm Người Thuê</button> -->
+            </section>
+        </div>
+    </div>
+
+    <!-- <script src="../javascript/admin.js"></script> -->
+    <script>
+        const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+        let userList = document.getElementById("ql-ds-Room");
+        console.log(localStorage.getItem("userRoom"));
+            let user = JSON.parse(localStorage.getItem(localStorage.getItem("userRoom")+"arrayID")) || [];
+            console.log(user);
+            user.forEach(idPT => {
+                arr.forEach(room => {
+                    let tr = document.createElement("tr");
+                    if (idPT === room.id) {
+                        tr.innerHTML = `
+                        <td>${room.id}</td>
+                        <td>${room.tieuDe}</td>
+                        <td>${room.dienTich}</td>
+                        <td>${room.vitri}</td>
+                        <td>${room.gia}</td>
+                        <td>${room.trangThai}</td>
+                        <td>
+                            <button class="edit">Chi tiết</button>
+                            <button class="delete">Xóa</button>
+                        </td>
+                        
+                        `;
+                        userList.appendChild(tr);
+                    }
+                });
+            });
+
+        // function layID(ID) {
+        //     localStorage.setItem("userRoom", ID);
+        //     window.location.href = "admin1.html";
+        // }
+
+    </script>
+</body>
+
+</html>
