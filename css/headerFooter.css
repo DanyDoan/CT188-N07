@@ -1,6 +1,6 @@
 
 *{
-    font-size:15px;
+    font-size:13px;
 }
 /* Chia địa bàn Header - Nav - Main - Footer */
 body{
@@ -181,6 +181,7 @@ nav{
 .nav-a:hover{
     color:blue !important;
 }
+
 
 
 /* Footer */

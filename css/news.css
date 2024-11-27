@@ -13,7 +13,9 @@ main{
     margin-top: 1em; 
     margin:auto;
 }
-
+.item:nth-child(n){
+    flex-direction: row;
+}
 .item:nth-child(2n){
     flex-direction: row-reverse;
 }
@@ -160,8 +162,9 @@ hr{
     }
     .anh1, .anh2, .anh3,.anh4, .anh5,  .anh6{
         justify-self: center;
-        width: 80%;
+        width: 30%;
         height:30em;
+        background-color: red;
     }
 }
 
