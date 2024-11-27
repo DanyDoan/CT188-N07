@@ -276,7 +276,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
         } else {
             document.body.style.display = "none";
             alert("Truy cập không hợp lệ! Bạn không được phép vào trang này.");
-            window.location.href = "login.html";
+            window.location.href = "main.html";
         }
 
         function logout() {
@@ -396,7 +396,7 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
         }
 
         function capNhatThongTinPTro(id) {
-            localStorage.setItem("id-cap-nhat-phong-tro", id);
+            localStorage.setItem("id-cap-nhat-phong-tro", [id]);
             window.location.href = "capnhatbox.html";
         }
 

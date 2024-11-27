@@ -88,13 +88,13 @@
     //     localStorage.removeItem("page-login")
     // }
 
-    signUpButton.addEventListener('click', () => {
-        container.classList.add('right-panel-active overlay');
-    });
+    // signUpButton.addEventListener('click', () => {
+    //     container.classList.add('right-panel-active overlay');
+    // });
 
-    signInButton.addEventListener('click', () => {
-        container.classList.remove('right-panel-active');
-    });
+    // signInButton.addEventListener('click', () => {
+    //     container.classList.remove('right-panel-active');
+    // });
 
 // Đăng ký----------------------------------------------------------------------------
 
@@ -114,6 +114,9 @@
         // alert(localStorage.getItem(email));
         // localStorage.setItem(name, JSON.stringify({ email, password}));
         localStorage.setItem("user-information",email+password);
+        let arr = JSON.parse(localStorage.getItem("user-management")) || [];
+        arr.push(email+password);
+        localStorage.setItem("user-management",JSON.stringify(arr));
         // alert(localStorage.getItem("user-information"))
         window.location.href = 'dienthongtin.html';
         alert('Đăng ký thành công! Thông tin của bạn đã được lưu.');
