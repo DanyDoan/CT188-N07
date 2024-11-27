@@ -55,8 +55,8 @@
         <div class="sidebar">
             <h2>Quản Trị Phòng Trọ</h2>
             <ul>
-                <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Quản lý Phòng Trọ</a></li>
+                <li><a href="main.html">Trang Chủ</a></li>
+                <li><a href="admin.html">Quản lý Người Dùng</a></li>
                 <li><a href="quanlynguoithue.html">Quản lý Người Thuê</a></li>
                 <li><a href="#">Thanh Toán</a></li>
                 <li><a href="#">Cài Đặt</a></li>
@@ -71,14 +71,15 @@
             </header>
 
             <section>
-                <h2>Danh Sách Tài Khoản Người Dùng</h2>
+                <h2>Danh Sách Phòng Trọ</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Mã Người Thuê</th>
-                            <th>Tên Người Thuê</th>
-                            <th>Phòng Đã Thuê</th>
-                            <th>Ngày Thuê</th>
+                            <th>ID</th>
+                            <th>Chủ trọ</th>
+                            <th>Diện tích</th>
+                            <th>Vị trí</th>
+                            <th>Giá</th>
                             <th>Trạng Thái</th>
                             <th>Thao Tác</th>
                         </tr>
@@ -92,26 +93,40 @@
         </div>
     </div>
 
-    <script src="../javascript/admin.js"></script>
+    <!-- <script src="../javascript/admin.js"></script> -->
     <script>
-    //     const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-    //     let userList = document.getElementById("ql-ds-Room");
+        const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+        let userList = document.getElementById("ql-ds-Room");
+        console.log(localStorage.getItem("userRoom"));
+            let user = JSON.parse(localStorage.getItem(localStorage.getItem("userRoom")+"arrayID")) || [];
+            console.log(user);
+            user.forEach(idPT => {
+                arr.forEach(room => {
+                    let tr = document.createElement("tr");
+                    if (idPT === room.id) {
+                        tr.innerHTML = `
+                        <td>${room.id}</td>
+                        <td>${room.tieuDe}</td>
+                        <td>${room.dienTich}</td>
+                        <td>${room.vitri}</td>
+                        <td>${room.gia}</td>
+                        <td>${room.trangThai}</td>
+                        <td>
+                            <button class="edit">Chi tiết</button>
+                            <button class="delete">Xóa</button>
+                        </td>
+                        
+                        `;
+                        userList.appendChild(tr);
+                    }
+                });
+            });
 
-    //     for (let i = 1; i < arr.length; i++) {
-    //         let tr = document.createElement("tr");
-    //         let user = JSON.parse(localStorage.getItem(arr[i] + "arrayID") || "[]");
-    //         tr.innerHTML = `
-    //         <td>${user.id}</td>
-    //         <td>${user.tieuDe}</td>
-    // `;
-    //         userList.appendChild(tr);
-    //     }
-        
-    //     function layID(ID) {
-    //         localStorage.setItem("userRoom", ID);
-    //         window.location.href = "admin1.html";
-    //     }
-    
+        // function layID(ID) {
+        //     localStorage.setItem("userRoom", ID);
+        //     window.location.href = "admin1.html";
+        // }
+
     </script>
 </body>
 

@@ -65,8 +65,8 @@ for (let i = 1; i < arr.length; i++) {
         <td>${user.email}</td>
         <td>${user.phone}</td>
         <td>
-        <button class="edit" value="a[i]" onclick="layID(this.value)">Chi tiết</button>
-        <button class="delete">Xóa</button>
+            <button class="edit" value="${arr[i]}" onclick="layID(this.value)">Chi tiết</button>
+            <button class="delete">Xóa</button>
         </td>
     `;
     userList.appendChild(tr);
