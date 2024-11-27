@@ -31,15 +31,6 @@ document.getElementById('logout').addEventListener('click', function() {
     window.location.href = 'admin.html';
 });
 
-const deleteButtons = document.querySelectorAll('.delete');
-deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        if (confirm('Bạn có chắc chắn muốn xóa phòng này?')) {
-            // Xử lý xóa phòng
-            alert('Phòng đã được xóa');
-        }
-    });
-});
 
 // const addRoomButton = document.querySelector('.add-room');
 // addRoomButton.addEventListener('click', function() {
@@ -50,11 +41,12 @@ deleteButtons.forEach(button => {
 
 
 let arr = JSON.parse(localStorage.getItem("user-management")) || [];
+
 console.log(arr);
 
 let userList = document.getElementById("user-list");
 
-for (let i = 1; i < arr.length; i++) {
+for (let i = 0; i < arr.length; i++) {
     let tr = document.createElement("tr");
     let user = JSON.parse(localStorage.getItem(arr[i]+"thongTinUser") || "[]");
     tr.innerHTML = `
@@ -62,7 +54,7 @@ for (let i = 1; i < arr.length; i++) {
         <td>${user.name}</td>
         <td>${user.gender}</td>
         <td>${user.birthdate}</td>
-        <td>${user.email}</td>
+        <td id="userEmail">${user.email}</td>
         <td>${user.phone}</td>
         <td>
             <button class="edit" value="${arr[i]}" onclick="layID(this.value)">Chi tiết</button>
@@ -75,5 +67,21 @@ function layID(ID){
     localStorage.setItem("userRoom",ID);
     window.location.href="admin1.html";
 }
+
+// Xóa phòng
+
+const deleteButtons = document.querySelectorAll('.delete');
+deleteButtons.forEach(button => {
+    const email=document.querySelector('#userEmail').textContent;
+    button.addEventListener('click', function() {
+        if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
+            alert(localStorage.getItem("user-information"));
+            alert('mámdamdmsam');
+            localStorage.removeItem(localStorage.getItem("user-information"));
+            alert('eahhhh');
+        }
+        alert("Đã xóa");
+    });
+});
 
 

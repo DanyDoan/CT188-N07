@@ -67,6 +67,7 @@
         </div>
     </div>
 </body>
+<!-- <script>localStorage.clear()</script> -->
 <script>
 
     const signUpButton = document.getElementById('signUp');
@@ -150,7 +151,7 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
         if (localStorage.getItem(email)===null) {
             // alert('Email hoặc mật khẩu không đúng!');
             let wrongPassword = document.getElementById("wrongPassword");
-            wrongPassword.textContent = "Tài khoản chưa được đăng ký!";
+            wrongPassword.textContent = "Email hoặc mật khẩu không đúng!";
             return false;
         }
         const savedInfo = localStorage.getItem(email);

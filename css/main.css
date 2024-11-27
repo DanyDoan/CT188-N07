@@ -241,6 +241,8 @@
         width: 80%;
         height: 35%;
         margin: 0px;
+        justify-self: center;
+        align-self: center;
     }
 }
 

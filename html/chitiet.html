@@ -66,24 +66,21 @@
                     <li class="nav-item">
                         <a class="nav-link nav-a" href="news.html">Tin Tức</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link nav-a" href="discount.html" tabindex="-1" aria-disabled="true">Ưu Đãi</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-a" href="admin.html" tabindex="-1" aria-disabled="true">Quản trị</a>
+                    </li>
                 </ul>
+                <form class="d-flex">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                        <button onclick="search(event)" id="searching">Tìm kiếm</button>
+                    </div>
+                    <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                    <button class="btn btn-outline-success" onclick="search()">Search</button> -->
+                </form>
             </div>
         </div>
     </nav>

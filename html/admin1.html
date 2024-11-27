@@ -57,7 +57,7 @@
             <ul>
                 <li><a href="main.html">Trang Chủ</a></li>
                 <li><a href="admin.html">Quản lý Người Dùng</a></li>
-                <li><a href="quanlynguoithue.html">Quản lý Người Thuê</a></li>
+                <li><a href="#">Quản lý Người Thuê</a></li>
                 <li><a href="#">Thanh Toán</a></li>
                 <li><a href="#">Cài Đặt</a></li>
             </ul>
@@ -95,7 +95,7 @@
 
     <!-- <script src="../javascript/admin.js"></script> -->
     <script>
-        const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+        const arr = JSON.parse(localStorage.getItem("DSPhongTro"))||[];
         let userList = document.getElementById("ql-ds-Room");
         console.log(localStorage.getItem("userRoom"));
             let user = JSON.parse(localStorage.getItem(localStorage.getItem("userRoom")+"arrayID")) || [];
