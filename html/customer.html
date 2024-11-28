@@ -5,28 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-     <!-- Logo góc trên web -->
-     <link rel="shortcut icon" href="../image/for-rent.png">
+    <!-- Logo góc trên web -->
+    <link rel="shortcut icon" href="../image/for-rent.png">
 
-     <!-- Bootstrap -->
-     <link rel="stylesheet" href="../css/bootstrap.css">
-     <link rel="stylesheet" href="../css/default.css.map">
- 
-     <!-- Header & Footer mặc định -->
-     <link rel="stylesheet" href="../css/headerFooter.css">
- 
-     <!-- CSS trạng thái đăng nhập -->
-     <link rel="stylesheet" href="../css/dislayLogin.css">
-     
-     <!-- Check trạng thái đăng nhập -->
-     <script src="../javascript/displayLogin.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/default.css.map">
+
+    <!-- Header & Footer mặc định -->
+    <link rel="stylesheet" href="../css/headerFooter.css">
+
+    <!-- CSS trạng thái đăng nhập -->
+    <link rel="stylesheet" href="../css/dislayLogin.css">
+
+    <!-- Check trạng thái đăng nhập -->
+    <script src="../javascript/displayLogin.js"></script>
 
 
     <!-- CSS riêng của trang Thông tin khách hàng -->
     <link rel="stylesheet" href="../css/customer.css">
     <link rel="stylesheet" href="../css/quangcao.css">
     <link rel="stylesheet" href="../css/selectAVT.css">
-    <script src="../javascript/selectAVT.js"></script>
     <title>Thông Tin Khách Hàng</title>
 </head>
 <style>
@@ -47,6 +46,7 @@
         display: block;
     }
 </style>
+
 <body>
     <!-- Header -->
     <header>
@@ -54,15 +54,30 @@
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
+                <img src="../image/user.png" alt="Avatar" class="avatar-cuong" id="userAvatar"
+                    onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng
+                        xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="window.location.href='loadrent.html'">Đăng
+                        tin</button>
                 </div>
             </div>
         </div>
-        <script src="../javascript/dislayAVT.js"></script>
+        <!-- Hàm hiển thị avatar theo người dùng -->
+        <script>
+            document.getElementById("userAvatar").src = "../image/avata-user.png";
+            if (localStorage.getItem('is-login')) {
+                const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/avatar/" + currentUser.avatar + ".png";
+            }
+            else {
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/user.png";
+            }
+        </script>
         <div class="headerCol1"></div>
         <div class="headerCol2"></div>
         <div class="headerRow1"></div>
@@ -95,7 +110,8 @@
                 </ul>
                 <form class="d-flex">
                     <div class="search-bar">
-                        <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
+                        <input type="text" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..."
+                            onkeydown="handleKeyPress(event)">
                         <button onclick="search(event)" id="searching">Tìm kiếm</button>
                     </div>
                     <!-- <input class="form-control me-2" type="text" aria-label="Search" id="searchInput" placeholder="Nhập từ khóa tìm kiếm..." onkeydown="handleKeyPress(event)">
@@ -104,121 +120,123 @@
             </div>
         </div>
     </nav>
-<main>
-    <div class="container">
-        <!-- Cột bên trái -->
-        <div class="left-column">
-            <div class="profile-box">
-                <!-- Ảnh đại diện -->
-                <div id="selectAVT">
-                    <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar" id="anhdaidien">
-                    <div id="avata-box-cuong"!important>
-                        <div class="avatar-picker-cuong"!important>
-                            <h2>Chọn ảnh đại diện</h2>
-                            <div class="avatar-grid-cuong"!important>
-                                <!-- Các ảnh đại diện có thể chọn -->
-                                <img src="../image/avata/boy1.png" alt="boy1" class="avatar-option-cuong">
-                                <img src="../image/avata/boy2.png" alt="boy2" class="avatar-option-cuong">
-                                <img src="../image/avata/boy3.png" alt="boy3" class="avatar-option-cuong">
-                                <img src="../image/avata/boy4.png" alt="boy4" class="avatar-option-cuong">
-                                <img src="../image/avata/boy5.png" alt="boy5" class="avatar-option-cuong">
-                                <img src="../image/avata/boy6.png" alt="boy6" class="avatar-option-cuong">
-                                <img src="../image/avata/woman1.png" alt="woman1" class="avatar-option-cuong">
-                                <img src="../image/avata/woman2.png" alt="woman2" class="avatar-option-cuong">
-                                <img src="../image/avata/woman3.png" alt="woman3" class="avatar-option-cuong">
-                                <img src="../image/avata/woman4.png" alt="woman4" class="avatar-option-cuong">
-                                <img src="../image/avata/woman5.png" alt="woman5" class="avatar-option-cuong">
-                                <img src="../image/avata/woman6.png" alt="woman6" class="avatar-option-cuong">
+    <main>
+        <div class="container">
+            <!-- Cột bên trái -->
+            <div class="left-column">
+                <div class="profile-box">
+                    <!-- Ảnh đại diện -->
+                    <div id="selectAVT">
+                        <img src="https://via.placeholder.com/120" alt="Avatar" class="avatar" id="anhdaidien">
+                        <div id="avata-box-cuong" !important>
+                            <div class="avatar-picker-cuong" !important>
+                                <h2>Chọn ảnh đại diện</h2>
+                                <div class="avatar-grid-cuong" !important>
+                                    <!-- Các ảnh đại diện có thể chọn -->
+                                    <img src="../image/avatar/boy1.png" alt="boy1" class="avatar-option-cuong">
+                                    <img src="../image/avatar/boy2.png" alt="boy2" class="avatar-option-cuong">
+                                    <img src="../image/avatar/boy3.png" alt="boy3" class="avatar-option-cuong">
+                                    <img src="../image/avatar/boy4.png" alt="boy4" class="avatar-option-cuong">
+                                    <img src="../image/avatar/boy5.png" alt="boy5" class="avatar-option-cuong">
+                                    <img src="../image/avatar/boy6.png" alt="boy6" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman1.png" alt="woman1" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman2.png" alt="woman2" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman3.png" alt="woman3" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman4.png" alt="woman4" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman5.png" alt="woman5" class="avatar-option-cuong">
+                                    <img src="../image/avatar/woman6.png" alt="woman6" class="avatar-option-cuong">
+                                </div>
+                                <button class="confirm-btn-cuong">Xác nhận</button>
                             </div>
-                            <button class="confirm-btn-cuong">Xác nhận</button>
+                        </div>
+                    </div>
+                    <!-- Thông tin quản lý -->
+                    <div class="manager-info">
+                        <h2 id="name-profile">Nguyễn Văn A</h2>
+                        <p id="email-profile">Quản lý phòng trọ</p>
+                        <p id="birdthday">Email: nguyenvana@example.com</p>
+                        <p id="phone-profile">Điện thoại: 0123 456 789</p>
+                    </div>
+                </div>
+                <button class="post-button" onclick="dienThongTin()">Cập nhật thông tin cá nhân</button>
+                <button class="post-button" onclick="themPhongTro()">Đăng Tin</button>
+                <div class="banner-container">
+                    <div class="image-section">
+                        <img src="https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&w=600"
+                            alt="Apartment Image">
+                    </div>
+                    <div class="content-section">
+                        <h2 class="title-text">Căn hộ cao cấp trung tâm thành phố</h2>
+                        <p class="location-text">Địa chỉ: Quận 1, TP. HCM</p>
+                        <p class="price-text">Giá: 3 tỷ VNĐ</p>
+                        <button class="detail-button">Xem Chi Tiết</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cột bên phải -->
+            <div class="right-column">
+                <!-- Div để hiển thị thông tin người dùng đã lưu -->
+                <div id="userInfoDisplay"></div>
+
+                <!-- Hộp thống kê -->
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <span class="stat-title">Lượt thích</span>
+                        <span class="stat-number">1200</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-title">Lượt theo dõi</span>
+                        <span class="stat-number">450</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-title">Số bài đăng</span>
+                        <span class="stat-number">300</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-title">Bài đã theo dõi</span>
+                        <span class="stat-number">50</span>
+                    </div>
+                </div>
+
+                <div class="ad-container">
+                    <div class="real-estate-ad">
+                        <div class="ad-image">
+                            <img src="https://nhadepktv.vn/wp-content/uploads/2022/01/Mau-thiet-ke-nha-pho-lien-ke-768x432.jpg"
+                                alt="House Image">
+                        </div>
+                        <div class="ad-content">
+                            <h2 class="ad-title">Nhà ở cao cấp trung tâm thành phố</h2>
+                            <p class="ad-location">Địa chỉ: Quận 1, TP. HCM</p>
+                            <p class="ad-price">Giá: 2 tỷ VNĐ</p>
+                            <p class="ad-description">Nhà mới, thiết kế hiện đại, tiện nghi đầy đủ. Khu vực an ninh,
+                                giao thông thuận tiện. Sổ đỏ chính chủ.</p>
+                            <button class="ad-button">Xem Chi Tiết</button>
                         </div>
                     </div>
                 </div>
-                <!-- Thông tin quản lý -->
-                <div class="manager-info">
-                    <h2 id="name-profile">Nguyễn Văn A</h2>
-                    <p id="email-profile">Quản lý phòng trọ</p>
-                    <p id="birdthday">Email: nguyenvana@example.com</p>
-                    <p id="phone-profile">Điện thoại: 0123 456 789</p>
-                </div>
-            </div>
-            <button class="post-button" onclick="dienThongTin()">Cập nhật thông tin cá nhân</button>
-            <button class="post-button" onclick="themPhongTro()">Đăng Tin</button>
-            <div class="banner-container">
-                <div class="image-section">
-                    <img src="https://images.pexels.com/photos/1838640/pexels-photo-1838640.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Apartment Image">
-                </div>
-                <div class="content-section">
-                    <h2 class="title-text">Căn hộ cao cấp trung tâm thành phố</h2>
-                    <p class="location-text">Địa chỉ: Quận 1, TP. HCM</p>
-                    <p class="price-text">Giá: 3 tỷ VNĐ</p>
-                    <button class="detail-button">Xem Chi Tiết</button>
-                </div>
+
             </div>
         </div>
 
-        <!-- Cột bên phải -->
-        <div class="right-column">
-            <!-- Div để hiển thị thông tin người dùng đã lưu -->
-            <div id="userInfoDisplay"></div>
-            <!-- <button onclick="dienThongTin()">Cập nhật thông tin</button>
-            <button onclick="logout()">Đăng xuất</button> -->
-            <!-- Hộp thống kê -->
-            <div class="stats-box">
-                <div class="stat-item">
-                    <span class="stat-title">Lượt thích</span>
-                    <span class="stat-number">1200</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-title">Lượt theo dõi</span>
-                    <span class="stat-number">450</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-title">Số bài đăng</span>
-                    <span class="stat-number">300</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-title">Bài đã theo dõi</span>
-                    <span class="stat-number">50</span>
-                </div>
+        <!-- Hộp trọ đã đăng -->
+        <div class="advertisement-box">
+            <h4 style="margin-bottom: 20px;" !important>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
+            <div id="roomList">
+                <div id="listContainer"></div>
             </div>
+        </div>
 
-            <div class="ad-container">
-                <div class="real-estate-ad">
-                    <div class="ad-image">
-                        <img src="https://nhadepktv.vn/wp-content/uploads/2022/01/Mau-thiet-ke-nha-pho-lien-ke-768x432.jpg" alt="House Image">
-                    </div>
-                    <div class="ad-content">
-                        <h2 class="ad-title">Nhà ở cao cấp trung tâm thành phố</h2>
-                        <p class="ad-location">Địa chỉ: Quận 1, TP. HCM</p>
-                        <p class="ad-price">Giá: 2 tỷ VNĐ</p>
-                        <p class="ad-description">Nhà mới, thiết kế hiện đại, tiện nghi đầy đủ. Khu vực an ninh, giao thông thuận tiện. Sổ đỏ chính chủ.</p>
-                        <button class="ad-button">Xem Chi Tiết</button>
-                    </div>
-                </div>
+
+        <!-- Khung danh sách tin yêu thích -->
+        <div class="favorites-box">
+            <h4>DANH SÁCH TIN YÊU THÍCH</h4>
+            <div id="favoritesList">
+                <!-- Thêm các mục yêu thích khác ở đây -->
             </div>
-
         </div>
-    </div>
 
-       <!-- Hộp trọ đã đăng -->
-    <div class="advertisement-box">
-        <h4 style="margin-bottom: 20px;"!important>DANH SÁCH PHÒNG TRỌ ĐÃ ĐĂNG TIN</h4>
-        <div id="roomList">
-            <div id="listContainer"></div>
-        </div>
-    </div>
-
-
-    <!-- Khung danh sách tin yêu thích -->
-    <div class="favorites-box">
-        <h4>DANH SÁCH TIN YÊU THÍCH</h4>
-        <div id="favoritesList">
-            <!-- Thêm các mục yêu thích khác ở đây -->
-        </div>
-    </div>
-
-</main>
+    </main>
     <footer>
         <div class="footerBox">
             <h3>Liên Kết</h3>
@@ -238,36 +256,53 @@
         </div>
     </footer>
 
-
-    <!-- Trạng thái đăng nhập -->
+    <!-- Khởi tạo avatar -->
     <script>
-
-document.querySelectorAll('.avatar-option-cuong').forEach(img => {
-        img.addEventListener('click', function() {
-            document.querySelectorAll('.avatar-option-cuong').forEach(el => el.classList.remove('selected-cuong'));
-            this.classList.add('selected-cuong');
+        document.querySelectorAll('.avatar-option-cuong').forEach(img => {
+            img.addEventListener('click', function () {
+                document.querySelectorAll('.avatar-option-cuong').forEach(el => el.classList.remove('selected-cuong'));
+                this.classList.add('selected-cuong');
+            });
         });
-    });
+    </script>
+    <script>
+        // Truy cập đến cá kho
+        
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var userData = JSON.parse(localStorage.getItem('userData')) || [];
+        var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
+        var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
-    document.querySelector('.confirm-btn-cuong').addEventListener('click', function() {
-        const selectedAvatar = document.querySelector('.avatar-option-cuong.selected-cuong');
-        if (selectedAvatar) {
-            // alert(`Bạn đã chọn ảnh đại diện: ${selectedAvatar.alt}`);
-            let avataImage = localStorage.getItem("user-information");
-            localStorage.setItem(avataImage+"AVT-image-user",selectedAvatar.alt);
-            window.location.reload();
-            // Thêm mã xử lý khi người dùng chọn xong ảnh đại diện, ví dụ như lưu vào server
-        } else {
-            alert('Vui lòng chọn một ảnh đại diện!');
+        // Lấy ảnh đại diện
+        const userAVT = document.getElementById("anhdaidien");
+        userAVT.src = '../image/avatar/' + currentUser.avatar + '.png';
+
+        // Hàm update userData
+        function updateUserData(email, property, change) {
+            const userData = JSON.parse(localStorage.getItem('userData'));
+            userData.some((user, index) => {
+                if (user.email == email) {
+                    currentUser[property] = change;
+                    userData[index] = currentUser;
+                    return true;
+                }
+            })
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem('userData', JSON.stringify(userData));
+            location.reload();
         }
-    });
-    if (localStorage.getItem("user-information")){
-        let anhdaidien = document.getElementById("anhdaidien");
-        anhdaidien.src = "../image/avata/"+localStorage.getItem(localStorage.getItem("user-information")+"AVT-image-user")+".png";
-    };
 
 
-        console.log(localStorage.getItem("DSPhongTro"));
+        // Chọn avatar
+        document.querySelector('.confirm-btn-cuong').addEventListener('click', function () {
+            const selectedAvatar = document.querySelector('.avatar-option-cuong.selected-cuong');
+            updateUserData(currentUser.email, 'avatar', selectedAvatar.alt);
+        });
+        if (localStorage.getItem('is-login')) {
+            let anhdaidien = document.getElementById("anhdaidien");
+            anhdaidien.src = "../image/avatar/" + currentUser.avatar + ".png";
+        };
+
         // Kiểm tra đăng nhập
         if (localStorage.getItem("is-login")) {
             document.body.style.display = "block";
@@ -279,34 +314,23 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
 
         function logout() {
             localStorage.removeItem("is-login");
-            localStorage.removeItem("user-information");
+            localStorage.removeItem("currentUser");
             window.location.href = "login.html";
         }
 
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
-            const keyInfo = localStorage.getItem("user-information");
-            const savedInfo = localStorage.getItem(keyInfo + "thongTinUser");
 
             // Kiểm tra xem có dữ liệu trong localStorage không
-            if (savedInfo) {
-                const userInfo = JSON.parse(savedInfo);
-                // userInfoDisplay.innerHTML = `
-                //     <h4>Thông tin người dùng:</h4>
-                //     <p><strong>Họ và Tên:</strong> ${userInfo.name}</p>
-                //     <p><strong>Email:</strong> ${userInfo.email}</p>
-                //     <p><strong>Số Điện Thoại:</strong> ${userInfo.phone}</p>
-                //     <p><strong>Giới Tính:</strong> ${userInfo.gender === "male" ? "Nam" : "Nữ"}</p>
-                //     <p><strong>Ngày Sinh:</strong> ${userInfo.birthdate}</p>
-                // `;
+            if (currentUser) {
                 let nameProfile = document.getElementById("name-profile");
                 let emailProfile = document.getElementById("email-profile");
                 let phoneProfile = document.getElementById("phone-profile");
                 let birdthday = document.getElementById("birdthday");
-                nameProfile.textContent = userInfo.name;
-                emailProfile.textContent = userInfo.email;
-                phoneProfile.textContent = userInfo.phone;
-                birdthday.textContent =userInfo.birthdate;
+                nameProfile.textContent = currentUser.name;
+                emailProfile.textContent = currentUser.email;
+                phoneProfile.textContent = currentUser.phone;
+                birdthday.textContent = currentUser.birthdate;
 
             } else {
                 // userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
@@ -314,83 +338,84 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
         }
 
         function dienThongTin() {
-            window.location.href = "capnhat.html";
+            window.location.href = "changeuserinfor.html";
         }
+
+
+
+
 
         function displayRooms() {
             const listContainer = document.getElementById("listContainer");
             listContainer.innerHTML = ""; // Xóa nội dung hiện tại
+            // Lấy dữ liệu mới
+            currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-            const arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-            const savedInfo = localStorage.getItem("user-information");
-            let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
 
-            arrID.forEach(idPT => {
-                arr.forEach(room => {
-                    if (idPT === room.id) {
-                        const roomDiv = document.createElement("div");
-                        roomDiv.classList.add("room-item");
-                        roomDiv.innerHTML = `
-                            <strong>ID:</strong> ${room.id}<br>
-                            <strong>Tiêu Đề:</strong> ${room.tieuDe}<br>
-                            <strong>Giá:</strong> ${room.gia}<br>
-                            <strong>Diện Tích:</strong> ${room.dienTich}<br>
-                            <strong>Vị Trí:</strong> ${room.vitri}<br>
+            currentUser.myRent.forEach(rent => {
+                const roomDiv = document.createElement("div");
+                roomDiv.classList.add("room-item");
+                roomDiv.innerHTML = `
+                            <strong>ID:</strong> ${rent.id}<br>
+                            <strong>Tiêu Đề:</strong> ${rent.tieuDe}<br>
+                            <strong>Giá:</strong> ${rent.gia}<br>
+                            <strong>Diện Tích:</strong> ${rent.dienTich}<br>
+                            <strong>Vị Trí:</strong> ${rent.vitri}<br>
 
-                            <strong>Giá Điện:</strong> ${room.giaDien}<br>
-                            <strong>Giá Nước:</strong> ${room.giaNuoc}<br>
-                            <strong>Cách Trung Tâm:</strong> ${room.cachTrungTam}<br>
-                            <strong>Có Gác:</strong> ${room.coGac}<br>
-                            <strong>Trạng Thái:</strong> ${room.trangThai}<br>
-                            <strong>Chủ Trọ:</strong> ${room.chuTro}<br>
-                            <strong>Liên Hệ:</strong> ${room.lienHe}<br>
-                            <strong>Giá Đặt Cọc:</strong> ${room.giaDacCoc}<br>
-                            <strong>Mô Tả:</strong> ${room.moTa}
+                            <strong>Giá Điện:</strong> ${rent.giaDien}<br>
+                            <strong>Giá Nước:</strong> ${rent.giaNuoc}<br>
+                            <strong>Cách Trung Tâm:</strong> ${rent.cachTrungTam}<br>
+                            <strong>Có Gác:</strong> ${rent.coGac}<br>
+                            <strong>Trạng Thái:</strong> ${rent.trangThai}<br>
+                            <strong>Chủ Trọ:</strong> ${rent.chuTro}<br>
+                            <strong>Liên Hệ:</strong> ${rent.lienHe}<br>
+                            <strong>Giá Đặt Cọc:</strong> ${rent.giaDacCoc}<br>
+                            <strong>Mô Tả:</strong> ${rent.moTa}
                         `;
 
-                        // Thêm nút Xóa
-                        const deleteBtn = document.createElement("button");
-                        deleteBtn.textContent = "Xóa";
-                        deleteBtn.classList.add("delete-btn");
-                        deleteBtn.onclick = (e) => {
-                            e.stopPropagation(); // Ngăn click vào phòng
-                            xoaPhongTro(room.id);
-                        };
+                // Thêm nút Xóa
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Xóa";
+                deleteBtn.classList.add("delete-btn");
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation(); // Ngăn click vào phòng
+                    xoaPhongTro(rent.id);
+                };
 
-                        roomDiv.appendChild(deleteBtn);
-                        roomDiv.id = room.id;
-                        roomDiv.onclick = () => {
-                            capNhatThongTinPTro(roomDiv.id);
-                        }
-                        listContainer.appendChild(roomDiv);
-                    }
-                });
-            });
+                roomDiv.appendChild(deleteBtn);
+                roomDiv.id = rent.id;
+                roomDiv.onclick = () => {
+                    capNhatThongTinPTro(roomDiv.id);
+                }
+                listContainer.appendChild(roomDiv);
+            }
+            );
         }
-
         function xoaPhongTro(id) {
-            // Xóa phòng trọ khỏi mảng và localStorage
-            let arr = JSON.parse(localStorage.getItem("ChiTietPhongTro")) || [];
-            arr = arr.filter(room => room.id !== id);
-            localStorage.setItem("ChiTietPhongTro", JSON.stringify(arr));
-
             // Xóa ID phòng khỏi danh sách của người dùng
-            const savedInfo = localStorage.getItem("user-information");
-            let arrID = JSON.parse(localStorage.getItem(savedInfo + "arrayID")) || [];
-            arrID = arrID.filter(roomID => roomID !== id);
-            localStorage.setItem(savedInfo + "arrayID", JSON.stringify(arrID));
-
+            currentUser.myRent = currentUser.myRent.filter(roomID => roomID.id !== id);
             // Xóa ID khỏi danh sách DSPhongTro
-            let DSPhongTro = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-            DSPhongTro = DSPhongTro.filter(room => room.id !== id);
-            localStorage.setItem("DSPhongTro", JSON.stringify(DSPhongTro));
+            
+            DSPhongTro.forEach((rent, index) => {
+                if (rent.id == id){
+                    DSPhongTro.splice(index,1);
+                }
+            })
+            userData.forEach((user, index) => {
+                if (user.email == currentUser.email)
+                    userData[index] = currentUser;
+            })
 
+            // Cập nhật kho
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem('DSPhongTro', JSON.stringify(DSPhongTro));
+            localStorage.setItem('userData', JSON.stringify(userData));
             // Cập nhật lại danh sách phòng trọ
             displayRooms();
         }
 
         function themPhongTro() {
-            window.location.href = "../html/nhapbox.html";
+            window.location.href = "../html/loadrent.html";
         }
 
         function capNhatThongTinPTro(id) {
@@ -405,64 +430,77 @@ document.querySelectorAll('.avatar-option-cuong').forEach(img => {
 
     <!-- Show favorite rent -->
     <script>
+        // Truy cập đến cá kho
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var userData = JSON.parse(localStorage.getItem('userData')) || [];
+        var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
+        var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];;
 
-        var myArray=JSON.parse(localStorage.getItem(localStorage.getItem("user-information")+"array")) || [];
-        function updateFavoriteList(){
-        myArray.forEach(rent => {
-            const favoritesList=document.querySelector('#favoritesList');
-            // Create box
-            const box=document.createElement('div');
-            box.classList.add('favorite-item');
+        function updateFavoriteList() {
+            currentUser.favRent.forEach(rent => {
 
-            // Khởi tạo 
-            const name=document.createElement('h5');
-            const price=document.createElement('p');
-            const address=document.createElement('p');
+                const favoritesList = document.querySelector('#favoritesList');
+                // Create box
+                const box = document.createElement('div');
+                box.classList.add('favorite-item');
 
-            // Đẩy thông tin vào
-            name.innerText=rent.name;
-            price.innerText=rent.price;
-            address.innerText=rent.address;
+                // Khởi tạo 
+                const name = document.createElement('h5');
+                const price = document.createElement('p');
+                const address = document.createElement('p');
 
-            // Tạo nút xóa trọ yêu thích
-            const deleteBtn=document.createElement('button');
-            deleteBtn.innerText="Xóa";
-            deleteBtn.classList.add('deleteFav');
-            deleteBtn.addEventListener('click',()=>{
-                for(let i=0 ;i<myArray.length; i++){
-                    if(myArray[i].address===rent.address){
-                        myArray.splice(i,1);  
-                        break;
+                // Đẩy thông tin vào
+                name.innerText = rent.name;
+                price.innerText = rent.price;
+                address.innerText = rent.address;
+
+                // Tạo nút xóa trọ yêu thích
+                const deleteBtn = document.createElement('button');
+                deleteBtn.innerText = "Xóa";
+                deleteBtn.classList.add('deleteFav');
+                deleteBtn.addEventListener('click', () => {
+                    for (let i = 0; i < currentUser.favRent.length; i++) {
+                        if (currentUser.favRent[i].id === rent.id) {
+                            currentUser.favRent.splice(i, 1);
+                            break;
+                        }
+                        else;
                     }
+                    if (currentUser.favRent[0] === null)
+                        currentUser.favRent = [];
                     else;
-                }
-                if(myArray[0]===null)
-                    myArray=[];
-                else;
-                localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify(myArray));
-                location.reload();
-            }) 
-            
+                    userData.some((user, index) => {
+                        if (user.email == currentUser.email) {
+                            userData[index]=currentUser;
+                            return true;
+                        }
+                    })
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                    location.reload();
+                })
 
-            box.appendChild(name);
-            box.appendChild(price);
-            box.appendChild(address);
-            box.appendChild(deleteBtn);
 
-            favoritesList.appendChild(box);
-        })
+                box.appendChild(name);
+                box.appendChild(price);
+                box.appendChild(address);
+                box.appendChild(deleteBtn);
+
+                favoritesList.appendChild(box);
+            })
         }
 
         // Tạo nút xóa hết
-        const deleteAll=document.createElement('button');
-        deleteAll.innerText="Xóa tất cả";
+        const deleteAll = document.createElement('button');
+        deleteAll.innerText = "Xóa tất cả";
         deleteAll.classList.add('deleteAll');
-        deleteAll.addEventListener('click',()=>{
-        localStorage.setItem(localStorage.getItem("user-information")+"array",JSON.stringify([]));
-        window.location.reload()
+        deleteAll.addEventListener('click', () => {
+            currentUser.favRent=[];
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            window.location.reload()
         })
-        
-        const favoritesBox=document.querySelector('.favorites-box');
+
+        const favoritesBox = document.querySelector('.favorites-box');
         favoritesBox.appendChild(deleteAll);
 
         updateFavoriteList();

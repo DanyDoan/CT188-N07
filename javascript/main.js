@@ -551,221 +551,227 @@ let jsonString = `{
 
 
 
-       // localStorage.removeItem("DSPhongTro");
+// localStorage.removeItem("DSPhongTro");
 
-       
-        let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
-        
-        
-
-        let data = JSON.parse(jsonString).PhongTro;
-        localStorage.setItem('DuLieuTro',JSON.parse(jsonString).PhongTro)
-        for (let i=0;i<arr.length;i++){
-            data.push(arr[i]);
-        }
-
-        localStorage.setItem("ChiTietPhongTro", JSON.stringify(data));
-        console.log(localStorage.getItem("ChiTietPhongTro"));
-
-        
-
-        let filteredData = data;
-        let currentPage = 1;
-        const itemsPerPage = 8; // Số phòng trọ trên mỗi trang
-
-        function createBox(name, gia, vitri, hinhAnh, dienTich, id, chuTro) {
-            const box = document.createElement('div');
-            box.classList.add('box');
-            box.value = id;
-            box.onclick = () => {
-                ChiTiet(box.value); // Gọi hàm ChiTiet và truyền id
-            };
-
-            const anhTro = document.createElement('img');
-            anhTro.src = hinhAnh;
-            anhTro.alt = 'Hình phòng trọ';
-
-            const infoDiv = document.createElement('div');
-            infoDiv.classList.add('inforDiv')
-
-            const h4 = document.createElement('h4');
-            h4.textContent = name;
-
-            const pInfo = document.createElement('p');
-            pInfo.textContent = gia + " - " + dienTich;
-
-            const pPosition = document.createElement('p');
-            pPosition.textContent = vitri;
-
-            // tạo hộp avt-tên    favourite
-            const sideBox=document.createElement('div');
-
-            // // Thêm class vào sideBox cho dễ CSS
-            sideBox.classList.add('sideBox');
-        
-
-            // Tạo ảnh
-            const photo= document.createElement('img');
-            photo.src="../image/user.png";
-            photo.classList.add('ownerPhoto');
-
-            // Lấy tên chủ trọ
-            const owner =document.createElement('p');
-            owner.textContent= chuTro;
-            owner.classList.add('ownerName');
-
-            // Tạo chức năng favorite
-            const fav=document.createElement('img');
-            fav.src="../image/heart0.png";
-            fav.classList.add('favorite');
-            sideBox.appendChild(photo);
-            sideBox.appendChild(owner);
-            sideBox.appendChild(fav);
-
-            infoDiv.appendChild(h4);
-            infoDiv.appendChild(pInfo);
-            infoDiv.appendChild(pPosition);
-            infoDiv.appendChild(sideBox);
-
-            box.appendChild(anhTro);
-            box.appendChild(infoDiv);
-
-            // Thêm owner và favorite
-            box
+// Lấy dữ liệu từ trọ người dùng đã đăng
+const userRent = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
 
 
-            document.getElementById('danhSachTro').appendChild(box);
-        }
-        function ChiTiet(value) {
-            localStorage.setItem("chi-tiet", value);
-            window.location.href = "../html/chitiet.html";
-        }
-        
+const DuLieuTro = JSON.parse(jsonString).PhongTro;
+for (let i = 0; i < userRent.length; i++) {
+    DuLieuTro.push(userRent[i]);
+}
 
-        function displayData(page) {
-            document.getElementById('danhSachTro').innerHTML = '';
-            const start = (page - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const paginatedData = filteredData.slice(start, end);
+// Cập nhật lại kho
+localStorage.setItem('DuLieuTro', JSON.stringify(DuLieuTro))
+// localStorage.setItem("ChiTietPhongTro", JSON.stringify(DuLieuTro));
 
-            paginatedData.forEach(phongTro => {
-                createBox(phongTro.tieuDe, phongTro.gia, phongTro.vitri,
-                    phongTro.hinhAnh, phongTro.dienTich, phongTro.id, phongTro.chuTro);
-            });
+let filteredData = DuLieuTro;
+let currentPage = 1;
+const itemsPerPage = 8; // Số phòng trọ trên mỗi trang
 
-            setupPagination();
-        }
-        
+function createBox(name, gia, vitri, hinhAnh, dienTich, id, chuTro) {
+    const box = document.createElement('div');
+    box.classList.add('box');
+    box.value = id;
+    box.onclick = () => {
+        ChiTiet(box.value); // Gọi hàm ChiTiet và truyền id
+    };
 
-        function setupPagination() {
-            const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-            const paginationDiv = document.getElementById('pagination');
-            paginationDiv.innerHTML = '';
+    const anhTro = document.createElement('img');
+    anhTro.src = hinhAnh;
+    anhTro.alt = 'Hình phòng trọ';
 
-            for (let i = 1; i <= totalPages; i++) {
-                const button = document.createElement('button');
-                button.textContent = i;
-                button.onclick = () => {
-                    currentPage = i;
-                    displayData(currentPage);
-                };
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('inforDiv')
 
-                if (i === currentPage) {
-                    button.classList.add('active');
-                }
+    const h4 = document.createElement('h4');
+    h4.textContent = name;
 
-                paginationDiv.appendChild(button);
-            }
-        }
-        
-        function filterData() {
-            const price1 = document.getElementById('price1').checked;
-            const price2 = document.getElementById('price2').checked;
-            const price3 = document.getElementById('price3').checked;
-            const price4 = document.getElementById('price4').checked;
-            const price5 = document.getElementById('price5').checked;
-            const price6 = document.getElementById('price6').checked;
+    const pInfo = document.createElement('p');
+    pInfo.textContent = gia + " - " + dienTich;
 
-            const area0 = document.getElementById('area0').checked;
-            const area1 = document.getElementById('area1').checked;
-            const area2 = document.getElementById('area2').checked;
-            const area3 = document.getElementById('area3').checked;
-            const area4 = document.getElementById('area4').checked;
+    const pPosition = document.createElement('p');
+    pPosition.textContent = vitri;
 
-            const NinhKieu = document.getElementById('NinhKieu').checked;
-            const CaiRang = document.getElementById('CaiRang').checked;
-            const BinhThuy = document.getElementById('BinhThuy').checked;
-            const PhongDien = document.getElementById('PhongDien').checked;
-            const OMon = document.getElementById('OMon').checked;
+    // Gắn id vào mỗi phòng để sao này tiện đối chiếu
+    const identify = document.createElement('h5');
+    identify.id = id;
+    identify.classList.add('identifyCode');
+    identify.innerHTML = id
+    identify.style.display = 'none';
+    identify.style.position = 'absolute';
 
-            filteredData = data.filter(phongTro => {
-                const price = parseFloat(phongTro.gia);
-                const area = parseFloat(phongTro.dienTich);
+    // tạo hộp avt-tên    favourite
+    const sideBox = document.createElement('div');
 
-                const matchPrice = (price1 && price < 1) ||
-                    (price2 && price >= 1 && price <= 2) ||
-                    (price3 && price >= 2 && price <= 3) ||
-                    (price4 && price >= 3 && price <= 4) ||
-                    (price5 && price >= 4 && price <= 5) ||
-                    (price6 && price > 5) ||
-                    (!price1 && !price2 && !price3 && !price4 && !price5 && !price6);
+    // // Thêm class vào sideBox cho dễ CSS
+    sideBox.classList.add('sideBox');
 
-                const matchSize = (area0 && area > 0 && area < 20) ||
-                    (area1 && area >= 20 && area <= 30) ||
-                    (area2 && area >= 30 && area <= 40) ||
-                    (area3 && area >= 40 && area <= 50) ||
-                    (area4 && area >= 50) ||
-                    (!area0 && !area1 && !area2 && !area3 && !area4);
 
-                const matchLocation = (NinhKieu && phongTro.vitri.includes('Quận Ninh Kiều')) ||
-                    (CaiRang && phongTro.vitri.includes('Quận Cái Răng')) ||
-                    (BinhThuy && phongTro.vitri.includes('Quận Bình Thủy')) ||
-                    (PhongDien && phongTro.vitri.includes('Huyện Phong Điền')) ||
-                    (OMon && phongTro.vitri.includes('Quận Ô Môn')) ||
-                    (!NinhKieu && !CaiRang && !BinhThuy && !OMon && !PhongDien);
+    // Tạo ảnh
+    const photo = document.createElement('img');
+    photo.src = "../image/user.png";
+    photo.classList.add('ownerPhoto');
 
-                return matchPrice && matchSize && matchLocation;
-            });
+    // Lấy tên chủ trọ
+    const owner = document.createElement('p');
+    owner.textContent = chuTro;
+    owner.classList.add('ownerName');
 
-            currentPage = 1;
+    // Tạo chức năng favorite
+    const fav = document.createElement('img');
+    fav.src = "../image/heart0.png";
+    fav.classList.add('favorite');
+    sideBox.appendChild(photo);
+    sideBox.appendChild(owner);
+    sideBox.appendChild(fav);
+
+    infoDiv.appendChild(h4);
+    infoDiv.appendChild(pInfo);
+    infoDiv.appendChild(pPosition);
+    infoDiv.appendChild(sideBox);
+
+    box.appendChild(anhTro);
+    box.appendChild(infoDiv);
+    box.appendChild(identify);
+    // Thêm owner và favorite
+    box
+
+
+    document.getElementById('danhSachTro').appendChild(box);
+}
+
+function ChiTiet(rentId) {
+    localStorage.setItem("idChiTiet", JSON.stringify(rentId));
+    window.location.href = "../html/chitiet.html";
+}
+
+
+function displayData(page) {
+    document.getElementById('danhSachTro').innerHTML = '';
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedData = filteredData.slice(start, end);
+
+    paginatedData.forEach(phongTro => {
+        createBox(phongTro.tieuDe, phongTro.gia, phongTro.vitri,
+            phongTro.hinhAnh, phongTro.dienTich, phongTro.id, phongTro.chuTro);
+    });
+
+    setupPagination();
+}
+
+
+function setupPagination() {
+    const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    const paginationDiv = document.getElementById('pagination');
+    paginationDiv.innerHTML = '';
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.onclick = () => {
+            currentPage = i;
             displayData(currentPage);
-        }
-        function clearCheckBox() {
-            const checkboxes = document.querySelectorAll('#price1, #price2, #price3,#price4,#price5,#price6,#area0, #area1, #area2, #area3,#area4,#NinhKieu, #CaiRang, #BinhThuy, #OMon, #PhongDien');
-            checkboxes.forEach(checkbox => checkbox.checked = false);
-        }       
-        function search(event) {
-            event.preventDefault(); // Ngăn form bị submit và tải lại trang
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            filteredData = data.filter(phongTro =>
-                phongTro.tieuDe.toLowerCase().includes(searchInput) ||
-                phongTro.gia.toLowerCase().includes(searchInput) ||
-                phongTro.dienTich.toLowerCase().includes(searchInput) ||
-                phongTro.vitri.toLowerCase().includes(searchInput)
-            );
-            currentPage = 1;
-            displayData(currentPage);
-        }
-        
-        
-        displayData(currentPage);
+        };
 
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                search();
-            }
+        if (i === currentPage) {
+            button.classList.add('active');
         }
 
+        paginationDiv.appendChild(button);
+    }
+}
 
-        // PHẦN ĐĂNG NHÂP VÀ ĐĂNG KÝ
-        function dangnhap() {
-            // localStorage.setItem("page-login",true);
-            window.location.href = "../html/login.html";
-        }
+function filterData() {
+    const price1 = document.getElementById('price1').checked;
+    const price2 = document.getElementById('price2').checked;
+    const price3 = document.getElementById('price3').checked;
+    const price4 = document.getElementById('price4').checked;
+    const price5 = document.getElementById('price5').checked;
+    const price6 = document.getElementById('price6').checked;
 
-        function dangky(e) {
-            localStorage.setItem("page-login", false);
-            window.location.href = "../html/login.html";
-        }
+    const area0 = document.getElementById('area0').checked;
+    const area1 = document.getElementById('area1').checked;
+    const area2 = document.getElementById('area2').checked;
+    const area3 = document.getElementById('area3').checked;
+    const area4 = document.getElementById('area4').checked;
+
+    const NinhKieu = document.getElementById('NinhKieu').checked;
+    const CaiRang = document.getElementById('CaiRang').checked;
+    const BinhThuy = document.getElementById('BinhThuy').checked;
+    const PhongDien = document.getElementById('PhongDien').checked;
+    const OMon = document.getElementById('OMon').checked;
+
+    filteredData = DuLieuTro.filter(phongTro => {
+        const price = parseFloat(phongTro.gia);
+        const area = parseFloat(phongTro.dienTich);
+
+        const matchPrice = (price1 && price < 1) ||
+            (price2 && price >= 1 && price <= 2) ||
+            (price3 && price >= 2 && price <= 3) ||
+            (price4 && price >= 3 && price <= 4) ||
+            (price5 && price >= 4 && price <= 5) ||
+            (price6 && price > 5) ||
+            (!price1 && !price2 && !price3 && !price4 && !price5 && !price6);
+
+        const matchSize = (area0 && area > 0 && area < 20) ||
+            (area1 && area >= 20 && area <= 30) ||
+            (area2 && area >= 30 && area <= 40) ||
+            (area3 && area >= 40 && area <= 50) ||
+            (area4 && area >= 50) ||
+            (!area0 && !area1 && !area2 && !area3 && !area4);
+
+        const matchLocation = (NinhKieu && phongTro.vitri.includes('Quận Ninh Kiều')) ||
+            (CaiRang && phongTro.vitri.includes('Quận Cái Răng')) ||
+            (BinhThuy && phongTro.vitri.includes('Quận Bình Thủy')) ||
+            (PhongDien && phongTro.vitri.includes('Huyện Phong Điền')) ||
+            (OMon && phongTro.vitri.includes('Quận Ô Môn')) ||
+            (!NinhKieu && !CaiRang && !BinhThuy && !OMon && !PhongDien);
+
+        return matchPrice && matchSize && matchLocation;
+    });
+
+    currentPage = 1;
+    displayData(currentPage);
+}
+function clearCheckBox() {
+    const checkboxes = document.querySelectorAll('#price1, #price2, #price3,#price4,#price5,#price6,#area0, #area1, #area2, #area3,#area4,#NinhKieu, #CaiRang, #BinhThuy, #OMon, #PhongDien');
+    checkboxes.forEach(checkbox => checkbox.checked = false);
+}
+function search(event) {
+    event.preventDefault(); // Ngăn form bị submit và tải lại trang
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    filteredData = data.filter(phongTro =>
+        phongTro.tieuDe.toLowerCase().includes(searchInput) ||
+        phongTro.gia.toLowerCase().includes(searchInput) ||
+        phongTro.dienTich.toLowerCase().includes(searchInput) ||
+        phongTro.vitri.toLowerCase().includes(searchInput)
+    );
+    currentPage = 1;
+    displayData(currentPage);
+}
+
+
+displayData(currentPage);
+
+function handleKeyPress(event) {
+    if (event.key === 'Enter') {
+        search();
+    }
+}
+
+
+// PHẦN ĐĂNG NHÂP VÀ ĐĂNG KÝ
+function dangnhap() {
+    // localStorage.setItem("page-login",true);
+    window.location.href = "../html/login.html";
+}
+
+function dangky(e) {
+    localStorage.setItem("page-login", false);
+    window.location.href = "../html/login.html";
+}
 
 

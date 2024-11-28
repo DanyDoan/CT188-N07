@@ -1,13 +1,13 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
+document.getElementById('login-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Ngừng gửi form để kiểm tra thông tin đăng nhập
-    
+
     // Lấy giá trị từ các trường nhập
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    
+
     // Kiểm tra thông tin đăng nhập (ở đây chỉ là kiểm tra cơ bản, có thể thay đổi thành kiểm tra qua backend)
     if (username === 'admin' && password === '12345') {
-        localStorage.setItem("admin-login","mothaibabonnam");
+        localStorage.setItem("admin-login", "mothaibabonnam");
         alert('Đăng nhập thành công!');
         window.location.href = 'admin.html'; // Chuyển hướng đến trang quản trị sau khi đăng nhập thành công
     } else {
@@ -19,13 +19,13 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 if (localStorage.getItem("admin-login")) {
     document.getElementById("login--id").style.display = "none";
     document.getElementById("content-admin").style.display = "block";
-    
+
 } else {
     document.getElementById("content-admin").style.display = "none";
     document.getElementById("login--id").style.display = "block";
     // window.location.href = "main.html";
 }
-document.getElementById('logout').addEventListener('click', function() {
+document.getElementById('logout').addEventListener('click', function () {
     alert('Bạn đã đăng xuất');
     localStorage.removeItem("admin-login");
     window.location.href = 'admin.html';
@@ -39,47 +39,58 @@ document.getElementById('logout').addEventListener('click', function() {
 
 
 
+// Truy cập đến cá kho
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+var userData = JSON.parse(localStorage.getItem('userData')) || [];
+var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
+var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
-let arr = JSON.parse(localStorage.getItem("user-management")) || [];
 
-console.log(arr);
 
 let userList = document.getElementById("user-list");
 
-for (let i = 0; i < arr.length; i++) {
+userData.forEach ((user,index)=> {
     let tr = document.createElement("tr");
-    let user = JSON.parse(localStorage.getItem(arr[i]+"thongTinUser") || "[]");
     tr.innerHTML = `
-        <td>${i}</td>
+        <td>${index+1}</td>
         <td>${user.name}</td>
         <td>${user.gender}</td>
         <td>${user.birthdate}</td>
         <td id="userEmail">${user.email}</td>
         <td>${user.phone}</td>
         <td>
-            <button class="edit" value="${arr[i]}" onclick="layID(this.value)">Chi tiết</button>
+            <button class="edit" value="${user.email}" onclick="checkVarUser(this.value)">Chi tiết</button>
             <button class="delete">Xóa</button>
         </td>
     `;
     userList.appendChild(tr);
-}
-function layID(ID){
-    localStorage.setItem("userRoom",ID);
-    window.location.href="admin1.html";
+})
+function checkVarUser(email) {
+    localStorage.setItem("userRoom", email);
+    window.location.href = "admin1.html";
 }
 
 // Xóa phòng
 
 const deleteButtons = document.querySelectorAll('.delete');
 deleteButtons.forEach(button => {
-    const email=document.querySelector('#userEmail').textContent;
-    button.addEventListener('click', function() {
+
+    // Lấy email để tiện tra cứu và xóa người dùng
+    const email = document.querySelector('#userEmail').textContent;
+
+    button.addEventListener('click', function () {
         if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
-            alert(localStorage.getItem("user-information"));
-            alert('mámdamdmsam');
-            localStorage.removeItem(localStorage.getItem("user-information"));
-            alert('eahhhh');
+            userData.forEach( (user, index)=>{
+                if(user.email ==email){
+                    const banList=JSON.parse(localStorage.getItem('banList'))||[];
+                    banList.push(user.email);
+                    localStorage.setItem('banList',JSON.stringify(banList));
+                    userData.splice(index,1);
+                    localStorage.setItem('userData',JSON.stringify(userData));
+                }
+            })
         }
+
         alert("Đã xóa");
     });
 });

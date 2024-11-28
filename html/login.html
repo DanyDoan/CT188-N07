@@ -69,6 +69,9 @@
 </body>
 <!-- <script>localStorage.clear()</script> -->
 <script>
+// Danh Sách Đen
+var banList=JSON.parse(localStorage.getItem('banList')) || [];
+// Cơ sở dữ liệu của người dùng
 
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
@@ -82,26 +85,12 @@
         container.classList.remove('right-panel-active');
     });
 
-
-    // if (localStorage.getItem("page-login")) {
-    //     // Nếu page-login là true, hiển thị phần đăng nhập
-    //     signInButton.classList.add('right-panel-active');
-    //     localStorage.removeItem("page-login")
-    // }
-
-    // signUpButton.addEventListener('click', () => {
-    //     container.classList.add('right-panel-active overlay');
-    // });
-
-    // signInButton.addEventListener('click', () => {
-    //     container.classList.remove('right-panel-active');
-    // });
-
 // Đăng ký----------------------------------------------------------------------------
 
-    document.querySelector('.sign-up-container form').addEventListener('submit', function(event) {
+document.querySelector('.sign-up-container form').addEventListener('submit', function(event) {
     event.preventDefault(); // Ngăn chặn form submit để không reload trang
 
+    // Lấy thông tin từ input
     const name = document.querySelector('.sign-up-container input[placeholder="Name"]').value;
     const email = document.querySelector('.sign-up-container input[placeholder="Email"]').value;
     const password = document.querySelector('.sign-up-container input[placeholder="Password"]').value;
@@ -109,26 +98,46 @@
         // alert("Không hợp lệ!");
         return false;
     }
-    // Lưu các giá trị vào localStorage
-    if (localStorage.getItem(email)===null && localStorage.getItem(name)===null){
-        localStorage.setItem(email, JSON.stringify({ name, password}));
-        // alert(localStorage.getItem(email));
-        // localStorage.setItem(name, JSON.stringify({ email, password}));
-        localStorage.setItem("user-information",email+password);
-        let arr = JSON.parse(localStorage.getItem("user-management")) || [];
-        arr.push(email+password);
-        localStorage.setItem("user-management",JSON.stringify(arr));
-        // alert(localStorage.getItem("user-information"))
-        window.location.href = 'dienthongtin.html';
-        alert('Đăng ký thành công! Thông tin của bạn đã được lưu.');
-    } else alert("Email hoặc name của bạn đã tồn tại");    
+
+
+    // Lưu thông tin người dùng
+    const userData=JSON.parse(localStorage.getItem('userData'))||[];
+    var exist=0;
+    userData.forEach(user =>{
+        if(user.email==email){
+            exist=1;
+            return true;
+        }
+    })
+    if(exist==0){
+        const temp={
+            email: email,
+            password: password,
+            name : name,
+            gender:null,
+            phone:null,
+            avatar:null,
+            birthdate:null,
+            myRent:[],
+            favRent:[],
+        }
+        userData.push(temp);
+        localStorage.setItem('currentUser',JSON.stringify(temp));
+        localStorage.setItem('userData',JSON.stringify(userData));
+        alert("Đăng ký tài khoản thành công!");
+        window.location.href='dienthongtin.html';
+    }
+    else if(exist==1)
+        alert('Tài khoản đã tồn tại!');
+
+   
 });
 
 
 // Đăng nhập-----------------------------------------------------------------------------
-
+// localStorage.clear();
 document.querySelector('.sign-in-container form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Ngăn chặn form submit để không reload trang
+event.preventDefault(); // Ngăn chặn form submit để không reload trang
 
     // Lấy giá trị từ các trường input
     const name = document.querySelector('.sign-up-container input[placeholder="Name"]').value;
@@ -136,46 +145,35 @@ document.querySelector('.sign-in-container form').addEventListener('submit', fun
     const password = document.querySelector('.sign-in-container input[placeholder="Password"]').value;
 
 
-    // localStorage.setItem('email',"@gmail.com")
-
-    // const btn=document.querySelector('#button')
-    // btn.value='@.com';
-    // const email = btn.value;
-
-    // const getEmail=localStorage.getItem('email');
-
-
+    // Ràng buộc dữ liệu
     if (email.length===0 || password.length===0){
         return false;
     }
-        if (localStorage.getItem(email)===null) {
-            // alert('Email hoặc mật khẩu không đúng!');
-            let wrongPassword = document.getElementById("wrongPassword");
-            wrongPassword.textContent = "Email hoặc mật khẩu không đúng!";
-            return false;
-        }
-        const savedInfo = localStorage.getItem(email);
-        const storedPassword = JSON.parse(savedInfo);
+    
+    const userData=JSON.parse(localStorage.getItem('userData'))||[];
+    var accountExist=0;
+    userData.forEach(user => {
+        if (user.email == email) {
+            accountExist=1;
+            if(banList.includes(user.email))
+                alert("Tài khoản này đã bị xóa vì lí do vi phạm quy tắc cộng động! Liên hệ với Quản Trị Viên để biết thêm chi tiết!")
+            else{
+                if(user.password == password) {
+                // Set login status
+                localStorage.setItem('is-login', true);
 
-    if (password === storedPassword.password) {
-        alert('Đăng nhập thành công!');
-        localStorage.setItem("is-login",true);
-        localStorage.setItem("user-information",email+password);
-        window.location.href = 'customer.html';
-    } else {
-        alert('Email hoặc mật khẩu không đúng!');
-    }
+                // Set currentUser
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                window.location.href = 'customer.html'; 
+                } 
+                else
+                    alert("Mật khẩu chưa đúng!");
+            }
+        }
+    });
+    if(accountExist==0)
+        alert("Tài khoản không tồn tại")
 });
 
-
-// function deleteUser(email, password){
-//     if (JSON.parse(localStorage.getItem(email)).password===password){
-//         localStorage.removeItem(JSON.parse(localStorage.getItem(email)).name);
-//         localStorage.removeItem(email);
-//     } else alert("Nhập sai email hoặc password");
-//     alert("Xóa tài khoản thành công!");
-// }
-// deleteUser("ct188", "ct188");
-//sai mat khau hoặc tên
 </script>
 </html>

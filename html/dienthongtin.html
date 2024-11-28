@@ -154,43 +154,57 @@
                 <button type="submit" onclick="thongTinUser()">Gửi Thông Tin</button>
             </form>
 
-            <!-- <div id="userInfoDisplay"></div> -->
         </div>
     </main>
     <!-- javaScript cập nhật thông tin người dùng -->
     <script>
+         // Truy cập đến cá kho
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var userData = JSON.parse(localStorage.getItem('userData')) || [];
+        var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
+        var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
+
         document.getElementById("userForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-            const birthdate = document.getElementById("birthdate").value;
+            currentUser.name = document.getElementById("name").value;
+            currentUser.email = document.getElementById("email").value;
+            currentUser.phone = document.getElementById("phone").value;
+            currentUser.gender = document.querySelector('input[name="gender"]:checked').value;
+            currentUser.birthdate = document.getElementById("birthdate").value;
 
-            localStorage.setItem(localStorage.getItem("user-information")+"thongTinUser", JSON.stringify({ name, email, phone, gender, birthdate }));
+
+
+            userData.forEach((user, index) =>{
+                if(user.email==currentUser.email)
+                    userData[index]=currentUser;
+            })
+            // Cập nhật kho
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem('userData',JSON.stringify(userData));
+
             alert("Thông tin đã được lưu vào localStorage!");
 
             displayUserInfo();
         });
 
-        function displayUserInfo() {
-            const userInfoDisplay = document.getElementById("userInfoDisplay");
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information")+"thongTinUser");
+        // function displayUserInfo() {
+        //     const userInfoDisplay = document.getElementById("userInfoDisplay");
+        //     const savedInfo = localStorage.getItem(localStorage.getItem("user-information")+"thongTinUser");
 
-            if (savedInfo) {
-                const userInfo = JSON.parse(savedInfo);
+        //     if (savedInfo) {
+        //         const userInfo = JSON.parse(savedInfo);
 
-                // Điền thông tin vào các ô nhập liệu
-                document.getElementById("name").value = userInfo.name;
-                document.getElementById("email").value = userInfo.email;
-                document.getElementById("phone").value = userInfo.phone;
-                document.querySelector(`input[name="gender"][value="${userInfo.gender}"]`).checked = true;
-                document.getElementById("birthdate").value = userInfo.birthdate;
-            } else {
-                userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
-            }
-        }
+        //         // Điền thông tin vào các ô nhập liệu
+        //         document.getElementById("name").value = userInfo.name;
+        //         document.getElementById("email").value = userInfo.email;
+        //         document.getElementById("phone").value = userInfo.phone;
+        //         document.querySelector(`input[name="gender"][value="${userInfo.gender}"]`).checked = true;
+        //         document.getElementById("birthdate").value = userInfo.birthdate;
+        //     } else {
+        //         userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
+        //     }
+        // }
 
         function thongTinUser() {
             window.location.href ="login.html";

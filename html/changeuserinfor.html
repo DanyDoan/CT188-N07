@@ -121,8 +121,8 @@
 <body>
     <main>
         <div class="container">
-            <h2>Điền Thông Tin Người Dùng</h2>
-            <form id="userForm">
+            <h2>Cập nhật thông tin người dùng</h2>
+            <form id="userForm" action="customer.html">
                 <div class="form-group">
                     <label for="name">Họ và Tên:</label>
                     <input type="text" id="name" name="name" required>
@@ -159,41 +159,42 @@
     </main>
     <!-- javaScript cập nhật thông tin người dùng -->
     <script>
-        document.getElementById("userForm").addEventListener("submit", function (event) {
-            event.preventDefault();
+    var currentUser=JSON.parse(localStorage.getItem('currentUser'));
 
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const gender = document.querySelector('input[name="gender"]:checked').value;
-            const birthdate = document.getElementById("birthdate").value;
+        
 
-            localStorage.setItem(localStorage.getItem("user-information")+"thongTinUser", JSON.stringify({ name, email, phone, gender, birthdate }));
-            alert("Thông tin đã được lưu vào localStorage!");
 
-            displayUserInfo();
-        });
-
+        displayUserInfo();
         function displayUserInfo() {
             const userInfoDisplay = document.getElementById("userInfoDisplay");
-            const savedInfo = localStorage.getItem(localStorage.getItem("user-information")+"thongTinUser");
-
-            if (savedInfo) {
-                const userInfo = JSON.parse(savedInfo);
-
+            if (currentUser) {
                 // Điền thông tin vào các ô nhập liệu
-                document.getElementById("name").value = userInfo.name;
-                document.getElementById("email").value = userInfo.email;
-                document.getElementById("phone").value = userInfo.phone;
-                document.querySelector(`input[name="gender"][value="${userInfo.gender}"]`).checked = true;
-                document.getElementById("birthdate").value = userInfo.birthdate;
+                document.getElementById("name").value = currentUser.name;
+                document.getElementById("email").value = currentUser.email;
+                document.getElementById("phone").value = currentUser.phone;
+                document.querySelector(`input[name="gender"][value="${currentUser.gender}"]`).checked = true;
+                document.getElementById("birthdate").value = currentUser.birthdate;
             } else {
                 userInfoDisplay.innerHTML = "<p>Chưa có thông tin người dùng.</p>";
             }
         }
 
         function thongTinUser() {
-            window.location.href ="customer.html";
+            currentUser.name = document.getElementById("name").value;
+            currentUser.email = document.getElementById("email").value;
+            currentUser.phone = document.getElementById("phone").value;
+            currentUser.gender = document.querySelector('input[name="gender"]:checked').value;
+            currentUser.birthdate = document.getElementById("birthdate").value;
+            var userData=JSON.parse(localStorage.getItem('userData')) || [];
+            userData.forEach((user, index) =>{
+                if(user.email==currentUser.email){
+                    userData[index]=currentUser;
+                }
+            })
+            // Lưu lại thông tin
+            localStorage.setItem('currentUser',JSON.stringify(currentUser));
+            localStorage.setItem('userData',JSON.stringify(userData));
+            alert("Thông tin đã được lưu!");
         }
 
         window.addEventListener("load", displayUserInfo);

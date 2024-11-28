@@ -68,6 +68,13 @@
             <header>
                 <h1>Quản lí tài khoản người dùng</h1>
                 <button id="logout">Đăng Xuất</button>
+                <script>
+                    document.getElementById('logout').addEventListener('click', function () {
+                        alert('Bạn đã đăng xuất');
+                        localStorage.removeItem("admin-login");
+                        window.location.href = 'admin.html';
+                    });
+                </script>
             </header>
 
             <section>
@@ -95,32 +102,31 @@
 
     <!-- <script src="../javascript/admin.js"></script> -->
     <script>
-        const arr = JSON.parse(localStorage.getItem("DSPhongTro"))||[];
+        // Truy cập đến cá kho
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var userData = JSON.parse(localStorage.getItem('userData')) || [];
+        var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
+        var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
+
         let userList = document.getElementById("ql-ds-Room");
-        console.log(localStorage.getItem("userRoom"));
-            let user = JSON.parse(localStorage.getItem(localStorage.getItem("userRoom")+"arrayID")) || [];
-            console.log(user);
-            user.forEach(idPT => {
-                arr.forEach(room => {
-                    let tr = document.createElement("tr");
-                    if (idPT === room.id) {
-                        tr.innerHTML = `
-                        <td>${room.id}</td>
-                        <td>${room.tieuDe}</td>
-                        <td>${room.dienTich}</td>
-                        <td>${room.vitri}</td>
-                        <td>${room.gia}</td>
-                        <td>${room.trangThai}</td>
-                        <td>
-                            <button class="edit">Chi tiết</button>
-                            <button class="delete">Xóa</button>
-                        </td>
+        DSPhongTro.forEach(room => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${room.id}</td>
+                <td>${room.tieuDe}</td>
+                <td>${room.dienTich}</td>
+                <td>${room.vitri}</td>
+                <td>${room.gia}</td>
+                <td>${room.trangThai}</td>
+                <td>
+                    <button class="edit">Chi tiết</button>
+                    <button class="delete">Xóa</button>
+                </td>
                         
                         `;
-                        userList.appendChild(tr);
-                    }
-                });
-            });
+            userList.appendChild(tr);
+
+        });
 
         // function layID(ID) {
         //     localStorage.setItem("userRoom", ID);

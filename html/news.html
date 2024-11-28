@@ -33,19 +33,34 @@
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
+                <img src="../image/user.png" alt="Avatar" class="avatar-cuong" id="userAvatar"
+                    onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng
+                        xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="window.location.href='loadrent.html'">Đăng tin</button>
                 </div>
             </div>
         </div>
-        <script src="../javascript/dislayAVT.js"></script>
+        <!-- Hàm hiển thị avatar theo người dùng -->
+        <script>
+            document.getElementById("userAvatar").src = "../image/avata-user.png";
+            if (localStorage.getItem('is-login')) {
+                const currentUser=JSON.parse(localStorage.getItem("currentUser"));
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/avatar/" + currentUser.avatar + ".png";
+            }
+            else {
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/user.png";
+            }
+        </script>
         <div class="headerCol1"></div>
         <div class="headerCol2"></div>
         <div class="headerRow1"></div>
     </header>
+
 
     <!-- Thanh Điều Hướng -->
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">

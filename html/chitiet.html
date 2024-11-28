@@ -34,19 +34,34 @@
         </h1>
         <div class="auth-cuong">
             <div class="user-section">
-                <img src="../image/avata-user.png" alt="Avatar" class="avatar-cuong" id="userAvatar" onclick="window.location.href='customer.html'">
+                <img src="../image/user.png" alt="Avatar" class="avatar-cuong" id="userAvatar"
+                    onclick="window.location.href='customer.html'">
                 <div class="inOut">
                     <button id="loginBtn" class="button-cuong" onclick="login()">Đăng nhập</button>
-                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng xuất</button>
-                    <button id="DangTin" class="button-cuong" onclick="Dangtin()">Đăng tin</button>
+                    <button id="logoutBtn" class="button-cuong" onclick="logout()" style="display: none;">Đăng
+                        xuất</button>
+                    <button id="DangTin" class="button-cuong" onclick="window.location.href='loadrent.html'">Đăng tin</button>
                 </div>
             </div>
         </div>
-        <script src="../javascript/dislayAVT.js"></script>
+        <!-- Hàm hiển thị avatar theo người dùng -->
+        <script>
+            document.getElementById("userAvatar").src = "../image/avata-user.png";
+            if (localStorage.getItem('is-login')) {
+                const currentUser=JSON.parse(localStorage.getItem("currentUser"));
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/avatar/" + currentUser.avatar + ".png";
+            }
+            else {
+                let userAvatar = document.getElementById("userAvatar");
+                userAvatar.src = "../image/user.png";
+            }
+        </script>
         <div class="headerCol1"></div>
         <div class="headerCol2"></div>
         <div class="headerRow1"></div>
     </header>
+
 
 
     <!-- Thanh Điều Hướng -->
@@ -134,8 +149,8 @@
 
     <!-- Cơ sở dữ liệu quan trọng -->
     <script>
-    let data = JSON.parse(localStorage.getItem("ChiTietPhongTro"));
-    
+    var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro"));
+    console.log(DuLieuTro)
 
 
     
@@ -246,16 +261,18 @@
         
 
     }
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].id===localStorage.getItem('chi-tiet')) createDetail(data[i].hinhAnh, data[i].tieuDe,
-                data[i].gia, data[i].vitri,
-                data[i].trangThai, data[i].giaDacCoc,
-                data[i].dienTich, data[i].coGac,
-                data[i].moTa, data[i].cachTrungTam,
-                data[i].giaDien, data[i].giaNuoc,
-                data[i].chuTro, data[i].lienHe);
+        for (let i = 0; i < DuLieuTro.length; i++) {
+            if (DuLieuTro[i].id==JSON.parse(localStorage.getItem('idChiTiet'))){
+            createDetail(DuLieuTro[i].hinhAnh, DuLieuTro[i].tieuDe,
+                         DuLieuTro[i].gia, DuLieuTro[i].vitri,
+                         DuLieuTro[i].trangThai, DuLieuTro[i].giaDacCoc,
+                         DuLieuTro[i].dienTich, DuLieuTro[i].coGac,
+                         DuLieuTro[i].moTa, DuLieuTro[i].cachTrungTam,
+                         DuLieuTro[i].giaDien, DuLieuTro[i].giaNuoc,
+                         DuLieuTro[i].chuTro, DuLieuTro[i].lienHe);
         }
-        localStorage.removeItem('chi-tiet');
+    }
+        localStorage.removeItem('idChiTiet');
 
 
 
