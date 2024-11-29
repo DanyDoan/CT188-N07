@@ -27,8 +27,10 @@ if (localStorage.getItem("admin-login")) {
 }
 document.getElementById('logout').addEventListener('click', function () {
     alert('Bạn đã đăng xuất');
+    localStorage.removeItem("is-login")
+    localStorage.removeItem("currentUser");
     localStorage.removeItem("admin-login");
-    window.location.href = 'admin.html';
+    window.location.href = 'login.html';
 });
 
 
@@ -49,10 +51,10 @@ var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
 let userList = document.getElementById("user-list");
 
-userData.forEach ((user,index)=> {
+userData.forEach((user, index) => {
     let tr = document.createElement("tr");
     tr.innerHTML = `
-        <td>${index+1}</td>
+        <td>${index + 1}</td>
         <td>${user.name}</td>
         <td>${user.gender}</td>
         <td>${user.birthdate}</td>
@@ -80,18 +82,30 @@ deleteButtons.forEach(button => {
 
     button.addEventListener('click', function () {
         if (confirm('Bạn có chắc chắn muốn xóa tài khoản này?')) {
-            userData.forEach( (user, index)=>{
-                if(user.email ==email){
-                    const banList=JSON.parse(localStorage.getItem('banList'))||[];
+            userData.forEach((user, index) => {
+                if (user.email == email) {
+                    const banList = JSON.parse(localStorage.getItem('banList')) || [];
                     banList.push(user.email);
-                    localStorage.setItem('banList',JSON.stringify(banList));
-                    userData.splice(index,1);
-                    localStorage.setItem('userData',JSON.stringify(userData));
+                    localStorage.setItem('banList', JSON.stringify(banList));
+
+                    userData[index].myRent.forEach((rent, i) => {
+                        DSPhongTro.some((r, j)=>{
+                            if(r.id==rent.id){
+                                DSPhongTro.splice(j,1);
+                                return true;
+                            }
+                        })
+
+                    })
+                    userData.splice(index, 1);
+                    localStorage.setItem('DSPhongTro', JSON.stringify(DSPhongTro));
+                    localStorage.setItem('userData', JSON.stringify(userData));
                 }
             })
         }
 
-        alert("Đã xóa");
+        alert("Đã xóa và chặn tài khoản này!");
+        location.reload();
     });
 });
 

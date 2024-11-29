@@ -130,7 +130,7 @@
 
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" required disabled>
                 </div>
 
                 <div class="form-group">
@@ -164,16 +164,23 @@
         var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
         var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
+
+        document.getElementById("name").value=currentUser.name;
+        document.querySelector("#email").value=currentUser.email;
+
+
         document.getElementById("userForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
-            currentUser.name = document.getElementById("name").value;
-            currentUser.email = document.getElementById("email").value;
-            currentUser.phone = document.getElementById("phone").value;
-            currentUser.gender = document.querySelector('input[name="gender"]:checked').value;
-            currentUser.birthdate = document.getElementById("birthdate").value;
+            currentUser.name = document.getElementById("name").value ||'';
+            currentUser.phone = document.getElementById("phone").value ||'';
+            currentUser.gender = document.querySelector('input[name="gender"]:checked').value ||'';
+            currentUser.birthdate = document.getElementById("birthdate").value ||'';
 
-
+            if(currentUser.phone=='' || currentUser.gender=='' ||currentUser.birthdate==''){
+                alert("Xin hãy điền thông tin");
+                return false;
+            }
 
             userData.forEach((user, index) =>{
                 if(user.email==currentUser.email)
@@ -183,7 +190,7 @@
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
             localStorage.setItem('userData',JSON.stringify(userData));
 
-            alert("Thông tin đã được lưu vào localStorage!");
+            alert("Đã lưu thông tin!");
 
             displayUserInfo();
         });

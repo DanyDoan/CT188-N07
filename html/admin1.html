@@ -71,8 +71,10 @@
                 <script>
                     document.getElementById('logout').addEventListener('click', function () {
                         alert('Bạn đã đăng xuất');
+                        localStorage.removeItem("is-login")
+                        localStorage.removeItem("currentUser");
                         localStorage.removeItem("admin-login");
-                        window.location.href = 'admin.html';
+                        window.location.href = 'login.html';
                     });
                 </script>
             </header>
@@ -87,7 +89,7 @@
                             <th>Diện tích</th>
                             <th>Vị trí</th>
                             <th>Giá</th>
-                            <th>Trạng Thái</th>
+                            <th>Người Đăng</th>
                             <th>Thao Tác</th>
                         </tr>
                     </thead>
@@ -108,25 +110,84 @@
         var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
         var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
+
+
+
+    
         let userList = document.getElementById("ql-ds-Room");
         DSPhongTro.forEach(room => {
+            var r=0;
+            var owner='';
+            userData.some((user, index)=>{
+                user.myRent.some((rent)=>{
+                    if(rent.id==room.id){
+                        r=1;
+                        return true;
+                    }
+                })
+                if(r==1){
+                    owner=user;         
+                    return true;       
+                }
+                else;
+            })
             let tr = document.createElement("tr");
             tr.innerHTML = `
                 <td>${room.id}</td>
-                <td>${room.tieuDe}</td>
+                <td>${room.chuTro}</td>
                 <td>${room.dienTich}</td>
                 <td>${room.vitri}</td>
                 <td>${room.gia}</td>
-                <td>${room.trangThai}</td>
+                <td>${owner.email}</td>
                 <td>
                     <button class="edit">Chi tiết</button>
-                    <button class="delete">Xóa</button>
+                    <button class="delete" onclick='deleteRent("${owner.email}","${room.id}")'>Xóa</button>
                 </td>
                         
                         `;
             userList.appendChild(tr);
 
         });
+   
+
+        function deleteRent(email, id){
+            // Tìm chủ nhân phòng trọ
+            var temp='';
+            var userPosition='';
+            userData.some((user, index)=>{
+                if(user.email==email){
+                    temp=user;
+                    userPosition=index;
+                    return true;
+                }
+            })
+
+            // Xóa phòng trọ trong kho của chủ nhân
+            temp.myRent.some((rent,index)=>{
+                if(rent.id==id){
+                    temp.myRent.splice(index,1);
+                    return true;
+                }
+            })
+
+            // Cập nhật lại kho dữ liệu người dùng
+            userData[userPosition]=temp;
+            localStorage.setItem('userData',JSON.stringify(userData));
+
+
+            // Xóa trong DSPhongTro
+            DSPhongTro.some((rent, index)=>{
+                if(rent.id==id){
+                    DSPhongTro.splice(index,1);
+                    return true;
+                }
+            })
+            // Cập nhật lại DSPhongTro
+            localStorage.setItem('DSPhongTro', JSON.stringify(DSPhongTro))
+            location.reload();
+            alert("Xóa thành công!");
+        }
+        
 
         // function layID(ID) {
         //     localStorage.setItem("userRoom", ID);

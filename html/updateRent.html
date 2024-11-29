@@ -100,12 +100,12 @@
 <body>
 
     <div class="container">
-        <h2>Thông tin đăng trọ</h2>
-        <form id="roomForm" action="customer.html">
+        <h2>Cập nhật thông tin</h2>
+        <form id="roomForm">
             <div class="form-row">
                 <div class="form-group">
                     <label for="id">ID:</label>
-                    <input type="text" id="id" name="id" required>
+                    <input type="text" id="id" name="id" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="tieuDe">Tiêu Đề:</label>
@@ -158,7 +158,7 @@
                 </div>
                 <div class="form-group">
                     <label for="chuTro">Chủ Trọ:</label>
-                    <input type="text" id="chuTro" name="chuTro" required>
+                    <input type="text" id="chuTro" name="chuTro">
                 </div>
             </div>
 
@@ -183,7 +183,7 @@
                 </div>
             </div>
 
-            <button type="submit" id="roomForm">Cập Nhật Thông Tin</button>
+            <button type="submit">Cập Nhật Thông Tin</button>
         </form>
     </div>
     <script>
@@ -193,18 +193,32 @@
         var DuLieuTro = JSON.parse(localStorage.getItem("DuLieuTro")) || [];
         var DSPhongTro = JSON.parse(localStorage.getItem('DSPhongTro')) || [];
 
+        var id=JSON.parse(localStorage.getItem('id-cap-nhat-phong-tro'));
+        var i=0;
+            currentUser.myRent.forEach((rent, index)=>{
+                if(rent.id==id)
+                    i=index;
+            });
+        document.querySelector('#id').value=id;
+        document.querySelector('#tieuDe').value=currentUser.myRent[i].tieuDe || '';
+        document.querySelector('#gia').value=currentUser.myRent[i].gia || '';
+        document.getElementById("dienTich").value=currentUser.myRent[i].gia || '';
+        document.getElementById("vitri").value=currentUser.myRent[i].vitri || '';;
+        document.getElementById("hinhAnh").value=currentUser.myRent[i].hinhAnh || '';;
+        document.getElementById("giaDien").value=currentUser.myRent[i].giaDien || '';;
+        document.getElementById("giaNuoc").value=currentUser.myRent[i].giaNuoc || '';;
+        document.getElementById("cachTrungTam").value=currentUser.myRent[i].cachTrungTam || '';;
+        document.getElementById("coGac").value=currentUser.myRent[i].coGac || '';;
+        document.getElementById("trangThai").value=currentUser.myRent[i].trangThai || '';;
+        document.getElementById("chuTro").value=currentUser.myRent[i].chuTro || '';;
+        document.getElementById("lienHe").value=currentUser.myRent[i].lienHe || '';;
+        document.getElementById("giaDacCoc").value=currentUser.myRent[i].giaDacCoc || '';;
+        document.getElementById("moTa").value=currentUser.myRent[i].moTa || '';;
+
 
         document.getElementById("roomForm").addEventListener("submit", function (event) {
             event.preventDefault();
-            const id = document.getElementById("id").value;
-
-
-            var exist= DSPhongTro.some(element => element.id==id)
-            if(exist){
-                alert('ID đã tồn tại, xin vui lòng đặt ID khác!');
-                return false;
-            }
-
+            
             const tieuDe = document.getElementById("tieuDe").value;
             const gia = document.getElementById("gia").value;
             const dienTich = document.getElementById("dienTich").value;
@@ -219,6 +233,7 @@
             const lienHe = document.getElementById("lienHe").value;
             const giaDacCoc = document.getElementById("giaDacCoc").value;
             const moTa = document.getElementById("moTa").value;
+
             const formData = {
                 "id": id,
                 "tieuDe": tieuDe,
@@ -237,52 +252,31 @@
                 "moTa": moTa
             };
 
-            currentUser.myRent.push(formData);
-            DSPhongTro.push(formData);
-
+            currentUser.myRent.forEach((rent, index)=>{
+                if(rent.id == id)
+                    currentUser.myRent[index]=formData;
+            })
             userData.some((user, index) => {
                 if (user.email == currentUser.email) {
                     userData[index] = currentUser;
                     return true;
                 }
             });
-
-            // Cập nhật các dữ liệu địa phương
-            localStorage.setItem('DSPhongTro', JSON.stringify(DSPhongTro));
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            localStorage.setItem("userData", JSON.stringify(userData));
-
-            window.location.href = 'customer.html'
-        });
-
-        // Hiển thị chi tiết phòng trọ
-        function displayInforID() {
             let arr = JSON.parse(localStorage.getItem("DSPhongTro")) || [];
+            arr = arr.map(element => {
+                if (element.id === id) {
+                    return formData; // Cập nhật phần tử nếu id trùng
+                }
+                return element;
+            });
+            localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem("DSPhongTro", JSON.stringify(arr));
 
+            window.location.href = "customer.html";
 
-            currentUser.myRent.forEach(rent => {
-                arr.forEach(element => {
-
-                });
-                id = document.getElementById("id").value = infID.id;
-                tieuDe = document.getElementById("tieuDe").value = infID.tieuDe;
-                gia = document.getElementById("gia").value = infID.gia;
-                dienTich = document.getElementById("dienTich").value = infID.dienTich;
-                vitri = document.getElementById("vitri").value = infID.vitri;
-                hinhAnh = document.getElementById("hinhAnh").value = infID.hinhAnh;
-                giaDien = document.getElementById("giaDien").value = infID.giaDien;
-                giaNuoc = document.getElementById("giaNuoc").value = infID.giaNuoc;
-                cachTrungTam = document.getElementById("cachTrungTam").value = infID.cachTrungTam;
-                coGac = document.getElementById("coGac").value = infID.coGac;
-                trangThai = document.getElementById("trangThai").value = infID.trangThai;
-                chuTro = document.getElementById("chuTro").value = infID.chuTro;
-                lienHe = document.getElementById("lienHe").value = infID.lienHe;
-                giaDacCoc = document.getElementById("giaDacCoc").value = infID.giaDacCoc;
-                moTa = document.getElementById("moTa").value = infID.moTa;
-            })
-            localStorage.setItem('DSPhongTro',JSON.stringify(arr));
-        }
-        window.addEventListener("load", displayInforID);
+        });
+        
         // localStorage.removeItem("id-cap-nhat-phong-tro");
     </script>
     <script src="../javascript/main.js">

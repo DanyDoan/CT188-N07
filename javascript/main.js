@@ -743,7 +743,7 @@ function clearCheckBox() {
 function search(event) {
     event.preventDefault(); // Ngăn form bị submit và tải lại trang
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    filteredData = data.filter(phongTro =>
+    filteredData = DuLieuTro.filter(phongTro =>
         phongTro.tieuDe.toLowerCase().includes(searchInput) ||
         phongTro.gia.toLowerCase().includes(searchInput) ||
         phongTro.dienTich.toLowerCase().includes(searchInput) ||

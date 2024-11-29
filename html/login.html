@@ -89,6 +89,7 @@ var banList=JSON.parse(localStorage.getItem('banList')) || [];
 
 document.querySelector('.sign-up-container form').addEventListener('submit', function(event) {
     event.preventDefault(); // Ngăn chặn form submit để không reload trang
+    
 
     // Lấy thông tin từ input
     const name = document.querySelector('.sign-up-container input[placeholder="Name"]').value;
@@ -96,6 +97,10 @@ document.querySelector('.sign-up-container form').addEventListener('submit', fun
     const password = document.querySelector('.sign-up-container input[placeholder="Password"]').value;
     if (email.length===0 || name.length===0 || password.length==0) {
         // alert("Không hợp lệ!");
+        return false;
+    }
+    if (banList.includes(email)){
+        alert('Email này đã bị Quản Trị Viên chặn!');
         return false;
     }
 
@@ -114,10 +119,10 @@ document.querySelector('.sign-up-container form').addEventListener('submit', fun
             email: email,
             password: password,
             name : name,
-            gender:null,
-            phone:null,
-            avatar:null,
-            birthdate:null,
+            gender:'',
+            phone:'',
+            avatar:'',
+            birthdate:'',
             myRent:[],
             favRent:[],
         }
